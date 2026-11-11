@@ -461,6 +461,13 @@ body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-size:22px;line-hei
 /* The active appearance cube needs to read as chosen, not disabled: use the
    user-bubble fill and a warm ink edge instead of the pale module surface. */
 body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border)}
+/* Agent preset cards + the custom-preset button mirror the Appearance cubes:
+   unselected = raised input surface, selected = bubble fill + warm edge. */
+body [class*="AnXs9G_panel"] [class~="Wsg8iW_card"]:not([class~="Wsg8iW_cardActive"]):not([class~="Wsg8iW_cardBroken"]):not(:hover){background:var(--dsw-specific-input-major);border-color:transparent}
+body [class*="AnXs9G_panel"] [class~="Wsg8iW_card"]:not([class~="Wsg8iW_cardActive"]):not([class~="Wsg8iW_cardBroken"]){box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2)}
+body [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border);box-shadow:none}
+body [class*="AnXs9G_panel"] [class~="Wsg8iW_creatorButton"]:not(:disabled){box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2);border:.5px solid transparent;border-radius:var(--dsw-radius-xl)}
+body [class*="AnXs9G_panel"] [class~="Wsg8iW_creatorButton"]:not(:disabled):not(:hover){background:var(--dsw-specific-input-major)}
 /* Menus opened from Settings are portaled to body, so the panel zoom never
    reaches them. Match the panel's effective 17px instead of the shipped 13px. */
 body:has([class*="AnXs9G_panel"]) [role="menuitem"]{font-size:17px;line-height:25px;min-height:40px}

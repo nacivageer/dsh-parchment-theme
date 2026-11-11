@@ -78,6 +78,12 @@ assert.match(
 );
 assert.match(
   css,
+  /\[class~="Wsg8iW_card"\]\[class~="Wsg8iW_cardActive"\]\{background:var\(--dsw-specific-bubble\)/,
+  'the selected agent preset card uses the bubble fill',
+);
+assert.match(css, /\[class~="Wsg8iW_creatorButton"\]/, 'the custom preset button uses the raised surface');
+assert.match(
+  css,
   /button\[class\*="_button"\][^}]*box-shadow:var\(--dsw-elevation-soft\)/,
   'custom settings buttons use the composer elevation',
 );
