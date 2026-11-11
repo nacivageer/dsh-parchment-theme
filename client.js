@@ -355,8 +355,10 @@ window.__ModuleLoader__.load({
       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2048' height='2048'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0078125' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1' intercept='-0.04'/%3E%3CfeFuncG type='linear' slope='1' intercept='-0.04'/%3E%3CfeFuncB type='linear' slope='1' intercept='-0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='2048' height='2048' filter='url(%23b)' opacity='0.45'/%3E%3C/svg%3E\")";
     const STYLE_CSS = `
 [class*="wtg9ga_root"]{font-size:17px}
-[class*="wtg9ga_panelTitle"]{font-size:18px}
+[class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"京華老宋体","思源宋体 CN Medium",serif}
 [class*="wtg9ga_newSessionLabel"]{font-size:20px}
+[class*="wtg9ga_newSession"]{height:46px}
+[class*="wtg9ga_newSession"] svg{width:20px;height:20px}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
