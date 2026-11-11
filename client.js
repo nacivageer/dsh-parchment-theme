@@ -522,18 +522,20 @@ body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [rol
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"] svg{width:16px;height:16px}
 /* The sidebar path/creation hover card is a HoverCard whose surface and ink are
    hardcoded neutral dark (#2C2C2E on #fff), so light mode showed the same dark
-   bubble as dark mode. Paper wants light coffee with dark coffee ink by day,
-   and dark coffee with pale coffee ink at night. */
-body:not([data-ds-dark-theme]) [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#cdbfa6;border:1px solid #a8916d}
-body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTitle"]{color:#33281c}
+   bubble as dark mode. It borrows the 工作区 section bar's palette instead of a
+   warm tint: a beige card collided with the idle-status dot and read as noise
+   next to the paper. Light = grey-blue bar with navy ink, dark = brown bar with
+   gold ink. */
+body:not([data-ds-dark-theme]) [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#8e979b;border:1px solid #77848a}
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTitle"]{color:#26333a}
 body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverPath"],
 body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTime"],
-body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverStatus"]{color:#5c4a34}
-body[data-ds-dark-theme] [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#3a322a;border:1px solid #5f5142}
-body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTitle"]{color:#f1ebdf}
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverStatus"]{color:#2f3d45}
+body[data-ds-dark-theme] [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#5b4a2a;border:1px solid #6d5834}
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTitle"]{color:#e7c17b}
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverPath"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTime"],
-body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverStatus"]{color:#cfc3ae}
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverStatus"]{color:#d3ad6b}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}

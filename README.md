@@ -42,7 +42,7 @@
 - **插件市场页**：`body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]{zoom:1}`——`zoom` 会把 `position:fixed` 的悬浮全文一起缩放，提示漂到卡片外；这一页复位为 1，其他设置页保持放大。
 - **设置页框线**：面板内把 `--dsw-alias-border-l2/l3/l4` 与 `--dsw-alias-settings-card-stroke` 提到 20/24/30/35%（浅色）、25/30/35/40%（深色），卡片与行分隔不再糊在纸色里。
 - **深色悬浮标签**：`--dsw-alias-tooltip-bg` 深色 `#5a4d3e`（原 `#352f28` 与面板 `#302a23` 几乎同色）；`[role="tooltip"]` 另加 1px 浅边和更深的阴影。
-- **会话路径悬浮卡**：侧栏悬停出的路径 / 创建时间卡片是 primitives `HoverCard`，衬底与文字写死中性深色（`#2C2C2E` 底 + `#fff` 字），浅深两套看起来一样。改成浅色「浅咖底 + 深咖字」（`#cdbfa6` / `#33281c`，路径与时间 `#5c4a34`）、深色「深咖底 + 浅咖字」（`#3a322a` / `#f1ebdf`，路径与时间 `#cfc3ae`），加 1px 同色系描边；只用 `:has(.hoverContent)` 命中这类卡，不碰 diff 预览卡。
+- **会话路径悬浮卡**：侧栏悬停出的路径 / 创建时间卡片是 primitives `HoverCard`，衬底与文字写死中性深色（`#2C2C2E` 底 + `#fff` 字），浅深两套看起来一样。改成跟「工作区」栏同一套配色——浅色 `#8e979b` 底 + `#26333a` 字（路径与时间 `#2f3d45`）、深色 `#5b4a2a` 底 + `#e7c17b` 字（路径与时间 `#d3ad6b`），各加 1px 同色系描边；浅色最初用的暖咖底会和「空闲」状态圆点撞色、在纸面上也跳，所以改用栏色。只用 `:has(.hoverContent)` 命中这类卡，不碰 diff 预览卡。
 - **未激活按钮**：设置页与插件市场里的下拉触发器、outline 按钮（打开配置文件 / 编辑快捷键 / 安装）与未选中的外观卡片，改成 `--dsw-specific-input-major` 填充 + `--dsw-elevation-soft` 外扩阴影，和会话输入框同一套表面；hover、展开、disabled 保留各自状态。
 - **深色设置控件**：深色面板下这些未激活的下拉 / outline / stepper / 外观卡片 / 预设卡片改用 `#554c44` 面 + `#6a5f54` 边、去阴影；选中的外观卡片与预设卡片用 `#72664f` + `#8a7a5a`，贴近用户给的图 3。浅色仍走 input-major。
 - **自定义控件**：字号大小的 stepper 及其 `_control` 外层（连同 px 单位与展开箭头）与不带 primitives outline/haspopup 类的 action 按钮（`button[class*="_button"]`，如「编辑快捷键」）也补齐同一套填充与阴影；primary / ghost / toolbar / icon / nav / close 排除在外。

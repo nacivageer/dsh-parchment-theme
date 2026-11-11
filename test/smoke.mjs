@@ -223,22 +223,23 @@ assert.match(
 );
 
 // The path/creation hover card hardcodes a neutral dark surface (#2C2C2E) and
-// white ink in both modes; paper gives it coffee by day and inverted coffee at
-// night, without touching the diff preview card that shares the same class.
+// white ink in both modes. It takes the 工作区 section bar's palette instead of a
+// warm tint (a beige card read as noise and collided with the idle-status dot),
+// gated on .hoverContent so the diff preview card sharing the class is untouched.
 assert.match(
   css,
-  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#cdbfa6/,
-  'the hover card uses light coffee by day',
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#8e979b/,
+  'the hover card borrows the light workspace-bar surface',
 );
 assert.match(
   css,
-  /body\[data-ds-dark-theme\] \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#3a322a/,
-  'the hover card uses dark coffee at night',
+  /body\[data-ds-dark-theme\] \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#5b4a2a/,
+  'the hover card borrows the dark workspace-bar surface',
 );
 assert.match(
   css,
-  /\[class\*="hoverContent"\] \[class\*="hoverTitle"\]\{color:#33281c\}/,
-  'the hover card title uses dark coffee ink in light mode',
+  /\[class\*="hoverContent"\] \[class\*="hoverTitle"\]\{color:#26333a\}/,
+  'the hover card title uses the workspace bar ink',
 );
 
 // The settings panel zoom cannot grow components that pin px sizes, so form
