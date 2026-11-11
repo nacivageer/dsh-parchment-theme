@@ -430,8 +430,11 @@ body [class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:
 body [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
 body [class*="m2hUqa_seat"]{font-size:17px;line-height:24px}
 body [class*="m2hUqa_seatLabel"]{font-size:17px;line-height:24px}
-/* The preset dropdown's option names were 13px next to a 17px seat. */
-body [class*="m2hUqa_itemName"]{font-size:16px;line-height:24px}
+/* The preset dropdown's option names were 13px next to a 17px seat; they and
+   their descriptions go one step up, and the description leaves the caption
+   grey for the secondary ink so it stays readable. */
+body [class*="m2hUqa_itemName"]{font-size:18px;line-height:26px}
+body [class*="m2hUqa_itemDesc"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
 /* New-session toolbar: the workspace picker, preset chip, permission trigger
    and model picker share one rank, one step above the old 15px preset chip. */
 body [class*="_86kJGG_trigger"],

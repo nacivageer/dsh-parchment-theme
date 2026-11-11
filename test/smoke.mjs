@@ -252,8 +252,13 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="m2hUqa_itemName"\]\{font-size:16px;line-height:24px\}/,
+  /\[class\*="m2hUqa_itemName"\]\{font-size:18px;line-height:26px\}/,
   'the preset menu option names grow',
+);
+assert.match(
+  css,
+  /\[class\*="m2hUqa_itemDesc"\]\{font-size:14px;line-height:20px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'the preset option descriptions grow and use the secondary ink',
 );
 assert.match(
   css,
