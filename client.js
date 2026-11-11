@@ -420,6 +420,11 @@ body [class*="GAkraW_sectionHeader"]{background:#8e979b;border-radius:8px;color:
 body[data-ds-dark-theme] [class*="GAkraW_sectionHeader"]{background:#5b4a2a;color:#e7c17b;--dsw-alias-label-primary:#e7c17b;--dsw-alias-label-secondary:#e7c17b;--dsw-alias-label-tertiary:#e7c17b;--dsw-alias-menu-icon:#e7c17b}
 body [class*="p2k40q_hero"]{color:#a7987f}
 body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
+/* New-session hero: the headline takes the display face used by section
+   titles, and the preview badge borrows the 工作区 bar's surface and ink. */
+body [class*="WOwLGG_headline"]{font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif}
+body [class*="WOwLGG_previewBadge"]{background:#8e979b;color:#26333a;border-color:#77848a}
+body[data-ds-dark-theme] [class*="WOwLGG_previewBadge"]{background:#5b4a2a;color:#e7c17b;border-color:#6d5834}
 body [class*="an3WzG_crumb"]{max-width:420px}
 body [class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:600;font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復",serif}
 body [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}

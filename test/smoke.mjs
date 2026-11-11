@@ -383,6 +383,22 @@ assert.match(
   /body:not\(\[data-ds-dark-theme\]\) \[class\*="hoverContent"\] \[class\*="DBgHeW_taskTiming"\]/,
   'the light hover-card task timing uses the hover body ink',
 );
+// New-session hero: display face for the headline, 工作区 palette for the badge.
+assert.match(
+  css,
+  /\[class\*="WOwLGG_headline"\]\{font-family:"寒蝉活宋体_復"/,
+  'the hero headline uses 寒蝉活宋体_復',
+);
+assert.match(
+  css,
+  /\[class\*="WOwLGG_previewBadge"\]\{background:#8e979b;color:#26333a/,
+  'the light preview badge uses the workspace bar surface and ink',
+);
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\] \[class\*="WOwLGG_previewBadge"\]\{background:#5b4a2a;color:#e7c17b/,
+  'the dark preview badge uses the workspace bar surface and ink',
+);
 assert.match(
   css,
   /\[class\*="hoverContent"\] \[class\*="hoverTitle"\]\{color:#26333a\}/,
