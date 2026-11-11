@@ -356,7 +356,8 @@ window.__ModuleLoader__.load({
     const STYLE_CSS = `
 [class*="wtg9ga_root"]{font-size:17px}
 [class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-weight:500}
-[class*="wtg9ga_newSessionLabel"]{font-size:20px;font-family:"京華老宋体",serif;font-weight:500;position:relative;top:2px}
+[class*="wtg9ga_newSessionLabel"]{font-size:20px;line-height:1;font-family:"京華老宋体",serif;font-weight:500}
+[class*="wtg9ga_newSessionContent"]{display:flex;align-items:center;line-height:1}
 [class*="wtg9ga_newSession"]:not([class*="Label"]):not([class*="Content"]):not([class*="Shortcut"]){position:relative;display:flex;min-height:46px;align-items:center;justify-content:center}
 [class*="wtg9ga_newSessionShortcut"]{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
 [class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:auto;flex:none}
