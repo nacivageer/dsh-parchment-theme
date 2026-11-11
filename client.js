@@ -454,6 +454,9 @@ body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"]:not([cla
 body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_creatorButton"]{box-shadow:none;border-color:#6a5f54}
 body[data-ds-dark-theme] [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"],
 body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"]{background:#72664f;border-color:#8a7a5a;box-shadow:none}
+/* Plugin inventory cards use the same control surface as the buttons, except
+   the disabled card (its state tag is the only tone=neutral tag in the grid). */
+body [class*="AnXs9G_panel"] [class~="qgYWUG_card"]:not(:has([data-tone="neutral"])){background:var(--dsw-specific-input-major)}
 /* Account avatar: the user's wax-seal artwork is the whole icon; the DSH glyph
    underneath is hidden so the PNG's own cream user mark is the only mark. */
 body [class*="_5Qcc8a_avatar"],
@@ -511,6 +514,10 @@ body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
 body [class*="HOHHba_card"]{--changes-fill:#d2ccc2;--changes-hover:#c8c1b4;background:#d2ccc2;border-color:#a89a84}
 body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#332c24;--changes-hover:#3a322a;background:#332c24;border-color:#5f5142}
+body [class*="HOHHba_preview"],
+body [class*="_0cITKW_root"]{background:#d2ccc2}
+body[data-ds-dark-theme] [class*="HOHHba_preview"],
+body[data-ds-dark-theme] [class*="_0cITKW_root"]{background:#332c24}
 /* Changed-files card: the shipped 10–13px ranks read as fine print next to the
    18px content, so every rank inside the card goes up one step. */
 body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}

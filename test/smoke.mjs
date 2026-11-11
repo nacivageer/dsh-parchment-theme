@@ -166,6 +166,16 @@ assert.match(
 );
 assert.match(
   css,
+  /\[class\*="HOHHba_preview"\],[^{]*\[class\*="_0cITKW_root"\]\{background:#d2ccc2/,
+  'the changed-files diff surface is explicit warm paper',
+);
+assert.match(
+  css,
+  /\[class~="qgYWUG_card"\]:not\(:has\(\[data-tone="neutral"\]\)\)\{background:var\(--dsw-specific-input-major\)/,
+  'plugin inventory cards use the button surface except the disabled one',
+);
+assert.match(
+  css,
   /\[class\*="_block_7gxqk_4"\] :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
   'the code block body uses 寒蝉活宋体_復 italic',
 );
