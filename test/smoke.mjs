@@ -76,6 +76,26 @@ assert.match(
   /button\[class\*="themeCube"\]\[class\*="selected"\]\{background:var\(--dsw-specific-bubble\)/,
   'the selected appearance cube uses the bubble fill',
 );
+assert.match(
+  css,
+  /button\[class\*="_button"\][^}]*box-shadow:var\(--dsw-elevation-soft\)/,
+  'custom settings buttons use the composer elevation',
+);
+assert.match(
+  css,
+  /\[class\*="_stepper"\]\{background:var\(--dsw-specific-input-major\)/,
+  'the font-size stepper uses the composer fill',
+);
+assert.match(
+  css,
+  /\[class\$="_control"\]\{background:var\(--dsw-specific-input-major\)/,
+  'the font-size control wrapper uses the composer fill',
+);
+assert.match(
+  css,
+  /\[class\*="_identity"\] \[class\*="_avatar"\]\{[^}]*background-image:url\("data:image\/svg\+xml/,
+  'the account avatar gets a wax-seal backdrop',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');

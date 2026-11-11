@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.7 — 2026-11-11
+
+设置页控件补齐输入框表面，账号头像加火漆印衬底。
+
+### 表面
+
+- 「字号大小」stepper 及其 `_control` 外层（连同 px 单位与展开箭头）改成 `--dsw-specific-input-major` 填充 + `--dsw-elevation-soft` 外扩阴影。
+- 不带 primitives outline/haspopup 类的 action 按钮（`button[class*="_button"]`，如「编辑快捷键」）同样补齐；primary / ghost / toolbar / icon / outline / nav / close 排除，hover、展开、disabled 保留各自状态。
+- 账号页头像加一枚自绘火漆印衬底：84 点波浪边 + 压印内圈 + 单点高光，保留 DSH 用户图标并改为米色；SVG 内联在样式表里，不引用参考图。
+
 ## v0.1.6 — 2026-11-11
 
 外观选中项的激活感。
