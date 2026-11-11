@@ -371,6 +371,11 @@ body[data-ds-dark-theme] [class*="_block_7gxqk_4"],
 body[data-ds-dark-theme] [class*="_card_1mqf1_1"],
 body[data-ds-dark-theme] [class*="_block_15hvo_1"],
 body[data-ds-dark-theme] [class*="_block_74wpx_1"]{border:1px solid #665646;box-sizing:border-box}
+/* Code fences use the user's serif pairing: 猫啃网故障宋 for the banner,
+   寒蝉活宋体_復 for the body. Sizes are picked for the DSH scale (not PS pt). */
+body [class*="_block_7gxqk_4"] [class*="_infostring_7gxqk_45"]{font-family:"猫啃网故障宋","MaokenGlitchSerif","Maoken Glitch Serif","寒蝉活宋体_復",serif;font-size:20px;line-height:28px;font-weight:400;font-style:italic;letter-spacing:.02em}
+body [class*="_block_7gxqk_4"] :where(pre){font-family:"寒蝉活宋体_復","思源宋体 CN",serif;font-size:16px;line-height:1.8;font-style:italic}
+body [class*="_block_7gxqk_4"] :where(pre) code{font:inherit}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
 [class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}

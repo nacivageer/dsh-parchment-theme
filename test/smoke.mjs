@@ -139,6 +139,16 @@ assert.match(
   /body\[data-ds-dark-theme\] \[class\*="_block_7gxqk_4"\][^{]*\{[^}]*border:1px solid #665646/,
   'code blocks get a visible dark frame',
 );
+assert.match(
+  css,
+  /\[class\*="_infostring_7gxqk_45"\]\{[^}]*猫啃网故障宋[^}]*font-style:italic/,
+  'the code block banner uses 猫啃网故障宋 italic',
+);
+assert.match(
+  css,
+  /\[class\*="_block_7gxqk_4"\] :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
+  'the code block body uses 寒蝉活宋体_復 italic',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
