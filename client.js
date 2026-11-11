@@ -433,7 +433,10 @@ body [class*="lJo4ka_description"]{font-size:16px;line-height:28px}
 body [class*="XVcKbW_copy"]{font-size:16px;line-height:28px}
 body [class*="XVcKbW_error"]{font-size:16px;line-height:25px}
 
-body [class*="J8V0KW_"],[class*="GAdqeW_"],[class*="AnXs9G_"],[class*="XAL7Ya_"]{outline:2px dashed #c0392b !important}
+body [class*="J8V0KW_"]{outline:2px solid #ff0000 !important}
+body [class*="GAdqeW_"]{outline:2px solid #00a000 !important}
+body [class*="AnXs9G_"]{outline:2px solid #0044ff !important}
+body [class*="XAL7Ya_"]{outline:2px solid #ffb000 !important}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
