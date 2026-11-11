@@ -314,7 +314,7 @@ window.__ModuleLoader__.load({
       '--dsh-code-font-size': '13px',
       '--dsh-terminal-font-size': '15px',
       '--dsw-font-family':
-        'var(--dsh-font-family-text, "思源宋体 CN"), "思源宋体 CN", "Source Han Serif CN", "Noto Serif SC", "Songti SC", "SimSun", serif',
+        'var(--dsh-font-family-text, "思源宋体 CN Medium"), "思源宋体 CN Medium", "思源宋体 CN", "Source Han Serif CN", "Noto Serif SC", "Songti SC", "SimSun", serif',
     };
 
     /**
