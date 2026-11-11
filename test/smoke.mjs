@@ -50,8 +50,11 @@ const css = appended[0].textContent;
 
 // The two regressions this theme already paid for.
 assert.ok(!/zoom\s*:/.test(css), 'no zoom rules: they misplace viewport-flipped popovers');
-assert.ok(css.includes('@font-face'), 'the Song face must stay restricted to ideographs');
-assert.ok(!/"京華老宋体",\s*"思源/.test(css), 'the bare family must not sit in the stack');
+
+const family = layer.tokens['--dsw-font-family'];
+assert.ok(family, 'the font stack must be part of the layer');
+assert.match(family.light, /寒蝉活宋体_復/, 'body text uses the sturdier Song face');
+assert.match(family.light, /^var\(--dsh-font-family-text/, 'a font chosen in Settings still wins');
 
 const seam = plugin.__parchment;
 assert.ok(seam && seam.LIGHT && seam.DARK && seam.TOKENS);

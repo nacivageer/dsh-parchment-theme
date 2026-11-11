@@ -1,6 +1,6 @@
 # 羊皮纸主题 · dsh-parchment-theme
 
-给 DeepSeek Harness Web GUI 换一套旧纸与墨褐的配色：浅色是**羊皮纸**，深色是**墨夜**，跟随系统的明暗自动切换；正文用**京華老宋体**（汉字），标点与拉丁回落到思源宋体，整页带一层纸纹。
+给 DeepSeek Harness Web GUI 换一套旧纸与墨褐的配色：浅色是**羊皮纸**，深色是**墨夜**，跟随系统的明暗自动切换；正文用**寒蝉活宋体_復**，整页带一层纸纹。
 
 只叠 token + 一张插件自有样式表，不改 DSH 源码，也不替换任何界面结构。停用插件即复原。
 
@@ -64,12 +64,13 @@
 ## 字体
 
 ```css
---dsw-font-family: var(--dsh-font-family-text, "Parchment Song"), "Parchment Song", "思源宋体 CN", …, serif
-@font-face{font-family:"Parchment Song";src:local("京華老宋体"),local("KingHwa_OldSong");unicode-range:U+3400-4DBF,U+4E00-9FFF,…}
+--dsw-font-family: var(--dsh-font-family-text, "寒蝉活宋体_復"), "寒蝉活宋体_復", "思源宋体 CN", …, serif
 ```
 
-- 京華老宋体把全角标点（`「」（）`）画成大约四分之一个字身——木刻本的旧习惯，16px 下细到像缺字。`@font-face` + `unicode-range` 把这套字限定在汉字，标点、数字、拉丁落到思源宋体 CN。
-- 栈里**不能**再出现裸的 `"京華老宋体"`：它排在 `Parchment Song` 后面，标点会顺着列表又找回去。
+- 正文用**寒蝉活宋体_復**。最初用的是京華老宋体（更"旧刻"），但它是刻本字，横画是发丝级，16px 下笔画太细、看着发浅，朋友的直观评价就是"字不是小，是太浅"。寒蝉同属旧宋，笔画更实，小字号下不虚。
+- 京華的替代方案也试过：`@font-face` + `unicode-range` 把京華限定在汉字、标点交给思源（它把全角标点画得极细，远看像缺字）。换字体后这层补丁不再需要，已删除。
+- `--dsh-font-family-text` 是设置里「文本字体」写进去的值，presenter 先写它、后写令牌，所以设置里选了别的字体仍然优先。
+- 寒蝉是字体家族名（繁体「復」），和 Windows 注册名一致；没装时整条栈落到思源宋体，不会变无衬线。
 - `--dsh-font-family-text` 是设置里「文本字体」写进去的值，presenter 先写它、后写令牌，所以设置里选了别的字体仍然优先。
 
 ## 装与停
