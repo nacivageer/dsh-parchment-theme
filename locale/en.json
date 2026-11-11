@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Parchment theme",
+    "description": "Turns the interface into aged paper and ink-brown type: a parchment light palette plus an ink-dark night palette, with old-style Song text by default (a font chosen in Settings still wins). Token overrides only; disable it to restore the shipped look."
+  }
+}

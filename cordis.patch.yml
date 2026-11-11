@@ -1,0 +1,6 @@
+# dsh-parchment-theme: one Client half that stacks a token layer over the active
+# theme. The Host half is an empty apply(); the row exists so the Client module
+# is served at all.
+- insert:
+    - id: dsh-parchment-theme
+      name: dsh-parchment-theme
