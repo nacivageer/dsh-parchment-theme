@@ -307,6 +307,11 @@ assert.match(
   /body:not\(\[data-ds-dark-theme\]\)\{--dsw-alias-file-diff-added-marker:#2f6b3a\}/,
   'the light diff marker green is deepened',
 );
+assert.equal(
+  layer.tokens['--dsw-alias-file-diff-added-bg'].light,
+  '#c2c6b1',
+  'the light diff fill is lighter than the ink',
+);
 assert.match(
   css,
   /body:not\(\[data-ds-dark-theme\]\) \[class\*="0cITKW_text"\]\{color:#17110b\}/,
