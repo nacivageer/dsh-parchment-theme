@@ -314,7 +314,7 @@ window.__ModuleLoader__.load({
       '--dsh-code-font-size': '13px',
       '--dsh-terminal-font-size': '15px',
       '--dsw-font-family':
-        'var(--dsh-font-family-text, "寒蝉活宋体_復"), "寒蝉活宋体_復", "思源宋体 CN", "Source Han Serif CN", "Noto Serif SC", "Songti SC", "SimSun", serif',
+        'var(--dsh-font-family-text, "思源宋体 CN"), "思源宋体 CN", "Source Han Serif CN", "Noto Serif SC", "Songti SC", "SimSun", serif',
     };
 
     /**
@@ -366,7 +366,7 @@ body[data-ds-dark-theme] [class*="GAkraW_sectionHeader"]{background:#192124;colo
 [class*="p2k40q_hero"]{color:#a7987f}
 body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
 [class*="an3WzG_crumb"]{max-width:420px}
-[class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:600;font-family:"思源宋体 CN SemiBold","寒蝉活宋体_復",serif}
+[class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:600;font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復",serif}
 [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
 [class*="m2hUqa_seat"]{font-size:15px}
 [class*="m2hUqa_seatLabel"]{font-size:15px}
