@@ -362,7 +362,7 @@ body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_projectRow"]:hover{background:#c7bca1}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
 body[data-ds-dark-theme] [class*="_projectRow"]:hover{background:#322b23}
-[class*="GAkraW_sectionHeader"]{background:#9ba8ac;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
+[class*="GAkraW_sectionHeader"]{background:#a6b1b5;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
 body[data-ds-dark-theme] [class*="GAkraW_sectionHeader"]{background:#192124;color:#a9bcc2;--dsw-alias-label-secondary:#a9bcc2;--dsw-alias-label-tertiary:#8ca0a7}
 [class*="p2k40q_hero"]{color:#b0a086}
 body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
