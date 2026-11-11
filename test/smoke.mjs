@@ -8,6 +8,16 @@ import assert from 'node:assert/strict';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const source = readFileSync(path.join(here, '..', 'client.js'), 'utf8');
 
+// dsh reads a bundle's package.json with JSON.parse, which rejects a leading
+// UTF-8 BOM. v0.1.10 shipped one, so the whole bundle was skipped at profile
+// load and the app silently fell back to the stock look.
+const manifestBytes = readFileSync(path.join(here, '..', 'package.json'));
+assert.ok(
+  !(manifestBytes[0] === 0xef && manifestBytes[1] === 0xbb && manifestBytes[2] === 0xbf),
+  'package.json must not start with a UTF-8 BOM',
+);
+assert.doesNotThrow(() => JSON.parse(manifestBytes.toString('utf8')), 'package.json must be plain JSON');
+
 let definition;
 globalThis.window = { __ModuleLoader__: { load: (value) => { definition = value; } } };
 

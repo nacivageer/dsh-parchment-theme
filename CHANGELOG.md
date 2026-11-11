@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.11 — 2026-11-12
+
+修复 v0.1.10 无法装载的发布事故，外观与 v0.1.10 相同。
+
+- **根因**：v0.1.10 的 `package.json` 带 UTF-8 BOM。dsh 用 `JSON.parse` 读 bundle manifest，首字节 `EF BB BF` 直接抛 `Unexpected token '﻿'`，整个 bundle 在 profile 装载时被静默跳过（`skippedBundles`），界面退回复出厂外观——插件看似开着，实际没加载。
+- **修复**：`package.json` 去掉 BOM（内容不变），版本 0.1.11。
+- **防回归**：`test/smoke.mjs` 新增两条断言——manifest 首字节不能是 BOM、必须能 `JSON.parse`。
+- v0.1.10 的 tag / Release 保留（回滚锚点不挪），但不要安装：它装上去不会生效。
+
 ## v0.1.10 — 2026-11-12
 
 悬浮卡与菜单配色修正，新会话 / 加载更早的图标与字号收尾。
