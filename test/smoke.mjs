@@ -53,8 +53,9 @@ assert.ok(!/zoom\s*:/.test(css), 'no zoom rules: they misplace viewport-flipped 
 
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
-assert.match(family.light, /寒蝉活宋体_復/, 'body text uses the sturdier Song face');
+assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');
 assert.match(family.light, /^var\(--dsh-font-family-text/, 'a font chosen in Settings still wins');
+assert.match(css, /寒蝉活宋体_復 Bold/, 'the session title uses the real Bold family, not synthesis');
 
 const seam = plugin.__parchment;
 assert.ok(seam && seam.LIGHT && seam.DARK && seam.TOKENS);
