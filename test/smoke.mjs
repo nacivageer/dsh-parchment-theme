@@ -81,6 +81,24 @@ assert.match(
   /\[class~="Wsg8iW_card"\]\[class~="Wsg8iW_cardActive"\]\{background:var\(--dsw-specific-bubble\)/,
   'the selected agent preset card uses the bubble fill',
 );
+// The active preset card is the lightest surface in the grid (#72664f), where the
+// shipped secondary / tertiary ink falls to 2.7:1 and 1.8:1; that card lifts its
+// own ranks, the others keep the shipped ink.
+assert.match(
+  css,
+  /\[data-ds-dark-theme\][^{]*Wsg8iW_cardActive[^{]*Wsg8iW_cardName[^{]*\{color:#f8f4ea\}/,
+  'the active preset card lifts its title ink',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\][^{]*Wsg8iW_cardActive[^{]*Wsg8iW_cardDesc[^{]*\{color:#f4efe4\}/,
+  'the active preset card lifts its description ink',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\][^{]*Wsg8iW_cardActive[^{]*Wsg8iW_helpButton[^{]*\{color:#eee6d7\}/,
+  'the active preset card lifts its footer actions',
+);
 assert.match(css, /\[class~="Wsg8iW_creatorButton"\]/, 'the custom preset button uses the raised surface');
 assert.match(
   css,

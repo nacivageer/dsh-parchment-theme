@@ -496,6 +496,15 @@ body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{backg
 body [class*="AnXs9G_panel"] [class~="Wsg8iW_card"]:not([class~="Wsg8iW_cardActive"]):not([class~="Wsg8iW_cardBroken"]):not(:hover){background:var(--dsw-specific-input-major);border-color:transparent}
 body [class*="AnXs9G_panel"] [class~="Wsg8iW_card"]:not([class~="Wsg8iW_cardActive"]):not([class~="Wsg8iW_cardBroken"]){box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2)}
 body [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border);box-shadow:none}
+/* The active preset card is the lightest surface in the grid (#72664f), where the
+   shipped ink ranks fall to 2.7:1 (description) and 1.8:1 (id / footer). Lift the
+   card's own ranks one step so they clear 4.5:1 on that fill; the other cards
+   keep their shipped ink, which sits fine on #2a231c. */
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"] [class~="Wsg8iW_cardName"]{color:#f8f4ea}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"] [class~="Wsg8iW_cardDesc"]{color:#f4efe4}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"] [class~="Wsg8iW_cardId"]{color:#ded4c1}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"] [class~="Wsg8iW_helpButton"],
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"] [class~="Wsg8iW_iconButton"]{color:#eee6d7}
 body [class*="AnXs9G_panel"] [class~="Wsg8iW_creatorButton"]:not(:disabled){box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2);border:.5px solid transparent;border-radius:var(--dsw-radius-xl)}
 body [class*="AnXs9G_panel"] [class~="Wsg8iW_creatorButton"]:not(:disabled):not(:hover){background:var(--dsw-specific-input-major)}
 /* Menus opened from Settings are portaled to body, so the panel zoom never

@@ -47,7 +47,7 @@
 - **深色设置控件**：深色面板下这些未激活的下拉 / outline / stepper / 外观卡片 / 预设卡片改用 `#554c44` 面 + `#6a5f54` 边、去阴影；选中的外观卡片与预设卡片用 `#72664f` + `#8a7a5a`，贴近用户给的图 3。浅色仍走 input-major。
 - **自定义控件**：字号大小的 stepper 及其 `_control` 外层（连同 px 单位与展开箭头）与不带 primitives outline/haspopup 类的 action 按钮（`button[class*="_button"]`，如「编辑快捷键」）也补齐同一套填充与阴影；primary / ghost / toolbar / icon / nav / close 排除在外。
 - **外观已选**：选中的主题卡片用 `--dsw-specific-bubble` 填充 + `--dsw-alias-button-ghost-active-border` 暖边，不再用浅色的 module 面——否则看起来像「不可用」而不是「已激活」。
-- **Agent 预设卡片**：`Wsg8iW_card` 与「让 Agent 帮我创建预设模式」的 `Wsg8iW_creatorButton` 套用外观三张卡片的同一套表面；选中的预设卡片用 bubble 填充 + 暖边。
+- **Agent 预设卡片**：`Wsg8iW_card` 与「让 Agent 帮我创建预设模式」的 `Wsg8iW_creatorButton` 套用外观三张卡片的同一套表面；选中的预设卡片用 bubble 填充 + 暖边。深色下选中卡片是全网格最亮的面（`#72664f`），出厂的 secondary / tertiary 墨色在上面只剩 2.7:1 与 1.8:1，所以卡片内的标题、说明、id、底部动作各自提亮一档（`#f8f4ea` / `#f4efe4` / `#ded4c1` / `#eee6d7`），未选中的卡片保持原墨色。
 - **内置插件卡片**：`qgYWUG_card` 的未停用卡片衬底改成按钮同色（浅 `--dsw-specific-input-major`）；深色下再压暗到输入框的 `#302a23`（不是控件面 `#554c44`）。「已停用」卡片浅色保持原样，深色下改用搜索框的 `--dsw-alias-bg-layer-1`，比已启用卡片更暗。
 - **账号名渐变**：侧栏账号标签与设置页账号名用 `寒蝉活宋体_復 Bold` + **斜体** + **横向线性**渐变；浅色 `#7e6447 0% → #5f4223 50% → #413432 100%`，深色 `#b78472 0% → #af804a 50% → #bb956c 90–100%`。只做渐变填充，不叠描边/暗影（Photoshop 图层只开了「渐变叠加」）。侧栏 24px、设置页 22px。
 - **账号头像**：账号页与侧栏的 user 图标改用用户提供的 `assets/wax-seal.png`（45×45，内嵌 PNG data URI）；侧栏 32px、设置页 40px。DSH 原来的 user glyph 隐藏，图标的米色人形由 PNG 自带。外面再加 `filter: drop-shadow` 的柔和外扩阴影（跟随 PNG 的波浪 alpha，不是方形 box-shadow）；侧栏 trigger 的 `overflow` 放开，让阴影透出。
