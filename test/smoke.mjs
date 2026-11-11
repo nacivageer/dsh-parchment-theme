@@ -213,6 +213,34 @@ assert.match(
   'the account menu is sized only while its trigger is open',
 );
 
+// The workspace / session row ⋯ menus are the same 13px primitives list. Gate on
+// the row's own open trigger, addressed by the business attribute data-row-key,
+// so menus elsewhere in the app keep the shipped scale.
+assert.match(
+  css,
+  /body:has\(\[data-row-key\] button\[aria-haspopup="menu"\]\[aria-expanded="true"\]\) \[role="menuitem"\]\{font-size:16px/,
+  'sidebar row menus grow only while their own trigger is open',
+);
+
+// The path/creation hover card hardcodes a neutral dark surface (#2C2C2E) and
+// white ink in both modes; paper gives it coffee by day and inverted coffee at
+// night, without touching the diff preview card that shares the same class.
+assert.match(
+  css,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#cdbfa6/,
+  'the hover card uses light coffee by day',
+);
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\] \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#3a322a/,
+  'the hover card uses dark coffee at night',
+);
+assert.match(
+  css,
+  /\[class\*="hoverContent"\] \[class\*="hoverTitle"\]\{color:#33281c\}/,
+  'the hover card title uses dark coffee ink in light mode',
+);
+
 // The settings panel zoom cannot grow components that pin px sizes, so form
 // controls inside the panel need their own rule.
 assert.match(css, /body \[class\*="AnXs9G_panel"\] button,/, 'settings form controls get their own size');

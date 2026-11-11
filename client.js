@@ -513,6 +513,27 @@ body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>spa
 /* Dark tooltips float over brown panels; a hairline edge and a deeper shadow
    keep the bubble from melting into the card behind it. */
 body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:0 8px 24px #00000066}
+/* Sidebar row menus (workspace ⋯, session ⋯) are the shared primitives list the
+   account popup uses, but ship at 13px — fine print on a 17px sidebar. Size
+   them only while the row's own trigger is open, so menus elsewhere keep the
+   shipped scale; data-row-key is a business attribute, not a build hash. */
+body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"]{font-size:16px;line-height:24px;min-height:40px}
+body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"]{width:16px;height:16px}
+body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"] svg{width:16px;height:16px}
+/* The sidebar path/creation hover card is a HoverCard whose surface and ink are
+   hardcoded neutral dark (#2C2C2E on #fff), so light mode showed the same dark
+   bubble as dark mode. Paper wants light coffee with dark coffee ink by day,
+   and dark coffee with pale coffee ink at night. */
+body:not([data-ds-dark-theme]) [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#cdbfa6;border:1px solid #a8916d}
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTitle"]{color:#33281c}
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverPath"],
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTime"],
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverStatus"]{color:#5c4a34}
+body[data-ds-dark-theme] [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#3a322a;border:1px solid #5f5142}
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTitle"]{color:#f1ebdf}
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverPath"],
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTime"],
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverStatus"]{color:#cfc3ae}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
