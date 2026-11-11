@@ -110,7 +110,10 @@ window.__ModuleLoader__.load({
       '--dsw-alias-markdown-code-segment-selected': '#c7c1b2',
       '--dsw-alias-markdown-code-segment-unselected': '#c0b8a9',
       '--dsw-alias-link': '#4a6172',
-      '--dsw-alias-turn-trigger-bg': '#c3bbaa',
+      /* The chat turn-trigger banner (自动化任务 / 收到执行请求) borrows the changed-
+         files card's sheet rather than a beige that sat within three levels of
+         the paper, so a scheduled turn reads as the same raised card. */
+      '--dsw-alias-turn-trigger-bg': '#d2ccc2',
       '--dsw-alias-turn-trigger-bg-hover': '#4a3b2a0f',
       '--dsw-alias-code-diff-added': '#4c7a5a14',
       '--dsw-alias-code-diff-deleted': '#a33c3114',
@@ -250,7 +253,7 @@ window.__ModuleLoader__.load({
       '--dsw-alias-markdown-code-segment-selected': '#332d26',
       '--dsw-alias-markdown-code-segment-unselected': '#28231d',
       '--dsw-alias-link': '#a3b4bf',
-      '--dsw-alias-turn-trigger-bg': '#302a23',
+      '--dsw-alias-turn-trigger-bg': '#332c24',
       '--dsw-alias-turn-trigger-bg-hover': '#e2dacc2e',
       '--dsw-alias-code-diff-added': '#8ab9971f',
       '--dsw-alias-code-diff-deleted': '#d07d6b1f',
@@ -555,6 +558,22 @@ body[data-ds-dark-theme] [class*="_5Qcc8a_trigger"][data-signed-out="false"] [cl
 body[data-ds-dark-theme] [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{background-image:linear-gradient(90deg,#b78472 0%,#af804a 50%,#bb956c 90%,#bb956c 100%)}
 body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"]{font-size:24px;line-height:32px}
 body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-size:22px;line-height:28px}
+/* Settings → 账号与余额: the masked phone, 更多账号信息, the balance row label and
+   更多 all inherit the section's 13px, which the panel's 1.15 zoom only brings to
+   ~15px — fine print beside the 22px account name and the 18px amount. Two steps
+   up (+4px) puts them on the panel's 17px body rank. */
+body [class*="_6qcDqa_status"],
+body [class*="_6qcDqa_accountInfo"],
+body [class*="_6qcDqa_balanceCard"] [class*="_6qcDqa_row"]>span:first-child,
+body [class*="_6qcDqa_secondary"]{font-size:17px;line-height:26px}
+body [class*="_6qcDqa_accountInfo"] svg{width:14px;height:14px}
+/* 查询用量 borrows the selected Appearance cube's surface — warm bubble fill, a
+   warm ink hairline and the card's ink — so the secondary action reads as a
+   chosen sheet instead of another outline chip. 充值 keeps the ink primary. */
+body [class*="_6qcDqa_balanceCard"] a[class*="_6qcDqa_linkButton"]:not([class*="_6qcDqa_primary"]){background:var(--dsw-specific-bubble);border:1px solid var(--dsw-alias-button-ghost-active-border);color:var(--dsw-alias-label-primary)}
+@media (hover:hover){body [class*="_6qcDqa_balanceCard"] a[class*="_6qcDqa_linkButton"]:not([class*="_6qcDqa_primary"]):hover{background:var(--dsw-specific-bubble-highlight)}}
+body[data-ds-dark-theme] [class*="_6qcDqa_balanceCard"] a[class*="_6qcDqa_linkButton"]:not([class*="_6qcDqa_primary"]){background:#72664f;border-color:#8a7a5a}
+@media (hover:hover){body[data-ds-dark-theme] [class*="_6qcDqa_balanceCard"] a[class*="_6qcDqa_linkButton"]:not([class*="_6qcDqa_primary"]):hover{background:#7b6f57}}
 /* The active appearance cube needs to read as chosen, not disabled: use the
    user-bubble fill and a warm ink edge instead of the pale module surface. */
 body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border)}

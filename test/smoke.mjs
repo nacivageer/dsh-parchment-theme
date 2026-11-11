@@ -157,6 +157,24 @@ assert.match(
   /\[class\*="_6qcDqa_name"\][^{]*\{[^}]*font-family:"寒蝉活宋体_復/,
   'the settings account name uses 寒蝉活宋体_復',
 );
+// The account section's fine print (masked phone, 更多账号信息, the balance row
+// label, 更多) inherits 13px; the panel zoom only lifts it to ~15px.
+assert.match(
+  css,
+  /body \[class\*="_6qcDqa_status"\],\s*body \[class\*="_6qcDqa_accountInfo"\],\s*body \[class\*="_6qcDqa_balanceCard"\] \[class\*="_6qcDqa_row"\]>span:first-child,\s*body \[class\*="_6qcDqa_secondary"\]\{font-size:17px;line-height:26px\}/,
+  'the account section fine print sits on the panel body rank',
+);
+// 查询用量 takes the selected appearance cube's surface; 充值 keeps the ink primary.
+assert.match(
+  css,
+  /\[class\*="_6qcDqa_balanceCard"\] a\[class\*="_6qcDqa_linkButton"\]:not\(\[class\*="_6qcDqa_primary"\]\)\{background:var\(--dsw-specific-bubble\);border:1px solid var\(--dsw-alias-button-ghost-active-border\)/,
+  'the usage action uses the selected appearance cube surface',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\][^{]*_6qcDqa_balanceCard[^{]*_6qcDqa_linkButton[^{]*\{background:#72664f/,
+  'the dark usage action uses the dark selected cube surface',
+);
 assert.match(
   css,
   /linear-gradient\(90deg,#b78472 0%,#af804a 50%,#bb956c 90%,#bb956c 100%\)/,
@@ -342,6 +360,18 @@ assert.equal(
   layer.tokens['--dsw-alias-file-diff-deleted-bg'].light,
   '#d9b9af',
   'the light deleted fill is lighter than the ink',
+);
+// The chat turn-trigger banner (自动化任务 …) sits on the changed-files card's
+// sheet instead of a beige that barely separated from the paper.
+assert.equal(
+  layer.tokens['--dsw-alias-turn-trigger-bg'].light,
+  layer.tokens['--dsw-alias-markdown-code-block'].light,
+  'the turn-trigger banner shares the changed-files card surface',
+);
+assert.equal(
+  layer.tokens['--dsw-alias-turn-trigger-bg'].dark,
+  layer.tokens['--dsw-alias-markdown-code-block'].dark,
+  'the dark turn-trigger banner shares the changed-files card surface',
 );
 assert.match(
   css,
