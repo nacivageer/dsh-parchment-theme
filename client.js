@@ -358,8 +358,8 @@ window.__ModuleLoader__.load({
 @font-face{font-family:"Parchment Song";src:local("京華老宋体"),local("KingHwa_OldSong"),local("KingHwa_OldSong Regular");unicode-range:U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.55}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
-[class*="_projectRow"]{font-size:16px;background:#d6cec0;border-radius:8px}
-[class*="_projectRow"]:hover{background:#cdc5b5}
+[class*="_projectRow"]{font-size:16px;background:#c2b7a5;border-radius:8px}
+[class*="_projectRow"]:hover{background:#b8ac99}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
 body[data-ds-dark-theme] [class*="_projectRow"]:hover{background:#322b23}
 [class*="GAkraW_sectionHeader"]{background:#9ba8ac;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
