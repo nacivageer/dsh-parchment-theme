@@ -304,10 +304,10 @@ window.__ModuleLoader__.load({
      * one view. Chrome is therefore sized component by component, with the sidebar
  * root's literal `font-size` as the lever every label inside it inherits.
      *
-     * The font stack is `var(--dsh-font-family-text, "Parchment Song"), …` so a
-     * list chosen in Settings → General still wins; otherwise the theme supplies
-     * 京華老宋体 through the `Parchment Song` @font-face, which is restricted to
-     * CJK ideographs (see STYLE_CSS).
+     * The font stack is `var(--dsh-font-family-text, "思源宋体 CN Medium"), …` so a
+     * list chosen in Settings → General still wins. The theme's body face is
+     * 思源宋体 CN Medium (a real medium weight); the session title uses the
+     * 寒蝉活宋体_復 Bold family in STYLE_CSS, so no synthetic bold is involved.
      */
     const TYPE = {
       '--dsh-content-font-size': '18px',
@@ -318,16 +318,9 @@ window.__ModuleLoader__.load({
     };
 
     /**
-     * The stylesheet carries what a token layer cannot express.
-     *
-     * The @font-face keeps 京華老宋体 to CJK ideographs only. The face draws its
-     * full-width punctuation (「」（）) at roughly a quarter of the em box — an old
-     * woodblock habit that reads as a missing glyph at UI sizes — so punctuation,
-     * Latin and digits fall through to 思源宋体 CN, which draws them at normal size.
-     *
-     * The workspace row is the one place where the shipped hierarchy puts a group
-     * label and the sessions inside it at the same 14px; one step up marks the
-     * group without touching the rows underneath.
+     * The stylesheet carries what a token layer cannot express: chrome sized by
+     * component (sidebar, workspace rows, settings panel, account popup), the
+     * grain overlay, and the few private fills that do not read alias tokens.
      */
     /**
      * Global scaling was tried twice and dropped. `zoom` on `html` leaves
@@ -393,6 +386,27 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 body [class*="AnXs9G_panel"]{zoom:1.15}
 body [class*="AnXs9G_triggerRow"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
+/* The panel zoom scales layout, but components that pin their own px font do
+   not grow with it. Form controls and their labels go one step up so they read
+   at the sidebar's 17px instead of the shipped 13–14px chrome. */
+body [class*="AnXs9G_panel"] button,
+body [class*="AnXs9G_panel"] input,
+body [class*="AnXs9G_panel"] select,
+body [class*="AnXs9G_panel"] textarea{font-size:15px}
+body [class*="AnXs9G_panel"] [class*="_field_"] [class*="_label_"]{font-size:15px}
+body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:15px}
+/* Menus opened from Settings are portaled to body, so the panel zoom never
+   reaches them. Match the panel's effective 17px instead of the shipped 13px. */
+body:has([class*="AnXs9G_panel"]) [role="menuitem"]{font-size:17px;line-height:25px;min-height:40px}
+body:has([class*="AnXs9G_panel"]) [role="menuitem"] svg{width:16px;height:16px}
+
+/* Account popup. Its list is the shared primitives Menu (13px) and carries no
+   account-specific class, so key it off the trigger's expanded state: only the
+   open account menu grows, not every menu in the app. */
+body [class*="_5Qcc8a_trigger"]{font-size:18px}
+body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]{font-size:16px;line-height:24px;min-height:40px}
+body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>span[aria-hidden="true"]:first-child{width:16px;height:16px}
+body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>span[aria-hidden="true"]:first-child svg{width:16px;height:16px}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}

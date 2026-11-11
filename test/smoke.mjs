@@ -60,6 +60,24 @@ assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');
 assert.match(family.light, /^var\(--dsh-font-family-text/, 'a font chosen in Settings still wins');
 assert.match(css, /寒蝉活宋体_復 Bold/, 'the session title uses the real Bold family, not synthesis');
 
+// The account popup is the shared primitives menu, which has no account class of
+// its own; sizing it must therefore be gated on the trigger's open state so the
+// rest of the app's menus keep their shipped size.
+assert.match(
+  css,
+  /body:has\(\[class\*="_5Qcc8a_trigger"\]\[aria-expanded="true"\]\) \[role="menuitem"\]/,
+  'the account menu is sized only while its trigger is open',
+);
+
+// The settings panel zoom cannot grow components that pin px sizes, so form
+// controls inside the panel need their own rule.
+assert.match(css, /body \[class\*="AnXs9G_panel"\] button,/, 'settings form controls get their own size');
+assert.match(
+  css,
+  /body:has\(\[class\*="AnXs9G_panel"\]\) \[role="menuitem"\]/,
+  'menus opened from Settings match the panel scale',
+);
+
 const seam = plugin.__parchment;
 assert.ok(seam && seam.LIGHT && seam.DARK && seam.TOKENS);
 assert.equal(Object.keys(seam.TYPE).length, 4);
