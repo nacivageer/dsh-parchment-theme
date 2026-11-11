@@ -377,8 +377,8 @@ body [class*="wtg9ga_newSessionContent"]{align-items:center;height:auto}
 body{--dsh-quill-mask:${QUILL}}
 body [class*="wtg9ga_newSessionContent"]>svg{display:none}
 body [class*="wtg9ga_newSessionContent"]::before{content:"";display:block;flex:none;width:15px;height:22px;background-color:currentColor;-webkit-mask:var(--dsh-quill-mask) center/contain no-repeat;mask:var(--dsh-quill-mask) center/contain no-repeat}
-body [class*="_rowActions"] button:not([data-context-menu-trigger]) svg{display:none}
-body [class*="_rowActions"] button:not([data-context-menu-trigger])::before{content:"";display:inline-block;vertical-align:middle;width:13px;height:19px;background-color:currentColor;-webkit-mask:var(--dsh-quill-mask) center/contain no-repeat;mask:var(--dsh-quill-mask) center/contain no-repeat}
+body [class*="_projectRow"] [class*="_rowActions"] button:not([data-context-menu-trigger]) svg{display:none}
+body [class*="_projectRow"] [class*="_rowActions"] button:not([data-context-menu-trigger])::before{content:"";display:inline-block;vertical-align:middle;width:13px;height:19px;background-color:currentColor;-webkit-mask:var(--dsh-quill-mask) center/contain no-repeat;mask:var(--dsh-quill-mask) center/contain no-repeat}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 /* Code fences: the shipped fill sat almost on the paper; use the raised card
@@ -560,9 +560,30 @@ body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTitle"]{color:#e7
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverPath"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTime"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverStatus"]{color:#d3ad6b}
+/* Composer chrome ships at 12-13px beside 18px content; lift the tool row, the
+   hero chips and the + command palette one step so they read with the input. */
+body [class*="GRgSLq_add"]{width:32px;height:32px}
+body [class*="GRgSLq_add"] svg{width:18px;height:18px}
+body [class*="GRgSLq_select"]{font-size:15px;line-height:22px;height:32px;padding-right:24px;background-size:14px 14px;background-position:right 6px center}
+body [class*="GRgSLq_primary"]{width:38px;height:38px}
+body [class*="GRgSLq_primary"] svg{width:20px;height:20px}
+body [class*="GRgSLq_accessory"] button{font-size:16px;min-height:32px}
+body [class*="GRgSLq_accessory"] button svg{width:18px;height:18px}
+body [class*="j99sVW_row"]{font-size:15px;gap:8px;padding:7px 9px}
+body [class*="j99sVW_badge"]{font-size:10px;line-height:12px}
+body [class*="j99sVW_detail"]{font-size:13px}
+body [class*="j99sVW_status"],body [class*="j99sVW_search"]{font-size:14px}
+body:has([class*="GRgSLq_add"][aria-expanded="true"]) [role="menuitem"]{font-size:15px;line-height:22px;min-height:36px}
+body:has([class*="GRgSLq_add"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"]{width:18px;height:18px}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
+/* 加载更早 ships as a bare <button> with no class of its own, so it renders as a
+   UA control (13px, browser button face). Give it the sidebar 新会话 button's
+   shape and type scale: 46px tall, 20px 京華老宋体 on the raised button fill. */
+body [class*="V4vHZW_older"] button{height:46px;min-height:46px;padding:0 26px;font-size:20px;line-height:26px;font-family:"京華老宋体",serif;font-weight:500;color:var(--dsw-alias-label-primary);background:var(--dsw-alias-button-elevated-fill);border:.5px solid var(--dsw-alias-border-l3);border-radius:var(--dsw-radius-md);cursor:pointer}
+body [class*="V4vHZW_older"] button:hover{background:var(--dsw-alias-button-floating-hover)}
+body [class*="V4vHZW_older"] button:disabled{opacity:.6;cursor:default}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
 body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}

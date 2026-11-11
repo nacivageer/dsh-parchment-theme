@@ -227,9 +227,14 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="_rowActions"\] button:not\(\[data-context-menu-trigger\]\)::before/,
-  'the workspace row new-session button paints the quill',
+  /\[class\*="_projectRow"\] \[class\*="_rowActions"\] button:not\(\[data-context-menu-trigger\]\)::before/,
+  'the quill replaces only the workspace row new-session button',
 );
+// Composer chrome (tool row, hero chips, + palette) goes one step up with the
+// 18px content.
+assert.match(css, /\[class\*="GRgSLq_add"\]\{width:32px;height:32px\}/, 'the composer + button grows');
+assert.match(css, /\[class\*="GRgSLq_select"\]\{font-size:15px/, 'the composer selects grow');
+assert.match(css, /\[class\*="GRgSLq_accessory"\] button\{font-size:16px/, 'the hero chips grow');
 
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
