@@ -386,6 +386,9 @@ body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
 [class*="Ag-ohG_label"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_count"]{font-size:14px;line-height:21px}
 body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
+[role="dialog"] [class*="_navTitle"],[aria-modal="true"] [class*="_navTitle"]{font-size:18px;line-height:26px}
+[role="dialog"] [class*="_title"],[aria-modal="true"] [class*="_title"]{font-size:16px;line-height:22px}
+[role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
