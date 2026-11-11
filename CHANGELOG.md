@@ -3,7 +3,7 @@
 ## Unreleased
 
 - 修正浅色「已编辑 N 个文件」卡片：表面改为显式 `#d2ccc2`，并把 `HOHHba_preview` 与 `_0cITKW_root` 也显式写同色。之前只改卡片、预览层自己带灰底，所以只有浅色没做出例图效果。
-- 内置插件页：未停用插件的 `qgYWUG_card` 衬底改成按钮同色（浅 `--dsw-specific-input-major` / 深 `#554c44`）；「已停用」卡片用 `:has([data-tone="neutral"])` 排除，保持原 disabled 面。
+- 内置插件页：未停用插件的 `qgYWUG_card` 衬底改成按钮同色（浅 `--dsw-specific-input-major`）；深色下压暗到输入框的 `#302a23`。 「已停用」卡片用 `:has([data-tone="neutral"])` 排除，保持原 disabled 面。
 - 深色设置面板按用户图 3 调整：未激活的下拉 / outline / stepper / 外观卡片 / Agent 预设卡片用 `#554c44` 面 + `#6a5f54` 边、去阴影；选中的外观卡片与预设卡片用 `#72664f` + `#8a7a5a`。
 
 ## v0.1.8 — 2026-11-12

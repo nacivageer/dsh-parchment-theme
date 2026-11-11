@@ -176,6 +176,11 @@ assert.match(
 );
 assert.match(
   css,
+  /body\[data-ds-dark-theme\] \[class\*="AnXs9G_panel"\] \[class~="qgYWUG_card"\]:not\(:has\(\[data-tone="neutral"\]\)\)\{background:#302a23\}/,
+  'dark plugin inventory cards match the composer input surface',
+);
+assert.match(
+  css,
   /\[class\*="_block_7gxqk_4"\] :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
   'the code block body uses 寒蝉活宋体_復 italic',
 );

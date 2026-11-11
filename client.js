@@ -457,6 +457,7 @@ body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="
 /* Plugin inventory cards use the same control surface as the buttons, except
    the disabled card (its state tag is the only tone=neutral tag in the grid). */
 body [class*="AnXs9G_panel"] [class~="qgYWUG_card"]:not(:has([data-tone="neutral"])){background:var(--dsw-specific-input-major)}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="qgYWUG_card"]:not(:has([data-tone="neutral"])){background:#302a23}
 /* Account avatar: the user's wax-seal artwork is the whole icon; the DSH glyph
    underneath is hidden so the PNG's own cream user mark is the only mark. */
 body [class*="_5Qcc8a_avatar"],
