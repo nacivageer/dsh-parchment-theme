@@ -698,8 +698,20 @@ body [class*="HOHHba_card"] [class*="HOHHba_toggle"]{font-size:13px;line-height:
 body [class*="HOHHba_card"] [class*="HOHHba_previewPath"]{font-size:14px;line-height:20px}
 body [class*="lLdGaq_card"]{--plan-card-fill:#c8c1b4;--plan-card-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="lLdGaq_card"]{--plan-card-fill:#2c241b;--plan-card-hover:#332a1f}
-body [class*="oT5lKa_card"]{--card-fill:#c8c1b4;--card-hover:#bbb3a1}
+/* The schedule_create transcript card (检查 CI 运行结果 / 仅一次 / 打开) shipped on
+   the stock near-white neutral-50 sheet; layer-1 was still only three levels off
+   the paper, so the card read as a pale patch instead of a sheet. Drop it to the
+   well tone so it separates, and lift its 13/10/12px ranks one step. */
+body [class*="oT5lKa_card"]{--card-fill:var(--dsw-alias-bg-layer-3);--card-hover:var(--dsw-alias-bg-layer-2)}
 body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover:#332a1f}
+body [class*="oT5lKa_title"]{font-size:15px;line-height:22px}
+/* 仅一次 sits at tertiary ink, which disappears on the darker card; one rank up. */
+body [class*="oT5lKa_frequency"]{font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary)}
+/* 打开 is the card's only affordance: a cream chip with ink type, so it reads as a
+   button on the taupe sheet instead of an outline hairline. */
+body [class*="oT5lKa_openButton"],
+body [class*="oT5lKa_openButton"] button{font-size:14px;line-height:20px;height:32px;padding:0 12px;background:#f4edde;border-color:#cdbfa2;color:#2a2219}
+@media (hover:hover){body [class*="oT5lKa_openButton"]:hover,body [class*="oT5lKa_openButton"] button:hover{background:#e9dfcb}}
 `;
 
     /**

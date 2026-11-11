@@ -383,6 +383,24 @@ assert.match(css, /\[class~="K5rwea_fileName"\]\{font-size:17px;line-height:24px
 assert.match(css, /\[class~="K5rwea_description"\]\{font-size:14px;line-height:20px\}/, 'the file card summary grows');
 assert.equal(typeof plugin.__parchment.paintAccents, 'function', 'the accent painter is exposed for tests');
 
+// The schedule_create transcript card shipped on the stock near-white sheet; it
+// takes the well tone, a stronger second line and a cream 打开 chip.
+assert.match(
+  css,
+  /\[class\*="oT5lKa_card"\]\{--card-fill:var\(--dsw-alias-bg-layer-3\)/,
+  'the scheduled-task card uses the well tone',
+);
+assert.match(
+  css,
+  /\[class\*="oT5lKa_frequency"\]\{font-size:12px;line-height:18px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'the scheduled-task frequency line uses the secondary ink',
+);
+assert.match(
+  css,
+  /\[class\*="oT5lKa_openButton"\][^{]*\{[^}]*background:#f4edde/,
+  'the scheduled-task open action sits on a cream chip',
+);
+
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
 assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');
