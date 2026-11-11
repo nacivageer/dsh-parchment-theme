@@ -49,7 +49,10 @@ assert.equal(appended.length, 1, 'exactly one stylesheet should be injected');
 const css = appended[0].textContent;
 
 // The two regressions this theme already paid for.
-assert.ok(!/zoom\s*:/.test(css), 'no zoom rules: they misplace viewport-flipped popovers');
+// Page-level zoom misplaced viewport-flipped popovers; one scoped zoom on the
+// settings modal is allowed, and must stay the only one.
+const zoomRules = [...css.matchAll(/([^{}]+)\{[^}]*zoom\s*:/g)].map((m) => m[1].trim());
+assert.deepEqual(zoomRules, ['body [class*="AnXs9G_panel"]'], 'no page-level zoom; only the settings modal may scale');
 
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');

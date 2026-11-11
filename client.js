@@ -389,54 +389,8 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 [role="dialog"] [class*="_navTitle"],[aria-modal="true"] [class*="_navTitle"]{font-size:18px;line-height:26px}
 [role="dialog"] [class*="_title"],[aria-modal="true"] [class*="_title"]{font-size:16px;line-height:22px}
 [role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
-body [class*="J8V0KW_title"]{font-size:18px;line-height:28px}
-body [class*="J8V0KW_secondaryButton"]{font-size:16px;line-height:25px}
-body [class*="J8V0KW_description"]{font-size:16px;line-height:25px}
-body [class*="GAdqeW_heroDescription"]{font-size:18px;line-height:32px}
-body [class*="GAdqeW_subtitle"]{font-size:18px;line-height:25px}
-body [class*="GAdqeW_cardTitle"]{font-size:23px;line-height:32px}
-body [class*="GAdqeW_cardDescription"]{font-size:17px;line-height:24px}
-body [class*="GAdqeW_status"]{font-size:16px;line-height:25px}
-body [class*="GAdqeW_action"]{font-size:16px;line-height:25px}
-body [class*="AnXs9G_navTitle"]{font-size:18px;line-height:28px}
-body [class*="uYSObG_title"]{font-size:16px;line-height:23px}
-body [class*="uYSObG_description"]{font-size:14px;line-height:21px}
-body [class*="yHUiNq_error"]{font-size:14px;line-height:21px}
-body [class*="IunAUa_transitions"]{font-size:15px;line-height:23px}
-body [class*="XAL7Ya_heading"]{font-size:21px}
-body [class*="XAL7Ya_intro"]{font-size:15px}
-body [class*="XAL7Ya_tab"]{font-size:15px;line-height:23px}
-body [class*="XAL7Ya_empty"]{font-size:15px}
-body [class*="XAL7Ya_presetSettingsTitle"]{font-size:17px;line-height:25px}
-body [class*="jrmgQW_title"]{font-size:18px;line-height:28px}
-body [class*="jrmgQW_intro"]{font-size:16px;line-height:25px}
-body [class*="jrmgQW_notice"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_savedNotice"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_rowName"]{font-size:16px;line-height:25px}
-body [class*="jrmgQW_rowTag"]{font-size:13px;line-height:18px}
-body [class*="jrmgQW_accountStatus"]{font-size:15px;line-height:23px}
-body [class*="jrmgQW_addButton"]{font-size:16px;line-height:25px}
-body [class*="jrmgQW_dangerButton"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_editorTitle"]{font-size:16px;line-height:25px}
-body [class*="jrmgQW_editorRoute"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_fieldLabel"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_advancedHint"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_modelCatalogTitle"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_modelEmpty"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_modelFieldLabel"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_modelReasoningValueInput"]{font-size:15px}
-body [class*="jrmgQW_error"]{font-size:14px;line-height:21px}
-body [class*="jrmgQW_candidateId"]{font-size:15px}
-body [class*="jrmgQW_candidateEmpty"]{font-size:15px;line-height:23px}
-body [class*="TLFO4W_title"]{font-size:23px;line-height:32px}
-body [class*="lJo4ka_description"]{font-size:16px;line-height:28px}
-body [class*="XVcKbW_copy"]{font-size:16px;line-height:28px}
-body [class*="XVcKbW_error"]{font-size:16px;line-height:25px}
 
-body [class*="J8V0KW_"]{outline:2px solid #ff0000 !important}
-body [class*="GAdqeW_"]{outline:2px solid #00a000 !important}
-body [class*="AnXs9G_"]{outline:2px solid #0044ff !important}
-body [class*="XAL7Ya_"]{outline:2px solid #ffb000 !important}
+body [class*="AnXs9G_panel"]{zoom:1.15}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
