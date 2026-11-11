@@ -357,8 +357,9 @@ window.__ModuleLoader__.load({
 [class*="wtg9ga_root"]{font-size:17px}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
-[class*="_projectRow"]{font-size:19px;background:#b1a791;border-radius:8px}
+[class*="_projectRow"]{font-size:21px;line-height:28px;height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
+[class*="_sessionRow"]{font-size:18px;line-height:26px;height:38px}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
 body[data-ds-dark-theme] [class*="_projectRow"]:hover{background:#322b23}
 [class*="GAkraW_sectionHeader"]{background:#8e979b;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
