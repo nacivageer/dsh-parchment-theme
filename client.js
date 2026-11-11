@@ -707,11 +707,15 @@ body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover
 body [class*="oT5lKa_title"]{font-size:15px;line-height:22px}
 /* 仅一次 sits at tertiary ink, which disappears on the darker card; one rank up. */
 body [class*="oT5lKa_frequency"]{font-size:12px;line-height:18px;color:var(--dsw-alias-label-secondary)}
-/* 打开 is the card's only affordance: a cream chip with ink type, so it reads as a
-   button on the taupe sheet instead of an outline hairline. */
+/* 打开 is the card's only affordance. A bright cream chip read as a sticker on the
+   taupe sheet, so both modes take a chip one step off their own card: warm greige
+   with ink type when light, the same taupe family with cream type when dark. */
 body [class*="oT5lKa_openButton"],
-body [class*="oT5lKa_openButton"] button{font-size:14px;line-height:20px;height:32px;padding:0 12px;background:#f4edde;border-color:#cdbfa2;color:#2a2219}
-@media (hover:hover){body [class*="oT5lKa_openButton"]:hover,body [class*="oT5lKa_openButton"] button:hover{background:#e9dfcb}}
+body [class*="oT5lKa_openButton"] button{font-size:14px;line-height:20px;height:32px;padding:0 12px;background:#d2ccc3;border-color:#b7ada0;color:#2a2219}
+body[data-ds-dark-theme] [class*="oT5lKa_openButton"],
+body[data-ds-dark-theme] [class*="oT5lKa_openButton"] button{background:#564f47;border-color:#6b6156;color:#f4edde}
+@media (hover:hover){body [class*="oT5lKa_openButton"]:hover,body [class*="oT5lKa_openButton"] button:hover{background:#c6c0b7}}
+@media (hover:hover){body[data-ds-dark-theme] [class*="oT5lKa_openButton"]:hover,body[data-ds-dark-theme] [class*="oT5lKa_openButton"] button:hover{background:#615a51}}
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */

@@ -397,8 +397,13 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="oT5lKa_openButton"\][^{]*\{[^}]*background:#f4edde/,
-  'the scheduled-task open action sits on a cream chip',
+  /\[class\*="oT5lKa_openButton"\][^{]*\{[^}]*background:#d2ccc3/,
+  'the scheduled-task open action sits on a warm greige chip',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\] \[class\*="oT5lKa_openButton"\][^{]*\{background:#564f47/,
+  'the dark scheduled-task open action sits on a taupe chip',
 );
 // An expanded turn-trigger prints the raw notice; it reads as body copy.
 assert.match(
