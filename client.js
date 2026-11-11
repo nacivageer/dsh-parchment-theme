@@ -357,7 +357,7 @@ window.__ModuleLoader__.load({
 [class*="wtg9ga_root"]{font-size:17px}
 [class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-weight:500}
 [class*="wtg9ga_newSessionLabel"]{font-size:20px;font-family:"京華老宋体",serif;font-weight:500}
-[class*="wtg9ga_newSession"]{position:relative;display:flex;min-height:46px;align-items:center;justify-content:center}
+[class*="wtg9ga_newSession"]:not([class*="Label"]):not([class*="Content"]):not([class*="Shortcut"]){position:relative;display:flex;min-height:46px;align-items:center;justify-content:center}
 [class*="wtg9ga_newSessionShortcut"]{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
 [class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:auto;flex:none}
 [class*="wtg9ga_newSessionContent"]{align-items:center;height:auto}
@@ -385,9 +385,9 @@ body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
 [class*="Ag-ohG_label"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_count"]{font-size:14px;line-height:21px}
 body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
-[class*="V4vHZW_toBottom"]{width:42px;height:42px;background:#8d5f5b;color:#fff}
-[class*="V4vHZW_toBottom"]:hover{background:#7d514d}
-[class*="V4vHZW_toBottom"] svg{width:20px !important;height:20px !important;color:#fff}
+[class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
+[class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
+[class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
 [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
