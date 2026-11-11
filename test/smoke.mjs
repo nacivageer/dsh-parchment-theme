@@ -235,6 +235,12 @@ assert.match(
 assert.match(css, /\[class\*="GRgSLq_add"\]\{width:32px;height:32px\}/, 'the composer + button grows');
 assert.match(css, /\[class\*="GRgSLq_select"\]\{font-size:15px/, 'the composer selects grow');
 assert.match(css, /\[class\*="GRgSLq_accessory"\] button\{font-size:16px/, 'the hero chips grow');
+assert.match(css, /--dsh-hourglass-mask:url\("data:image\/png;base64,/, 'the hourglass mask is embedded');
+assert.match(
+  css,
+  /\[class\*="V4vHZW_older"\] button::before\{[^}]*var\(--dsh-hourglass-mask\)/,
+  'load-earlier paints the hourglass before its label',
+);
 
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
