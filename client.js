@@ -420,6 +420,23 @@ body [class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:
 body [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
 body [class*="m2hUqa_seat"]{font-size:15px}
 body [class*="m2hUqa_seatLabel"]{font-size:15px}
+/* Two semantic accents, per the reference images: only the creator preset name
+   (chip, menu row, session-header label) and only the full-access permission
+   carry a colour of their own; every other label keeps the theme ink, and the
+   chevrons stay neutral. CSS cannot match text, so the Client half marks the
+   matching elements with data-dsh-accent (see paintAccents below). */
+body{--dsh-creator-ink:#386b9a;--dsh-full-access-ink:#a85418}
+body[data-ds-dark-theme]{--dsh-creator-ink:#e7c15c;--dsh-full-access-ink:#df8f3f}
+body [data-dsh-accent="creator"] [class*="m2hUqa_seatIcon"],
+body [data-dsh-accent="creator"] [class*="m2hUqa_seatLabel"],
+body [class*="m2hUqa_itemName"][data-dsh-accent="creator"],
+body [class*="dscfja_label"][data-dsh-accent="creator"]{color:var(--dsh-creator-ink)}
+body [class*="dscfja_label"][data-dsh-accent="creator"] [class*="dscfja_icon"]{opacity:1}
+body [class*="_86kJGG_trigger"][data-dsh-accent="full-access"]{color:var(--dsh-full-access-ink)}
+body [role="menuitem"][data-dsh-accent="full-access"] [class*="_itemIcon"],
+body [role="menuitem"][data-dsh-accent="full-access"] [class*="_itemLabel"],
+body [role="menuitem"][data-dsh-accent="full-access"] [class*="_check"]{color:var(--dsh-full-access-ink)}
+body [role="menuitem"][data-dsh-accent="creator"] [class*="_check"]{color:var(--dsh-creator-ink)}
 body [class*="rQbmCW_status"]{font-size:14px}
 body [class*="rezYhW_summary"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_label"]{font-size:14px;line-height:21px}
@@ -642,6 +659,53 @@ body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover
 
     const TOKENS = toPairs({ ...LIGHT, ...TYPE }, { ...DARK, ...TYPE });
 
+    /** The labels that carry an accent ink, in the app's zh and en copy. */
+    const squash = (value) => value.replace(/\s+/g, '');
+    const CREATOR_LABELS = new Set(['创造模式', 'Creator mode'].map(squash));
+    const FULL_ACCESS_LABELS = new Set(['完全权限', 'Full access'].map(squash));
+    const ACCENT_ATTR = 'data-dsh-accent';
+    /** Classes worth rescanning for; a mutation elsewhere never schedules a pass. */
+    const ACCENT_SCOPE = '[class*="m2hUqa_"], [class*="dscfja_"], [class*="_86kJGG_trigger"]';
+
+    /**
+     * Mark the elements whose *text* is one of the accent labels. The document
+     * stylesheet then colours them, so the rule stays independent of build
+     * hashes for the value it paints.
+     */
+    function paintAccents(root) {
+      const mark = (element, matches, value) => {
+        if (matches) element.setAttribute(ACCENT_ATTR, value);
+        else element.removeAttribute(ACCENT_ATTR);
+      };
+      const text = (element) => squash(element.textContent);
+      for (const seat of root.querySelectorAll('[class*="m2hUqa_seat"]')) {
+        if (seat.tagName !== 'BUTTON') continue;
+        const label = seat.querySelector('[class*="m2hUqa_seatLabel"]');
+        mark(seat, label !== null && CREATOR_LABELS.has(text(label)), 'creator');
+      }
+      for (const name of root.querySelectorAll('[class*="m2hUqa_itemName"]')) {
+        mark(name, CREATOR_LABELS.has(text(name)), 'creator');
+      }
+      for (const label of root.querySelectorAll('[class*="dscfja_label"]')) {
+        mark(label, CREATOR_LABELS.has(text(label)), 'creator');
+      }
+      for (const trigger of root.querySelectorAll('button[class*="_86kJGG_trigger"]')) {
+        const label = trigger.querySelector('[class*="_86kJGG_triggerLabel"]');
+        mark(trigger, label !== null && FULL_ACCESS_LABELS.has(text(label)), 'full-access');
+      }
+      // The permission menu repeats the same names as plain primitives items.
+      // Tagging the row itself lets its check mark follow the same ink.
+      for (const item of root.querySelectorAll('[role="menuitem"]')) {
+        const name = item.querySelector('[class*="m2hUqa_itemName"]');
+        const label = item.querySelector('[class*="_itemLabel"]');
+        if (name !== null && CREATOR_LABELS.has(text(name))) {
+          mark(item, true, 'creator');
+        } else {
+          mark(item, label !== null && FULL_ACCESS_LABELS.has(text(label)), 'full-access');
+        }
+      }
+    }
+
     return {
       inject: ['theme'],
       apply(ctx) {
@@ -656,9 +720,47 @@ body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover
           document.head.append(style);
           return () => style.remove();
         }, 'parchment: document style');
+        // CSS cannot match text, so the accent labels are tagged in the DOM and
+        // repainted as the chip, the preset menu and the session header change.
+        ctx.effect(() => {
+          if (typeof MutationObserver === 'undefined' || document.body === null) return;
+          paintAccents(document);
+          let queued = false;
+          const schedule = () => {
+            if (queued) return;
+            queued = true;
+            const run = () => {
+              queued = false;
+              paintAccents(document);
+            };
+            if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run);
+            else setTimeout(run, 50);
+          };
+          const relevantClass = (element) => /(?:m2hUqa_|dscfja_|_86kJGG_trigger)/.test(
+            element.getAttribute('class') ?? '',
+          );
+          const relevant = (node) => {
+            const element = node !== null && node.nodeType === 3 ? node.parentElement : node;
+            if (element === null || element === undefined || element.nodeType !== 1) return false;
+            if (relevantClass(element)) return true;
+            return element.querySelector?.(ACCENT_SCOPE) != null;
+          };
+          const observer = new MutationObserver((records) => {
+            for (const record of records) {
+              if (record.type === 'characterData' ? relevant(record.target) : (
+                relevant(record.target) || [...record.addedNodes].some(relevant)
+              )) {
+                schedule();
+                return;
+              }
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+          return () => observer.disconnect();
+        }, 'parchment: accent marks');
       },
-      /** Test seam: palettes, pair builder, layer id and stylesheet. */
-      __parchment: { SOURCE, LIGHT, DARK, TYPE, TOKENS, STYLE_CSS, toPairs },
+      /** Test seam: palettes, pair builder, layer id, stylesheet and the accent painter. */
+      __parchment: { SOURCE, LIGHT, DARK, TYPE, TOKENS, STYLE_CSS, toPairs, paintAccents },
     };
   },
 });

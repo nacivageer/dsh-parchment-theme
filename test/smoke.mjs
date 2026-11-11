@@ -252,6 +252,56 @@ assert.match(
   'load-earlier paints the hourglass before its label',
 );
 
+// Two labels carry their own ink: the creator preset (chip, preset menu, session
+// header) and the full-access permission (trigger and its menu row). CSS cannot
+// match text, so the Client half tags them with data-dsh-accent first.
+assert.match(
+  css,
+  /body\{--dsh-creator-ink:#386b9a;--dsh-full-access-ink:#a85418\}/,
+  'light mode carries the blue creator ink and orange full-access ink',
+);
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\]\{--dsh-creator-ink:#e7c15c;--dsh-full-access-ink:#df8f3f\}/,
+  'dark mode carries the yellow creator ink and orange full-access ink',
+);
+assert.match(
+  css,
+  /\[data-dsh-accent="creator"\] \[class\*="m2hUqa_seatLabel"\]/,
+  'the tagged preset chip paints its label',
+);
+assert.match(
+  css,
+  /\[class\*="m2hUqa_itemName"\]\[data-dsh-accent="creator"\]/,
+  'the tagged preset menu row paints its name',
+);
+assert.match(
+  css,
+  /\[class\*="dscfja_label"\]\[data-dsh-accent="creator"\]\{color:var\(--dsh-creator-ink\)\}/,
+  'the tagged session-header label paints its name',
+);
+assert.match(
+  css,
+  /\[class\*="_86kJGG_trigger"\]\[data-dsh-accent="full-access"\]\{color:var\(--dsh-full-access-ink\)\}/,
+  'the tagged permission trigger paints its icon and label',
+);
+assert.match(
+  css,
+  /\[role="menuitem"\]\[data-dsh-accent="full-access"\] \[class\*="_itemLabel"\]/,
+  'the tagged permission menu row paints its label',
+);
+assert.match(
+  css,
+  /\[role="menuitem"\]\[data-dsh-accent="full-access"\] \[class\*="_check"\]\{color:var\(--dsh-full-access-ink\)\}/,
+  'the full-access check follows the orange ink',
+);
+assert.match(
+  css,
+  /\[role="menuitem"\]\[data-dsh-accent="creator"\] \[class\*="_check"\]\{color:var\(--dsh-creator-ink\)\}/,
+  'the creator check follows the creator ink',
+);
+assert.equal(typeof plugin.__parchment.paintAccents, 'function', 'the accent painter is exposed for tests');
+
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
 assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');
