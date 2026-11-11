@@ -430,6 +430,8 @@ body [class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:
 body [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
 body [class*="m2hUqa_seat"]{font-size:17px;line-height:24px}
 body [class*="m2hUqa_seatLabel"]{font-size:17px;line-height:24px}
+/* The preset dropdown's option names were 13px next to a 17px seat. */
+body [class*="m2hUqa_itemName"]{font-size:16px;line-height:24px}
 /* New-session toolbar: the workspace picker, preset chip, permission trigger
    and model picker share one rank, one step above the old 15px preset chip. */
 body [class*="_86kJGG_trigger"],
@@ -473,6 +475,11 @@ body [class*="AnXs9G_panel"]{zoom:1.15}
 body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]{zoom:1}
 body [class*="AnXs9G_triggerRow"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
+/* Settings nav: the main sidebar's display face and rank. The panel's 1.15 zoom
+   means 16px here reads at the sidebar's 18px. */
+body [class*="AnXs9G_navTitle"]{font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-size:18px;line-height:26px;font-weight:500}
+body [class*="AnXs9G_navCell"]{font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-size:16px;line-height:24px;font-weight:500}
+body [class*="AnXs9G_navLabel"]{font-size:16px;line-height:24px}
 /* The panel zoom scales layout, but components that pin their own px font do
    not grow with it. Form controls and their labels go one step up so they read
    at the sidebar's 17px instead of the shipped 13–14px chrome. */

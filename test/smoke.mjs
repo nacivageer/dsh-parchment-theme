@@ -250,6 +250,16 @@ assert.match(
   /body \[class\*="_86kJGG_trigger"\],\s*body \[class\*="_86kJGG_triggerLabel"\],\s*body \[class\*="WOwLGG_workspace"\],\s*body \[class\*="WOwLGG_workspaceLabel"\]\{font-size:17px;line-height:24px\}/,
   'the permission and workspace pickers share the toolbar rank',
 );
+assert.match(
+  css,
+  /\[class\*="m2hUqa_itemName"\]\{font-size:16px;line-height:24px\}/,
+  'the preset menu option names grow',
+);
+assert.match(
+  css,
+  /\[class\*="AnXs9G_navCell"\]\{font-family:"寒蝉活宋体_復"/,
+  'the settings nav uses the display face',
+);
 assert.match(css, /--dsh-hourglass-mask:url\("data:image\/png;base64,/, 'the hourglass mask is embedded');
 assert.match(
   css,
