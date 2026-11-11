@@ -494,8 +494,8 @@ body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
 body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
-body [class*="HOHHba_card"]{--changes-fill:#c8c1b4;--changes-hover:#bbb3a1}
-body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#2c241b;--changes-hover:#332a1f}
+body [class*="HOHHba_card"]{--changes-fill:#d2ccc2;--changes-hover:#c8c1b4;background:var(--dsw-specific-input-major);border-color:#a89a84}
+body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#332c24;--changes-hover:#3a322a;background:var(--dsw-specific-input-major);border-color:#5f5142}
 /* Changed-files card: the shipped 10–13px ranks read as fine print next to the
    18px content, so every rank inside the card goes up one step. */
 body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}

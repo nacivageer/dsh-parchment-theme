@@ -146,6 +146,11 @@ assert.match(
 );
 assert.match(
   css,
+  /\[class\*="HOHHba_card"\]\{--changes-fill:#d2ccc2[^}]*border-color:#a89a84/,
+  'the changed-files card uses the warm code-block surface',
+);
+assert.match(
+  css,
   /\[class\*="_block_7gxqk_4"\] :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
   'the code block body uses 寒蝉活宋体_復 italic',
 );

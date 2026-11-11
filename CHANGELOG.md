@@ -5,6 +5,7 @@
 - 账号头像改用用户提供的 `assets/wax-seal.png`（45×45，内嵌 PNG data URI）；侧栏 32px、设置页 40px，隐藏 DSH user glyph，米色人形由 PNG 自带。v0.1.7 的 84 点 SVG 版不再使用，等用户确认后随下一版发布。
 - 两处头像再加 `filter: drop-shadow` 的柔和外扩阴影（跟随 PNG 波浪 alpha）；侧栏 trigger 的 `overflow` 放开，避免阴影被行高裁掉。
 - Agent 预设页的 4 张预设卡片与「让 Agent 帮我创建预设模式」按钮套用外观三张卡片的表面：未选中 = `--dsw-specific-input-major` + `--dsw-elevation-soft`，选中 = `--dsw-specific-bubble` + 暖边；`Wsg8iW_*` 用 `[class~=]` 精确匹配，避免误伤 `cardMain/cardHead` 等兄弟类。
+- 「已编辑 N 个文件」卡片表面改代码块同色（浅 `#d2ccc2` / 深 `#332c24`），边框加深到浅 `#a89a84` / 深 `#5f5142`，不再是一块冷灰卡。
 - 代码块衬底改用「已编辑文件」卡片的颜色：浅色 `#d2ccc2` / 深色 `#332c24`；`_block_7gxqk_4` 等代码容器加 1px 边框（浅 `#9d8f79` / 深 `#665646`），框线不再糊在纸色里。
 - 代码块标题改 `猫啃网故障宋` 20px 斜体，正文改 `寒蝉活宋体_復` 16px / 1.8 斜体（标题与正文都斜）。
 - 深色「工作区」栏改成暖褐 `#5b4a2a` 底 + 金 `#e7c17b` 字/图标（标题与三个图标同色）；浅色仍是灰蓝 `#9BA8AC`。
