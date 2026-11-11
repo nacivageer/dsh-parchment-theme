@@ -389,6 +389,49 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 [role="dialog"] [class*="_navTitle"],[aria-modal="true"] [class*="_navTitle"]{font-size:18px;line-height:26px}
 [role="dialog"] [class*="_title"],[aria-modal="true"] [class*="_title"]{font-size:16px;line-height:22px}
 [role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
+[class*="J8V0KW_title"]{font-size:18px;line-height:28px}
+[class*="J8V0KW_secondaryButton"]{font-size:16px;line-height:25px}
+[class*="J8V0KW_description"]{font-size:16px;line-height:25px}
+[class*="GAdqeW_heroDescription"]{font-size:18px;line-height:32px}
+[class*="GAdqeW_subtitle"]{font-size:18px;line-height:25px}
+[class*="GAdqeW_cardTitle"]{font-size:23px;line-height:32px}
+[class*="GAdqeW_cardDescription"]{font-size:17px;line-height:24px}
+[class*="GAdqeW_status"]{font-size:16px;line-height:25px}
+[class*="GAdqeW_action"]{font-size:16px;line-height:25px}
+[class*="AnXs9G_navTitle"]{font-size:18px;line-height:28px}
+[class*="uYSObG_title"]{font-size:16px;line-height:23px}
+[class*="uYSObG_description"]{font-size:14px;line-height:21px}
+[class*="yHUiNq_error"]{font-size:14px;line-height:21px}
+[class*="IunAUa_transitions"]{font-size:15px;line-height:23px}
+[class*="XAL7Ya_heading"]{font-size:21px}
+[class*="XAL7Ya_intro"]{font-size:15px}
+[class*="XAL7Ya_tab"]{font-size:15px;line-height:23px}
+[class*="XAL7Ya_empty"]{font-size:15px}
+[class*="XAL7Ya_presetSettingsTitle"]{font-size:17px;line-height:25px}
+[class*="jrmgQW_title"]{font-size:18px;line-height:28px}
+[class*="jrmgQW_intro"]{font-size:16px;line-height:25px}
+[class*="jrmgQW_notice"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_savedNotice"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_rowName"]{font-size:16px;line-height:25px}
+[class*="jrmgQW_rowTag"]{font-size:13px;line-height:18px}
+[class*="jrmgQW_accountStatus"]{font-size:15px;line-height:23px}
+[class*="jrmgQW_addButton"]{font-size:16px;line-height:25px}
+[class*="jrmgQW_dangerButton"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_editorTitle"]{font-size:16px;line-height:25px}
+[class*="jrmgQW_editorRoute"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_fieldLabel"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_advancedHint"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_modelCatalogTitle"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_modelEmpty"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_modelFieldLabel"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_modelReasoningValueInput"]{font-size:15px}
+[class*="jrmgQW_error"]{font-size:14px;line-height:21px}
+[class*="jrmgQW_candidateId"]{font-size:15px}
+[class*="jrmgQW_candidateEmpty"]{font-size:15px;line-height:23px}
+[class*="TLFO4W_title"]{font-size:23px;line-height:32px}
+[class*="lJo4ka_description"]{font-size:16px;line-height:28px}
+[class*="XVcKbW_copy"]{font-size:16px;line-height:28px}
+[class*="XVcKbW_error"]{font-size:16px;line-height:25px}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
