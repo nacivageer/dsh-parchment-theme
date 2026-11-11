@@ -358,6 +358,8 @@ window.__ModuleLoader__.load({
 [class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"京華老宋体","思源宋体 CN Medium",serif}
 [class*="wtg9ga_newSessionLabel"]{font-size:20px}
 [class*="wtg9ga_newSession"]{min-height:46px;align-items:center;justify-content:center}
+[class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:100%}
+[class*="wtg9ga_newSessionContent"]{align-items:center}
 [class*="wtg9ga_newSession"] svg{width:20px !important;height:20px !important}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
