@@ -114,10 +114,15 @@ window.__ModuleLoader__.load({
       '--dsw-alias-turn-trigger-bg-hover': '#4a3b2a0f',
       '--dsw-alias-code-diff-added': '#4c7a5a14',
       '--dsw-alias-code-diff-deleted': '#a33c3114',
-      '--dsw-alias-file-diff-added-bg': '#e6ede0',
-      '--dsw-alias-file-diff-added-gutter': '#eef2e9',
-      '--dsw-alias-file-diff-deleted-bg': '#f3e3dd',
-      '--dsw-alias-file-diff-deleted-gutter': '#f7ece7',
+      /* Diff fills come from the mockup, not a lightened tint: the shipped pale
+         rows read as white paper and made the whole diff look grey next to the
+         warm panel. Mockup rows sit at #babda4 / #c1c3ae (added) and
+         #cbb0a0 / #d2bead (deleted), but the grain overlay brightens every
+         surface by ~12 levels, so the tokens are set that much below. */
+      '--dsw-alias-file-diff-added-bg': '#abb092',
+      '--dsw-alias-file-diff-added-gutter': '#b3b69d',
+      '--dsw-alias-file-diff-deleted-bg': '#c2a390',
+      '--dsw-alias-file-diff-deleted-gutter': '#c9b19d',
 
       /* ---- composer, bubbles, menus, sidebar-nav -------------------------- */
       '--dsw-specific-bubble': '#b8a987',
