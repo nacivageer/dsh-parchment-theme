@@ -370,7 +370,7 @@ body [class*="_sessionRow"] [class*="_time"]{font-size:13px;line-height:20px}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
 body[data-ds-dark-theme] [class*="_projectRow"]:hover{background:#322b23}
 body [class*="GAkraW_sectionHeader"]{background:#8e979b;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
-body[data-ds-dark-theme] [class*="GAkraW_sectionHeader"]{background:#192124;color:#a9bcc2;--dsw-alias-label-secondary:#a9bcc2;--dsw-alias-label-tertiary:#8ca0a7}
+body[data-ds-dark-theme] [class*="GAkraW_sectionHeader"]{background:#5b4a2a;color:#e7c17b;--dsw-alias-label-primary:#e7c17b;--dsw-alias-label-secondary:#e7c17b;--dsw-alias-label-tertiary:#e7c17b;--dsw-alias-menu-icon:#e7c17b}
 body [class*="p2k40q_hero"]{color:#a7987f}
 body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
 body [class*="an3WzG_crumb"]{max-width:420px}

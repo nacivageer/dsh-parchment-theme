@@ -118,6 +118,11 @@ assert.match(
   /linear-gradient\(90deg,#b78472 0%,#af804a 50%,#bb956c 90%,#bb956c 100%\)/,
   'the dark account label gets its own gradient',
 );
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\] \[class\*="GAkraW_sectionHeader"\]\{background:#5b4a2a;color:#e7c17b/,
+  'the dark workspace header uses the gold-on-brown palette',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
