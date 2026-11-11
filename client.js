@@ -394,6 +394,10 @@ body [class*="AnXs9G_panel"]{zoom:1.15}
 body [class*="AnXs9G_trigger"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
 body [class*="AnXs9G_options"]{font-size:17px}
+body [class*="AnXs9G_trigger"]{outline:2px solid #ff00ff !important}
+body [class*="AnXs9G_triggerRow"]{outline:2px solid #00ffff !important}
+body [class*="AnXs9G_options"]{outline:2px solid #ff8800 !important}
+body [class*="AnXs9G_railRow"]{outline:2px solid #ffff00 !important}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
