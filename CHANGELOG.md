@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.6 — 2026-11-11
+
+外观选中项的激活感。
+
+### 表面
+
+- 选中的主题卡片（`themeCube` + `selected`）从 `--dsw-alias-bg-module-platform` + 浅蓝边改成 `--dsw-specific-bubble` 填充 + `--dsw-alias-button-ghost-active-border` 暖边，和用户气泡同一套颜色；未选中的卡片仍是浅色 raised 面，二者不再像「不可用 / 可用」而是「已选 / 未选」。
+
 ## v0.1.5 — 2026-11-11
 
 设置页与插件市场的未激活按钮对齐会话输入框。

@@ -412,6 +412,9 @@ body [class*="AnXs9G_panel"] button[class*="themeCube"]:not([class*="selected"])
 body [class*="AnXs9G_panel"] button[aria-haspopup]:not(:disabled):not(:hover):not(:active):not([aria-expanded="true"]),
 body [class*="AnXs9G_panel"] button[class*="_outline_1ulci_56"]:not(:disabled):not(:hover):not(:active),
 body [class*="AnXs9G_panel"] button[class*="themeCube"]:not([class*="selected"]):not(:disabled):not(:hover):not(:active){background:var(--dsw-specific-input-major);border-color:transparent}
+/* The active appearance cube needs to read as chosen, not disabled: use the
+   user-bubble fill and a warm ink edge instead of the pale module surface. */
+body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border)}
 /* Menus opened from Settings are portaled to body, so the panel zoom never
    reaches them. Match the panel's effective 17px instead of the shipped 13px. */
 body:has([class*="AnXs9G_panel"]) [role="menuitem"]{font-size:17px;line-height:25px;min-height:40px}

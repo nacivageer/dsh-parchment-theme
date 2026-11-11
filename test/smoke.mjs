@@ -71,6 +71,11 @@ assert.match(
   /button\[aria-haspopup\][^}]*box-shadow:var\(--dsw-elevation-soft\)/,
   'settings dropdowns use the composer elevation',
 );
+assert.match(
+  css,
+  /button\[class\*="themeCube"\]\[class\*="selected"\]\{background:var\(--dsw-specific-bubble\)/,
+  'the selected appearance cube uses the bubble fill',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
