@@ -171,6 +171,11 @@ assert.match(
 );
 assert.match(
   css,
+  /\[class\*="_preview_bgejw_52"\]:has\(\[data-changed-files\]\)\{background:#d2ccc2/,
+  'the floating changed-files preview uses the warm paper surface',
+);
+assert.match(
+  css,
   /\[class~="qgYWUG_card"\]:not\(:has\(\[data-tone="neutral"\]\)\)\{background:var\(--dsw-specific-input-major\)/,
   'plugin inventory cards use the button surface except the disabled one',
 );

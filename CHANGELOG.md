@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- 修正浅色「已编辑 N 个文件」卡片：表面改为显式 `#d2ccc2`，并把 `HOHHba_preview` 与 `_0cITKW_root` 也显式写同色。之前只改卡片、预览层自己带灰底，所以只有浅色没做出例图效果。
+- 修正浅色「已编辑 N 个文件」卡片：表面改为显式 `#d2ccc2`，`HOHHba_preview`、`_0cITKW_root` 也显式同色；展开的 diff 实际是 HoverCard，命中 `_preview_bgejw_52:has([data-changed-files])` 后把它的 `bg-layer-1` 灰底也换成 `#d2ccc2`。之前只改卡片，浮层自己带灰底，所以只有浅色没做出例图效果。
 - 内置插件页：未停用插件的 `qgYWUG_card` 衬底改成按钮同色（浅 `--dsw-specific-input-major`）；深色下压暗到输入框的 `#302a23`。「已停用」卡片浅色保持原样，深色下改用搜索框的 `--dsw-alias-bg-layer-1`，比已启用卡片更暗。
 - 深色设置面板按用户图 3 调整：未激活的下拉 / outline / stepper / 外观卡片 / Agent 预设卡片用 `#554c44` 面 + `#6a5f54` 边、去阴影；选中的外观卡片与预设卡片用 `#72664f` + `#8a7a5a`。
 
