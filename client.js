@@ -344,17 +344,18 @@ window.__ModuleLoader__.load({
      * `soft-light` modulates light and shade around the mid-grey, so the paper
      * keeps its measured colour instead of darkening under a multiply layer.
      */
-    /* Tiles are sized to an integer number of noise periods (512 × 0.5 = 256,
-       1024 × 0.0078125 = 8) — a fractional period leaves a visible seam at every
-       tile edge, which stitchTiles does not hide. */
+    /* Tiles are one screen wide (2048px covers a 1920 viewport once), so the
+       pattern never repeats inside the window, and each is an integer number of
+       noise periods (2048 × 0.5 = 1024, 2048 × 0.00390625 = 8) — a fractional
+       period leaves a visible seam at every tile edge that stitchTiles cannot hide. */
     const GRAIN_FINE =
-      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23f)' opacity='0.85'/%3E%3C/svg%3E\")";
+      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2048' height='2048'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='2048' height='2048' filter='url(%23f)' opacity='0.85'/%3E%3C/svg%3E\")";
     const GRAIN_BLOTCH =
-      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1024' height='1024'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0078125' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='1024' height='1024' filter='url(%23b)' opacity='0.45'/%3E%3C/svg%3E\")";
+      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2048' height='2048'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.00390625' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='2048' height='2048' filter='url(%23b)' opacity='0.45'/%3E%3C/svg%3E\")";
     const STYLE_CSS = `
 [class*="wtg9ga_root"]{font-size:15px}
 @font-face{font-family:"Parchment Song";src:local("京華老宋体"),local("KingHwa_OldSong"),local("KingHwa_OldSong Regular");unicode-range:U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:512px 512px,1024px 1024px;mix-blend-mode:overlay;opacity:.55}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:2048px 2048px,2048px 2048px;mix-blend-mode:overlay;opacity:.55}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_projectRow"]{font-size:16px;background:#d6cec0;border-radius:8px}
 [class*="_projectRow"]:hover{background:#cdc5b5}
