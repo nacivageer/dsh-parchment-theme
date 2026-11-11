@@ -141,8 +141,13 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="_infostring_7gxqk_45"\]\{[^}]*猫啃网故障宋[^}]*font-style:italic/,
+  /\[class\*="_infostring_7gxqk_45"\][^{]*\{[^}]*猫啃网故障宋[^}]*font-style:italic/,
   'the code block banner uses 猫啃网故障宋 italic',
+);
+assert.match(
+  css,
+  /\[class\*="_language_1mqf1_30"\][^}]*猫啃网故障宋/,
+  'the code block title uses 猫啃网故障宋',
 );
 assert.match(
   css,
