@@ -357,7 +357,7 @@ window.__ModuleLoader__.load({
 [class*="wtg9ga_root"]{font-size:17px}
 [class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"京華老宋体","思源宋体 CN Medium",serif}
 [class*="wtg9ga_newSessionLabel"]{font-size:20px}
-[class*="wtg9ga_newSession"]{display:flex;min-height:46px;align-items:center;justify-content:center}
+[class*="wtg9ga_newSession"]{display:flex;min-height:46px;align-items:center;justify-content:center;background:#fff6e2 !important;outline:2px solid #c0392b}
 [class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:auto;flex:none}
 [class*="wtg9ga_newSessionContent"]{align-items:center;height:auto}
 [class*="wtg9ga_newSession"] svg{width:20px !important;height:20px !important}
