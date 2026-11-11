@@ -300,6 +300,18 @@ assert.match(
   /\[role="menuitem"\]\[data-dsh-accent="creator"\] \[class\*="_check"\]\{color:var\(--dsh-creator-ink\)\}/,
   'the creator check follows the creator ink',
 );
+// Light-mode diff rows read as a green wash: the marker green deepens and the
+// row ink goes a step darker; dark mode keeps the shipped values.
+assert.match(
+  css,
+  /body:not\(\[data-ds-dark-theme\]\)\{--dsw-alias-file-diff-added-marker:#2f6b3a\}/,
+  'the light diff marker green is deepened',
+);
+assert.match(
+  css,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="0cITKW_text"\]\{color:#17110b\}/,
+  'the light diff row ink is darker',
+);
 assert.equal(typeof plugin.__parchment.paintAccents, 'function', 'the accent painter is exposed for tests');
 
 const family = layer.tokens['--dsw-font-family'];

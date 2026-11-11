@@ -385,6 +385,11 @@ body [class*="_projectRow"] [class*="_rowActions"] button:not([data-context-menu
 body [class*="_projectRow"] [class*="_rowActions"] button:not([data-context-menu-trigger])::before{content:"";display:inline-block;vertical-align:middle;width:13px;height:19px;background-color:currentColor;-webkit-mask:var(--dsh-quill-mask) center/contain no-repeat;mask:var(--dsh-quill-mask) center/contain no-repeat}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
+/* Diff rows in 羊皮纸: at body size the vivid marker (#01a241) plus thin serif
+   strokes on the olive fill read as a green wash. Deepen both the marker and
+   the row ink so the +/numbers stay green but legible; 墨夜 is unchanged. */
+body:not([data-ds-dark-theme]){--dsw-alias-file-diff-added-marker:#2f6b3a}
+body:not([data-ds-dark-theme]) [class*="0cITKW_text"]{color:#17110b}
 /* Code fences: the shipped fill sat almost on the paper; use the raised card
    surface and a visible 1px frame in both palettes. */
 body:not([data-ds-dark-theme]) [class*="_block_7gxqk_4"],
