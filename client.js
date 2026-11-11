@@ -442,6 +442,11 @@ body [role="menuitem"][data-dsh-accent="full-access"] [class*="_itemIcon"],
 body [role="menuitem"][data-dsh-accent="full-access"] [class*="_itemLabel"],
 body [role="menuitem"][data-dsh-accent="full-access"] [class*="_check"]{color:var(--dsh-full-access-ink)}
 body [role="menuitem"][data-dsh-accent="creator"] [class*="_check"]{color:var(--dsh-creator-ink)}
+/* 退出登录 is a plain menu row, not the shipped danger row: give it the same
+   red as 删除工作区 (the primitives danger ink). */
+body [role="menuitem"][data-dsh-accent="danger"],
+body [role="menuitem"][data-dsh-accent="danger"] [class*="_itemIcon"],
+body [role="menuitem"][data-dsh-accent="danger"] [class*="_itemLabel"]{color:var(--dsw-alias-state-error-primary)}
 body [class*="rQbmCW_status"]{font-size:14px}
 body [class*="rezYhW_summary"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_label"]{font-size:14px;line-height:21px}
@@ -586,6 +591,18 @@ body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTitle"]{color:#e7
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverPath"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTime"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverStatus"]{color:#d3ad6b}
+/* The schedule plugin's hover rows (clock + task name + timing) hardcode the
+   shipped dark card's #fff / #cfd3d6; they follow the parchment hover ink. */
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="DBgHeW_taskName"]{color:#26333a}
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="DBgHeW_taskIcon"],
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="DBgHeW_taskTiming"],
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="DBgHeW_taskRelative"],
+body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="DBgHeW_omitted"]{color:#2f3d45}
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskName"]{color:#e7c17b}
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskIcon"],
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskTiming"],
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskRelative"],
+body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_omitted"]{color:#d3ad6b}
 /* Composer chrome ships at 12-13px beside 18px content; lift the tool row, the
    hero chips and the + command palette one step so they read with the input. */
 body [class*="GRgSLq_add"]{width:32px;height:32px}
@@ -673,6 +690,7 @@ body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover
     const squash = (value) => value.replace(/\s+/g, '');
     const CREATOR_LABELS = new Set(['创造模式', 'Creator mode'].map(squash));
     const FULL_ACCESS_LABELS = new Set(['完全权限', 'Full access'].map(squash));
+    const DANGER_LABELS = new Set(['退出登录', 'Sign out', 'Log out'].map(squash));
     const ACCENT_ATTR = 'data-dsh-accent';
     /** Classes worth rescanning for; a mutation elsewhere never schedules a pass. */
     const ACCENT_SCOPE = '[class*="m2hUqa_"], [class*="dscfja_"], [class*="_86kJGG_trigger"]';
@@ -708,10 +726,15 @@ body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover
       for (const item of root.querySelectorAll('[role="menuitem"]')) {
         const name = item.querySelector('[class*="m2hUqa_itemName"]');
         const label = item.querySelector('[class*="_itemLabel"]');
+        const labelText = label === null ? '' : text(label);
         if (name !== null && CREATOR_LABELS.has(text(name))) {
           mark(item, true, 'creator');
+        } else if (label !== null && FULL_ACCESS_LABELS.has(labelText)) {
+          mark(item, true, 'full-access');
+        } else if (label !== null && DANGER_LABELS.has(labelText)) {
+          mark(item, true, 'danger');
         } else {
-          mark(item, label !== null && FULL_ACCESS_LABELS.has(text(label)), 'full-access');
+          mark(item, false, '');
         }
       }
     }

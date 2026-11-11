@@ -300,6 +300,12 @@ assert.match(
   /\[role="menuitem"\]\[data-dsh-accent="creator"\] \[class\*="_check"\]\{color:var\(--dsh-creator-ink\)\}/,
   'the creator check follows the creator ink',
 );
+// 退出登录 is a plain menu row; it takes the primitives danger ink.
+assert.match(
+  css,
+  /\[role="menuitem"\]\[data-dsh-accent="danger"\] \[class\*="_itemLabel"\]\{color:var\(--dsw-alias-state-error-primary\)\}/,
+  'the sign-out row uses the danger ink',
+);
 // Light-mode diff rows read as a green wash: the marker green deepens and the
 // row ink goes a step darker; dark mode keeps the shipped values.
 assert.match(
@@ -364,6 +370,18 @@ assert.match(
   css,
   /body\[data-ds-dark-theme\] \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#5b4a2a/,
   'the hover card borrows the dark workspace-bar surface',
+);
+// The schedule slot inside the same card hardcodes white/grey for the shipped
+// dark bubble; it follows the card ink as well.
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\] \[class\*="hoverContent"\] \[class\*="DBgHeW_taskName"\]\{color:#e7c17b\}/,
+  'the dark hover-card task name uses the hover title ink',
+);
+assert.match(
+  css,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="hoverContent"\] \[class\*="DBgHeW_taskTiming"\]/,
+  'the light hover-card task timing uses the hover body ink',
 );
 assert.match(
   css,
