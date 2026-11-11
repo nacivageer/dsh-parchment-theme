@@ -181,6 +181,11 @@ assert.match(
 );
 assert.match(
   css,
+  /body\[data-ds-dark-theme\] \[class\*="AnXs9G_panel"\] \[class~="qgYWUG_card"\]:has\(\[data-tone="neutral"\]\)\{background:var\(--dsw-alias-bg-layer-1\)\}/,
+  'the dark disabled plugin card matches the search box surface',
+);
+assert.match(
+  css,
   /\[class\*="_block_7gxqk_4"\] :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
   'the code block body uses 寒蝉活宋体_復 italic',
 );
