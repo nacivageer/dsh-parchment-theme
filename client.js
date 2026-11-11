@@ -385,6 +385,9 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 [role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
 
 body [class*="AnXs9G_panel"]{zoom:1.15}
+/* The zoom scales fixed-position tooltips too, so the plugin market's
+   hover-to-read bubble drifts away from its card. Drop the zoom on that page. */
+body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]{zoom:1}
 body [class*="AnXs9G_triggerRow"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
 /* The panel zoom scales layout, but components that pin their own px font do
@@ -396,6 +399,10 @@ body [class*="AnXs9G_panel"] select,
 body [class*="AnXs9G_panel"] textarea{font-size:15px}
 body [class*="AnXs9G_panel"] [class*="_field_"] [class*="_label_"]{font-size:15px}
 body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:15px}
+/* Settings cards and row rules are nearly invisible at the shipped 10–16%
+   ink; raise the panel's own border ranks without touching the rest of the app. */
+body [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#4a3b2a33;--dsw-alias-border-l3:#4a3b2a3d;--dsw-alias-border-l4:#4a3b2a4d;--dsw-alias-settings-card-stroke:#4a3b2a59}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#e2dacc40;--dsw-alias-border-l3:#e2dacc4d;--dsw-alias-border-l4:#e2dacc59;--dsw-alias-settings-card-stroke:#e2dacc66}
 /* Menus opened from Settings are portaled to body, so the panel zoom never
    reaches them. Match the panel's effective 17px instead of the shipped 13px. */
 body:has([class*="AnXs9G_panel"]) [role="menuitem"]{font-size:17px;line-height:25px;min-height:40px}

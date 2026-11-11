@@ -48,11 +48,22 @@ for (const [name, modes] of Object.entries(layer.tokens)) {
 assert.equal(appended.length, 1, 'exactly one stylesheet should be injected');
 const css = appended[0].textContent;
 
-// The two regressions this theme already paid for.
-// Page-level zoom misplaced viewport-flipped popovers; one scoped zoom on the
-// settings modal is allowed, and must stay the only one.
-const zoomRules = [...css.matchAll(/([^{}]+)\{[^}]*zoom\s*:/g)].map((m) => m[1].trim());
-assert.deepEqual(zoomRules, ['body [class*="AnXs9G_panel"]'], 'no page-level zoom; only the settings modal may scale');
+// Page-level zoom misplaced viewport-flipped popovers. The settings modal keeps
+// one zoom, but its plugin-market page drops it: the zoom also scales
+// fixed-position hover tooltips away from the card they belong to.
+const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, '');
+const zoomRules = [...cssNoComments.matchAll(/([^{}]+)\{[^}]*zoom\s*:/g)].map((m) => m[1].trim());
+assert.deepEqual(zoomRules, [
+  'body [class*="AnXs9G_panel"]',
+  'body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]',
+], 'zoom stays on the settings modal, except on the plugin market page');
+
+// Settings cards and row rules need a visible stroke on paper.
+assert.match(
+  css,
+  /body \[class\*="AnXs9G_panel"\]\{[^}]*--dsw-alias-settings-card-stroke:/,
+  'settings cards get a visible stroke',
+);
 
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
