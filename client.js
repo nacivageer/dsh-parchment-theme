@@ -443,7 +443,7 @@ body[data-ds-dark-theme] [class*="_identity"] [class*="_avatar"]{filter:drop-sha
 /* Account labels follow the user's mockup: 寒蝉活宋体 regular with a brown-gold
    gradient overlay. Sidebar phone and the Settings account name share it. */
 body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"],
-body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復","思源宋体 CN",serif;font-weight:400;letter-spacing:.02em;background-image:linear-gradient(180deg,#3a2412 0%,#3a2412 16%,#5f3d1c 34%,#a9793a 52%,#5f3d1c 70%,#3a2412 86%,#3a2412 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-text-stroke:.6px #3a2412;text-shadow:0 1px 0 #c9a86a,0 2px 2px #3a241266}
+body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復","思源宋体 CN",serif;font-weight:400;letter-spacing:.02em;background-image:linear-gradient(180deg,#3a2412 0%,#3a2412 14%,#5f3d1c 32%,#b8863f 50%,#5f3d1c 68%,#3a2412 86%,#3a2412 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-text-stroke:.6px #3a2412;text-shadow:0 2px 2px #3a241266}
 body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"]{font-size:22px;line-height:28px}
 body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-size:20px;line-height:26px}
 /* The active appearance cube needs to read as chosen, not disabled: use the
