@@ -312,6 +312,9 @@ assert.match(
   /body:not\(\[data-ds-dark-theme\]\) \[class\*="0cITKW_text"\]\{color:#17110b\}/,
   'the light diff row ink is darker',
 );
+// The delivered-file card shipped a 13px title and a 10px summary.
+assert.match(css, /\[class~="K5rwea_fileName"\]\{font-size:17px;line-height:24px\}/, 'the file card title grows');
+assert.match(css, /\[class~="K5rwea_description"\]\{font-size:14px;line-height:20px\}/, 'the file card summary grows');
 assert.equal(typeof plugin.__parchment.paintAccents, 'function', 'the accent painter is exposed for tests');
 
 const family = layer.tokens['--dsw-font-family'];

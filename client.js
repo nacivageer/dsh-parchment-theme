@@ -614,6 +614,11 @@ body [class*="V4vHZW_older"] button:disabled{opacity:.6;cursor:default}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
 body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
+/* The delivered-file card ships 13px title + 10px summary; the summary was
+   unreadable next to the 18px transcript. One step up, card grows to fit. */
+body [class~="K5rwea_file"]{height:auto;min-height:66px;padding:10px 12px}
+body [class~="K5rwea_fileName"]{font-size:17px;line-height:24px}
+body [class~="K5rwea_description"]{font-size:14px;line-height:20px}
 body [class*="HOHHba_card"]{--changes-fill:#d2ccc2;--changes-hover:#c8c1b4;background:#d2ccc2;border-color:#a89a84}
 body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#332c24;--changes-hover:#3a322a;background:#332c24;border-color:#5f5142}
 body [class*="HOHHba_preview"],
