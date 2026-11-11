@@ -112,9 +112,12 @@ window.__ModuleLoader__.load({
       '--dsw-alias-link': '#4a6172',
       /* The chat turn-trigger banner (自动化任务 / 收到执行请求) borrows the changed-
          files card's sheet rather than a beige that sat within three levels of
-         the paper, so a scheduled turn reads as the same raised card. */
+         the paper, so a scheduled turn reads as the same raised card. Hovering
+         used to replace that sheet with a 6% ink wash, which read as a dark drop
+         over the expanded body; it now lifts one step to the paper-white chip so
+         the notice stays legible while the pointer is over it. */
       '--dsw-alias-turn-trigger-bg': '#d2ccc2',
-      '--dsw-alias-turn-trigger-bg-hover': '#4a3b2a0f',
+      '--dsw-alias-turn-trigger-bg-hover': '#e4e1db',
       '--dsw-alias-code-diff-added': '#4c7a5a14',
       '--dsw-alias-code-diff-deleted': '#a33c3114',
       /* Diff fills were matched to the mockup at #babda4 / #c1c3ae, but at body
@@ -254,7 +257,7 @@ window.__ModuleLoader__.load({
       '--dsw-alias-markdown-code-segment-unselected': '#28231d',
       '--dsw-alias-link': '#a3b4bf',
       '--dsw-alias-turn-trigger-bg': '#332c24',
-      '--dsw-alias-turn-trigger-bg-hover': '#e2dacc2e',
+      '--dsw-alias-turn-trigger-bg-hover': '#3b342b',
       '--dsw-alias-code-diff-added': '#8ab9971f',
       '--dsw-alias-code-diff-deleted': '#d07d6b1f',
       '--dsw-alias-file-diff-added-bg': '#243028',

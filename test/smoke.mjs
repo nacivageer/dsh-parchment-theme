@@ -373,6 +373,13 @@ assert.equal(
   layer.tokens['--dsw-alias-markdown-code-block'].dark,
   'the dark turn-trigger banner shares the changed-files card surface',
 );
+// Hovering used to swap the sheet for a 6% ink wash, which read as a dark drop
+// over the expanded body; it lifts to the paper-white chip instead.
+assert.equal(
+  layer.tokens['--dsw-alias-turn-trigger-bg-hover'].light,
+  '#e4e1db',
+  'the hovered turn-trigger banner lifts to the paper-white chip',
+);
 assert.match(
   css,
   /body:not\(\[data-ds-dark-theme\]\) \[class\*="0cITKW_text"\]\{color:#17110b\}/,
