@@ -103,6 +103,16 @@ assert.match(
   /\[class\*="_5Qcc8a_avatar"\][^{]*\{[^}]*filter:drop-shadow/,
   'the wax seals get a soft outward shadow',
 );
+assert.match(
+  css,
+  /\[class\*="_5Qcc8a_label"\][^{]*\{[^}]*background-image:linear-gradient/,
+  'the sidebar account label gets the mockup gradient',
+);
+assert.match(
+  css,
+  /\[class\*="_6qcDqa_name"\][^{]*\{[^}]*font-family:"寒蝉活宋体_復"/,
+  'the settings account name uses 寒蝉活宋体_復',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');

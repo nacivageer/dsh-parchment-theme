@@ -440,6 +440,12 @@ body [class*="_identity"] [class*="_avatar"]{filter:drop-shadow(0 2px 4px #3a1c1
 body [class*="_identity"] [class*="_avatar"]{filter:drop-shadow(0 3px 6px #3a1c184d) drop-shadow(0 7px 16px #3a1c182b)}
 body[data-ds-dark-theme] [class*="_5Qcc8a_avatar"],
 body[data-ds-dark-theme] [class*="_identity"] [class*="_avatar"]{filter:drop-shadow(0 2px 4px #00000080) drop-shadow(0 6px 14px #00000059)}
+/* Account labels follow the user's mockup: 寒蝉活宋体 regular with a brown-gold
+   gradient overlay. Sidebar phone and the Settings account name share it. */
+body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"],
+body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-family:"寒蝉活宋体_復","思源宋体 CN",serif;font-weight:400;letter-spacing:.02em;background-image:linear-gradient(100deg,#3f2810 0%,#7a4c22 32%,#d0a257 52%,#8a5a2a 70%,#3f2810 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:0 1px 1px #3a241240}
+body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"]{font-size:20px;line-height:28px}
+body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-size:18px;line-height:26px}
 /* The active appearance cube needs to read as chosen, not disabled: use the
    user-bubble fill and a warm ink edge instead of the pale module surface. */
 body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border)}
