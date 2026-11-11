@@ -266,7 +266,7 @@ window.__ModuleLoader__.load({
       '--dsw-specific-selector': '#332d26',
       '--dsw-specific-tip': '#302a23',
 
-      '--dsw-alias-tooltip-bg': '#352f28',
+      '--dsw-alias-tooltip-bg': '#5a4d3e',
       '--dsw-alias-toast-bg': '#39322a',
       '--dsw-alias-toast-label': '#f0ece2',
       '--dsw-alias-switch-thumb': '#948978',
@@ -415,6 +415,9 @@ body [class*="_5Qcc8a_trigger"]{font-size:18px}
 body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]{font-size:16px;line-height:24px;min-height:40px}
 body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>span[aria-hidden="true"]:first-child{width:16px;height:16px}
 body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>span[aria-hidden="true"]:first-child svg{width:16px;height:16px}
+/* Dark tooltips float over brown panels; a hairline edge and a deeper shadow
+   keep the bubble from melting into the card behind it. */
+body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:0 8px 24px #00000066}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}

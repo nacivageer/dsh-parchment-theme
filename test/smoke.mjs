@@ -65,6 +65,9 @@ assert.match(
   'settings cards get a visible stroke',
 );
 
+// Dark tooltips need an edge so they do not melt into the brown panels.
+assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
+
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
 assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');
