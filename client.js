@@ -391,6 +391,9 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 [role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
 
 body [class*="AnXs9G_panel"]{zoom:1.15}
+body [class*="AnXs9G_trigger"]{font-size:18px}
+body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
+body [class*="AnXs9G_options"]{font-size:17px}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
