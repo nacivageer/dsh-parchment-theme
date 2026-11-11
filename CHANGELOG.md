@@ -1,8 +1,11 @@
 # Changelog
 
-## Unreleased
+## v0.1.9 — 2026-11-12
 
-- 修正浅色「已编辑 N 个文件」卡片：表面改为显式 `#d2ccc2`，`HOHHba_preview`、`_0cITKW_root` 也显式同色；展开的 diff 实际是 HoverCard，直接命中 `_preview_bgejw_52`（预览内容不一定带 `data-changed-files`）把它的 `bg-layer-1` 灰底换成 `#d2ccc2`。之前只改卡片，浮层自己带灰底，所以只有浅色没做出例图效果。
+浅色展开 diff 的暖褐收尾，深色插件卡片与设置面板按对照图调整。
+
+- 浅色「已编辑 N 个文件」的展开 diff：浮层底其实早已是暖纸色，真正发灰的是 **diff 行填充**——默认的几近白色薄荷/玫瑰铺满整块，整体读成灰白。四个 `--dsw-alias-file-diff-*` 令牌按例图取色后压深（新增 `#abb092` / gutter `#b3b69d`，删除 `#c2a390` / gutter `#c9b19d`），并补偿纸纹叠加带来的约 12 个色阶提亮。
+- 展开 diff 的 HoverCard 预览面（`_preview_bgejw_52`）及其内容根（`HOHHba_preview` / `_0cITKW_root`）不再吃 `bg-layer-1` 的灰底，一律写显式暖纸色（浅 `#d2ccc2` / 深 `#332c24`）；浅色「已编辑 N 个文件」卡片本身同色、边框 `#a89a84`。
 - 内置插件页：未停用插件的 `qgYWUG_card` 衬底改成按钮同色（浅 `--dsw-specific-input-major`）；深色下压暗到输入框的 `#302a23`。「已停用」卡片浅色保持原样，深色下改用搜索框的 `--dsw-alias-bg-layer-1`，比已启用卡片更暗。
 - 深色设置面板按用户图 3 调整：未激活的下拉 / outline / stepper / 外观卡片 / Agent 预设卡片用 `#554c44` 面 + `#6a5f54` 边、去阴影；选中的外观卡片与预设卡片用 `#72664f` + `#8a7a5a`。
 
