@@ -45,7 +45,7 @@
 - **未激活按钮**：设置页与插件市场里的下拉触发器、outline 按钮（打开配置文件 / 编辑快捷键 / 安装）与未选中的外观卡片，改成 `--dsw-specific-input-major` 填充 + `--dsw-elevation-soft` 外扩阴影，和会话输入框同一套表面；hover、展开、disabled 保留各自状态。
 - **自定义控件**：字号大小的 stepper 及其 `_control` 外层（连同 px 单位与展开箭头）与不带 primitives outline/haspopup 类的 action 按钮（`button[class*="_button"]`，如「编辑快捷键」）也补齐同一套填充与阴影；primary / ghost / toolbar / icon / nav / close 排除在外。
 - **外观已选**：选中的主题卡片用 `--dsw-specific-bubble` 填充 + `--dsw-alias-button-ghost-active-border` 暖边，不再用浅色的 module 面——否则看起来像「不可用」而不是「已激活」。
-- **账号名渐变**：侧栏账号标签与设置页账号名用 `寒蝉活宋体_復` 常规字重 + 棕金渐变（`background-clip:text`；侧栏 20px、设置页 18px），文字叠一层极淡暗影。
+- **账号名渐变**：侧栏账号标签与设置页账号名用 `寒蝉活宋体_復 Bold` + 竖向棕金渐变（`background-clip:text`），叠深棕描边与底部浅金高光；侧栏 22px、设置页 20px。
 - **账号头像**：账号页与侧栏的 user 图标改用用户提供的 `assets/wax-seal.png`（45×45，内嵌 PNG data URI）；侧栏 32px、设置页 40px。DSH 原来的 user glyph 隐藏，图标的米色人形由 PNG 自带。外面再加 `filter: drop-shadow` 的柔和外扩阴影（跟随 PNG 的波浪 alpha，不是方形 box-shadow）；侧栏 trigger 的 `overflow` 放开，让阴影透出。
 - **账号弹层**：触发块 `_5Qcc8a_trigger` 14→18px；菜单项（设置 / 意见反馈 / 退出登录）13→16px，行高 24、最小高 40、图标 16px。菜单项是 primitives 共享组件、没有账号专属类名，所以用 `body:has(触发块[aria-expanded="true"])` 门控——只在账号弹层打开时放大，其他菜单维持原尺寸。
 - **侧栏时间**：会话行时间 `.wnFoaW_time` 10→13px、行高 20；旁边是 16px 的会话标题，时间不再像脚注。

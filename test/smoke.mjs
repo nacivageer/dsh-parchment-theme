@@ -110,7 +110,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="_6qcDqa_name"\][^{]*\{[^}]*font-family:"寒蝉活宋体_復"/,
+  /\[class\*="_6qcDqa_name"\][^{]*\{[^}]*font-family:"寒蝉活宋体_復/,
   'the settings account name uses 寒蝉活宋体_復',
 );
 
