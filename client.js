@@ -431,6 +431,15 @@ body [class*="_identity"] [class*="_avatar"]{border-radius:0;background-color:tr
 body [class*="_5Qcc8a_avatar"]{width:32px;height:32px}
 body [class*="_identity"] [class*="_avatar"]{width:40px;height:40px}
 body [class*="_5Qcc8a_avatar"]>*,body [class*="_identity"] [class*="_avatar"]>*{display:none}
+/* The trigger clips its label with overflow:hidden; the label already ellipsizes,
+   so let the avatar's soft shadow breathe past the row. */
+body [class*="_5Qcc8a_trigger"]{overflow:visible}
+/* drop-shadow follows the PNG's scalloped alpha, unlike a box shadow. */
+body [class*="_5Qcc8a_avatar"],
+body [class*="_identity"] [class*="_avatar"]{filter:drop-shadow(0 2px 4px #3a1c1847) drop-shadow(0 5px 10px #3a1c1826)}
+body [class*="_identity"] [class*="_avatar"]{filter:drop-shadow(0 3px 6px #3a1c184d) drop-shadow(0 7px 16px #3a1c182b)}
+body[data-ds-dark-theme] [class*="_5Qcc8a_avatar"],
+body[data-ds-dark-theme] [class*="_identity"] [class*="_avatar"]{filter:drop-shadow(0 2px 4px #00000080) drop-shadow(0 6px 14px #00000059)}
 /* The active appearance cube needs to read as chosen, not disabled: use the
    user-bubble fill and a warm ink edge instead of the pale module surface. */
 body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border)}
