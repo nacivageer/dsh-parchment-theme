@@ -332,7 +332,15 @@ window.__ModuleLoader__.load({
      * label and the sessions inside it at the same 14px; one step up marks the
      * group without touching the rows underneath.
      */
-    const SCALE = 1.1;
+    /**
+     * Global scaling was tried twice and dropped. `zoom` on `html` leaves
+     * `window.innerHeight` unscaled, so a popover that decides its flip from the
+     * viewport (the account menu at the bottom-left) believes there is room below
+     * and drops off the window. Putting the zoom on the app frame instead left the
+     * frame at 90.9% of the window instead of filling it. So chrome is sized
+     * component by component, starting from the sidebar root's literal
+     * `font-size`, which every label inside it inherits.
+     */
     /**
      * Grain, drawn by the browser instead of shipped as an image: two SVG
      * fractal-noise tiles (fine pulp grain + slow blotches) over the whole frame.
@@ -344,7 +352,7 @@ window.__ModuleLoader__.load({
     const GRAIN_BLOTCH =
       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='900' height='900' filter='url(%23b)' opacity='0.45'/%3E%3C/svg%3E\")";
     const STYLE_CSS = `
-html{zoom:${SCALE}}
+[class*="wtg9ga_root"]{font-size:15px}
 @font-face{font-family:"Parchment Song";src:local("京華老宋体"),local("KingHwa_OldSong"),local("KingHwa_OldSong Regular");unicode-range:U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:260px 260px,900px 900px;mix-blend-mode:overlay;opacity:.8}
 body[data-ds-dark-theme]::after{opacity:.6}
@@ -362,6 +370,9 @@ body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
 [class*="m2hUqa_seat"]{font-size:15px}
 [class*="m2hUqa_seatLabel"]{font-size:15px}
 [class*="rQbmCW_status"]{font-size:14px}
+[class*="rezYhW_summary"]{font-size:13px;line-height:20px}
+[class*="Ag-ohG_label"]{font-size:13px;line-height:20px}
+[class*="Ag-ohG_count"]{font-size:13px;line-height:20px}
 body .dsh-price-period{font-size:14px;height:30px;padding:0 11px}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
 [class*="K5rwea_root"]{--deliverable-fill:#eae2d2;--deliverable-hover:#dbd1bc}
