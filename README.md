@@ -87,6 +87,7 @@ plugin_manager install_bundle → <本目录绝对路径>
 - 没有全局缩放：正文以外的零碎控件比「全面 +10%」小一点，需要哪处大就单独加一条规则（每处都可控，也不会把弹层搞歪）。
 - 开着主题时，设置里的字号档位与 `Ctrl +/−` 不生效（令牌覆盖在 presenter 之后写入）。
 - **整条顶栏染色做不到**：Windows 下窗口用 `titleBarStyle:"hidden"` + `titleBarOverlay`，右侧窗口按钮区由系统绘制、颜色来自主进程 `main.js`，CSS 碰不到；强行染左侧拖拽条会在按钮处留一道接缝。
+- **三处系统绘制的东西改不到**：① 标题栏右侧的窗口按钮区（Electron `titleBarOverlay`，颜色来自主进程 `main.js`）；② 顶栏「应用 / 编辑」菜单（Electron 原生菜单模板，文案只在 `lib/main.js` 与 preload 里）；③ 文字的选区右键菜单（Chromium 原生，底色纯白 `#FFFFFF`，而 DSH 自己的菜单走 `--dsw-menu-surface-fill`，会被主题染色）。它们只跟随明暗，不跟随配色。
 - 类名选择器按**语义后缀**匹配（`[class*="_projectRow"]` 之类），DSH 换哈希前缀不失效；但组件改名就要重找。
 - 合成加粗问题：京華只有一个字重，凡是需要「真粗」的地方（工作区栏、会话标题）都换成了带真实字重的思源半粗。
 
