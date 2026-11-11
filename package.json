@@ -36,6 +36,9 @@
     "node": ">=22.19.0",
     "dsh": ">=0.2.2-rc.1"
   },
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
   "keywords": [
     "dsh",
     "dsh-plugin",

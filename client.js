@@ -301,7 +301,8 @@ window.__ModuleLoader__.load({
      * Interface chrome is NOT handled here: the sidebar root carries a literal
      * `font-size: 14px`, so token overrides reach only the parts that happen to
      * read `--dsw-font-*`, and growing chrome that way produced mixed sizes in
-     * one view. `SCALE` below zooms the whole document instead.
+     * one view. Chrome is therefore sized component by component, with the sidebar
+ * root's literal `font-size` as the lever every label inside it inherits.
      *
      * The font stack is `var(--dsh-font-family-text, "Parchment Song"), …` so a
      * list chosen in Settings → General still wins; otherwise the theme supplies
@@ -317,11 +318,7 @@ window.__ModuleLoader__.load({
     };
 
     /**
-     * Whole-document scale plus the two rules a token layer cannot express.
-     *
-     * `zoom` is the mechanism Chromium itself uses for page zoom, so layout,
-     * line heights, icons and hit targets grow together and nothing can overflow
-     * a row sized for the old font.
+     * The stylesheet carries what a token layer cannot express.
      *
      * The @font-face keeps 京華老宋体 to CJK ideographs only. The face draws its
      * full-width punctuation (「」（）) at roughly a quarter of the em box — an old
@@ -424,8 +421,8 @@ body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover
           return () => style.remove();
         }, 'parchment: document style');
       },
-      /** Test seam: palettes, pair builder, layer id, scale and stylesheet. */
-      __parchment: { SOURCE, LIGHT, DARK, TYPE, TOKENS, SCALE, STYLE_CSS, toPairs },
+      /** Test seam: palettes, pair builder, layer id and stylesheet. */
+      __parchment: { SOURCE, LIGHT, DARK, TYPE, TOKENS, STYLE_CSS, toPairs },
     };
   },
 });
