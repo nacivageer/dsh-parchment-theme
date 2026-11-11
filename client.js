@@ -712,6 +712,10 @@ body [class*="oT5lKa_frequency"]{font-size:12px;line-height:18px;color:var(--dsw
 body [class*="oT5lKa_openButton"],
 body [class*="oT5lKa_openButton"] button{font-size:14px;line-height:20px;height:32px;padding:0 12px;background:#f4edde;border-color:#cdbfa2;color:#2a2219}
 @media (hover:hover){body [class*="oT5lKa_openButton"]:hover,body [class*="oT5lKa_openButton"] button:hover{background:#e9dfcb}}
+/* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
+   fine print under a 14px header, so the quoted copy runs two steps up (16px) in
+   italic — the slant separates the notice's own words from the card's chrome. */
+body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic}
 `;
 
     /**

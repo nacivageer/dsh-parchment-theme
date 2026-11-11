@@ -400,6 +400,12 @@ assert.match(
   /\[class\*="oT5lKa_openButton"\][^{]*\{[^}]*background:#f4edde/,
   'the scheduled-task open action sits on a cream chip',
 );
+// An expanded turn-trigger prints the raw notice; it reads as body copy.
+assert.match(
+  css,
+  /\[class\*="hSzSIW_content"\]\{font-size:16px;line-height:26px;font-style:italic\}/,
+  'the expanded turn-trigger body uses 16px italic body type',
+);
 
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
