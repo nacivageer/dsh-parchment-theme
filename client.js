@@ -423,13 +423,19 @@ body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
 /* New-session hero: the headline takes the display face used by section
    titles, and the preview badge borrows the 工作区 bar's surface and ink. */
 body [class*="WOwLGG_headline"]{font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif}
-body [class*="WOwLGG_previewBadge"]{background:#8e979b;color:#26333a;border-color:#77848a}
+body [class*="WOwLGG_previewBadge"]{background:#8e979b;color:#26333a;border-color:#77848a;font-family:var(--ds-font-family-code)}
 body[data-ds-dark-theme] [class*="WOwLGG_previewBadge"]{background:#5b4a2a;color:#e7c17b;border-color:#6d5834}
 body [class*="an3WzG_crumb"]{max-width:420px}
 body [class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:600;font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復",serif}
 body [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
-body [class*="m2hUqa_seat"]{font-size:15px}
-body [class*="m2hUqa_seatLabel"]{font-size:15px}
+body [class*="m2hUqa_seat"]{font-size:17px;line-height:24px}
+body [class*="m2hUqa_seatLabel"]{font-size:17px;line-height:24px}
+/* New-session toolbar: the workspace picker, preset chip, permission trigger
+   and model picker share one rank, one step above the old 15px preset chip. */
+body [class*="_86kJGG_trigger"],
+body [class*="_86kJGG_triggerLabel"],
+body [class*="WOwLGG_workspace"],
+body [class*="WOwLGG_workspaceLabel"]{font-size:17px;line-height:24px}
 /* Two semantic accents, per the reference images: only the creator preset name
    (chip, menu row, session-header label) and only the full-access permission
    carry a colour of their own; every other label keeps the theme ink, and the
@@ -612,10 +618,10 @@ body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_omitted"]{color
    hero chips and the + command palette one step so they read with the input. */
 body [class*="GRgSLq_add"]{width:32px;height:32px}
 body [class*="GRgSLq_add"] svg{width:18px;height:18px}
-body [class*="GRgSLq_select"]{font-size:15px;line-height:22px;height:32px;padding-right:24px;background-size:14px 14px;background-position:right 6px center}
+body [class*="GRgSLq_select"]{font-size:17px;line-height:24px;height:32px;padding-right:24px;background-size:14px 14px;background-position:right 6px center}
 body [class*="GRgSLq_primary"]{width:38px;height:38px}
 body [class*="GRgSLq_primary"] svg{width:20px;height:20px}
-body [class*="GRgSLq_accessory"] button{font-size:16px;min-height:32px}
+body [class*="GRgSLq_accessory"] button{font-size:17px;min-height:32px}
 body [class*="GRgSLq_accessory"] button svg{width:18px;height:18px}
 body [class*="j99sVW_row"]{font-size:15px;gap:8px;padding:7px 9px}
 body [class*="j99sVW_badge"]{font-size:10px;line-height:12px}

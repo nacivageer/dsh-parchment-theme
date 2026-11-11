@@ -243,8 +243,13 @@ assert.match(
 // Composer chrome (tool row, hero chips, + palette) goes one step up with the
 // 18px content.
 assert.match(css, /\[class\*="GRgSLq_add"\]\{width:32px;height:32px\}/, 'the composer + button grows');
-assert.match(css, /\[class\*="GRgSLq_select"\]\{font-size:15px/, 'the composer selects grow');
-assert.match(css, /\[class\*="GRgSLq_accessory"\] button\{font-size:16px/, 'the hero chips grow');
+assert.match(css, /\[class\*="GRgSLq_select"\]\{font-size:17px/, 'the composer selects grow');
+assert.match(css, /\[class\*="GRgSLq_accessory"\] button\{font-size:17px/, 'the hero chips grow');
+assert.match(
+  css,
+  /body \[class\*="_86kJGG_trigger"\],\s*body \[class\*="_86kJGG_triggerLabel"\],\s*body \[class\*="WOwLGG_workspace"\],\s*body \[class\*="WOwLGG_workspaceLabel"\]\{font-size:17px;line-height:24px\}/,
+  'the permission and workspace pickers share the toolbar rank',
+);
 assert.match(css, /--dsh-hourglass-mask:url\("data:image\/png;base64,/, 'the hourglass mask is embedded');
 assert.match(
   css,
@@ -398,6 +403,11 @@ assert.match(
   css,
   /body\[data-ds-dark-theme\] \[class\*="WOwLGG_previewBadge"\]\{background:#5b4a2a;color:#e7c17b/,
   'the dark preview badge uses the workspace bar surface and ink',
+);
+assert.match(
+  css,
+  /\[class\*="WOwLGG_previewBadge"\]\{[^}]*font-family:var\(--ds-font-family-code\)/,
+  'the preview badge keeps the product code font, not the display face',
 );
 assert.match(
   css,
