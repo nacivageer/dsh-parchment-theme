@@ -355,8 +355,8 @@ window.__ModuleLoader__.load({
       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2048' height='2048'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0078125' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1' intercept='-0.04'/%3E%3CfeFuncG type='linear' slope='1' intercept='-0.04'/%3E%3CfeFuncB type='linear' slope='1' intercept='-0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='2048' height='2048' filter='url(%23b)' opacity='0.45'/%3E%3C/svg%3E\")";
     const STYLE_CSS = `
 [class*="wtg9ga_root"]{font-size:17px}
-[class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"京華老宋体","思源宋体 CN Medium",serif}
-[class*="wtg9ga_newSessionLabel"]{font-size:20px}
+[class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"京華老宋体","思源宋体 CN Medium",serif;font-weight:600}
+[class*="wtg9ga_newSessionLabel"]{font-size:20px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}
 [class*="wtg9ga_newSession"]{position:relative;display:flex;min-height:46px;align-items:center;justify-content:center}
 [class*="wtg9ga_newSessionShortcut"]{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
 [class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:auto;flex:none}
@@ -366,7 +366,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:214748
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
-[class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px}
+[class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}
 [class*="_sessionRow"]{height:38px}
 [class*="_sessionRow"] [class*="_title"]{font-size:16px;line-height:24px}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
