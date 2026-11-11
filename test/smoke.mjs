@@ -304,13 +304,18 @@ assert.match(
 // row ink goes a step darker; dark mode keeps the shipped values.
 assert.match(
   css,
-  /body:not\(\[data-ds-dark-theme\]\)\{--dsw-alias-file-diff-added-marker:#2f6b3a\}/,
-  'the light diff marker green is deepened',
+  /body:not\(\[data-ds-dark-theme\]\)\{--dsw-alias-file-diff-added-marker:#2f6b3a;--dsw-alias-file-diff-deleted-marker:#8e2420\}/,
+  'the light diff markers are deepened',
 );
 assert.equal(
   layer.tokens['--dsw-alias-file-diff-added-bg'].light,
   '#c2c6b1',
   'the light diff fill is lighter than the ink',
+);
+assert.equal(
+  layer.tokens['--dsw-alias-file-diff-deleted-bg'].light,
+  '#d9b9af',
+  'the light deleted fill is lighter than the ink',
 );
 assert.match(
   css,

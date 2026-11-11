@@ -115,13 +115,14 @@ window.__ModuleLoader__.load({
       '--dsw-alias-code-diff-added': '#4c7a5a14',
       '--dsw-alias-code-diff-deleted': '#a33c3114',
       /* Diff fills were matched to the mockup at #babda4 / #c1c3ae, but at body
-         size the olive blended with the serif strokes into one green block; the
-         added row now sits one step lighter than the mockup so the dark ink
-         stays separable, while the deleted row keeps the mockup value. */
+         size the tint blended with the serif strokes into one coloured block;
+         both rows now sit a step lighter than the mockup so the dark ink stays
+         separable. The markers keep their hue but go darker to stay legible on
+         the lighter fill. */
       '--dsw-alias-file-diff-added-bg': '#c2c6b1',
       '--dsw-alias-file-diff-added-gutter': '#cacdbb',
-      '--dsw-alias-file-diff-deleted-bg': '#c2a390',
-      '--dsw-alias-file-diff-deleted-gutter': '#c9b19d',
+      '--dsw-alias-file-diff-deleted-bg': '#d9b9af',
+      '--dsw-alias-file-diff-deleted-gutter': '#e0c7bc',
 
       /* ---- composer, bubbles, menus, sidebar-nav -------------------------- */
       '--dsw-specific-bubble': '#b8a987',
@@ -387,7 +388,7 @@ body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 /* Diff rows in 羊皮纸: at body size the vivid marker (#01a241) plus thin serif
    strokes on the olive fill read as a green wash. Deepen both the marker and
    the row ink so the +/numbers stay green but legible; 墨夜 is unchanged. */
-body:not([data-ds-dark-theme]){--dsw-alias-file-diff-added-marker:#2f6b3a}
+body:not([data-ds-dark-theme]){--dsw-alias-file-diff-added-marker:#2f6b3a;--dsw-alias-file-diff-deleted-marker:#8e2420}
 body:not([data-ds-dark-theme]) [class*="0cITKW_text"]{color:#17110b}
 /* Code fences: the shipped fill sat almost on the paper; use the raised card
    surface and a visible 1px frame in both palettes. */
