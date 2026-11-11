@@ -1,6 +1,6 @@
 {
   "name": "dsh-parchment-theme",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A parchment (aged-paper) theme layer for the DeepSeek Harness Web GUI: warm paper surfaces, ink-brown type, a Song-serif text stack, and a dark ink-paper counterpart that follows the system color scheme.",
   "type": "module",
   "main": "./index.js",
