@@ -363,6 +363,7 @@ body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}
 [class*="_sessionRow"]{height:38px}
 [class*="_sessionRow"] [class*="_title"]{font-size:16px;line-height:24px}
+body [class*="_sessionRow"] [class*="_time"]{font-size:13px;line-height:20px}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
 body[data-ds-dark-theme] [class*="_projectRow"]:hover{background:#322b23}
 body [class*="GAkraW_sectionHeader"]{background:#8e979b;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
@@ -415,6 +416,14 @@ body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
 body [class*="HOHHba_card"]{--changes-fill:#c8c1b4;--changes-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#2c241b;--changes-hover:#332a1f}
+/* Changed-files card: the shipped 10–13px ranks read as fine print next to the
+   18px content, so every rank inside the card goes up one step. */
+body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}
+body [class*="HOHHba_card"] [class*="HOHHba_stat"]{font-size:12px;line-height:18px}
+body [class*="HOHHba_card"] [class*="HOHHba_row"]{font-size:13px;line-height:20px}
+body [class*="HOHHba_card"] [class*="HOHHba_path"]{font-size:14px}
+body [class*="HOHHba_card"] [class*="HOHHba_toggle"]{font-size:13px;line-height:20px}
+body [class*="HOHHba_card"] [class*="HOHHba_previewPath"]{font-size:14px;line-height:20px}
 body [class*="lLdGaq_card"]{--plan-card-fill:#c8c1b4;--plan-card-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="lLdGaq_card"]{--plan-card-fill:#2c241b;--plan-card-hover:#332a1f}
 body [class*="oT5lKa_card"]{--card-fill:#c8c1b4;--card-hover:#bbb3a1}

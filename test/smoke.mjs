@@ -78,6 +78,16 @@ assert.match(
   'menus opened from Settings match the panel scale',
 );
 
+// The shipped timestamp is 10px — unreadable next to a 16px session title.
+assert.match(css, /body \[class\*="_sessionRow"\] \[class\*="_time"\]/, 'sidebar timestamps get a readable size');
+
+// The changed-files card ships 10–13px ranks; they need to sit with the body text.
+assert.match(
+  css,
+  /body \[class\*="HOHHba_card"\] \[class\*="HOHHba_path"\]/,
+  'changed-files card rows get a readable size',
+);
+
 const seam = plugin.__parchment;
 assert.ok(seam && seam.LIGHT && seam.DARK && seam.TOKENS);
 assert.equal(Object.keys(seam.TYPE).length, 4);
