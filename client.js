@@ -442,6 +442,18 @@ body [class*="AnXs9G_panel"] [class*="_stepper"]{background:var(--dsw-specific-i
    the whole control reads as one input instead of only the number box. */
 body [class*="AnXs9G_panel"] [class$="_control"]{background:var(--dsw-specific-input-major);box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2);border-radius:var(--dsw-radius-md)}
 body [class*="AnXs9G_panel"] [class$="_control"] [class*="_stepper"]{background:transparent;box-shadow:none}
+/* Dark Settings follow the user's fig3: lighter warm control surfaces, no glow. */
+body[data-ds-dark-theme] [class*="AnXs9G_panel"]{--dsw-specific-input-major:#554c44}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] button[aria-haspopup]:not(:disabled),
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] button[class*="_outline_1ulci_56"]:not(:disabled),
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] button[class*="themeCube"]:not([class*="selected"]):not(:disabled),
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] button[class*="_button"]:not([class*="_primary_"]):not([class*="_ghost_"]):not([class*="_toolbar_"]):not([class*="_icon_"]):not([class*="_outline_"]):not([class*="navCell"]):not([class*="close"]):not(:disabled),
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class*="_stepper"],
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class$="_control"],
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"]:not([class~="Wsg8iW_cardActive"]):not([class~="Wsg8iW_cardBroken"]),
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_creatorButton"]{box-shadow:none;border-color:#6a5f54}
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"],
+body[data-ds-dark-theme] [class*="AnXs9G_panel"] [class~="Wsg8iW_card"][class~="Wsg8iW_cardActive"]{background:#72664f;border-color:#8a7a5a;box-shadow:none}
 /* Account avatar: the user's wax-seal artwork is the whole icon; the DSH glyph
    underneath is hidden so the PNG's own cream user mark is the only mark. */
 body [class*="_5Qcc8a_avatar"],
@@ -497,8 +509,8 @@ body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
 body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
-body [class*="HOHHba_card"]{--changes-fill:#d2ccc2;--changes-hover:#c8c1b4;background:var(--dsw-specific-input-major);border-color:#a89a84}
-body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#332c24;--changes-hover:#3a322a;background:var(--dsw-specific-input-major);border-color:#5f5142}
+body [class*="HOHHba_card"]{--changes-fill:#d2ccc2;--changes-hover:#c8c1b4;background:#d2ccc2;border-color:#a89a84}
+body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#332c24;--changes-hover:#3a322a;background:#332c24;border-color:#5f5142}
 /* Changed-files card: the shipped 10–13px ranks read as fine print next to the
    18px content, so every rank inside the card goes up one step. */
 body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}

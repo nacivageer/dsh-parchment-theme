@@ -106,6 +106,16 @@ assert.match(css, /\[class\*="_5Qcc8a_avatar"\]\{width:32px;height:32px\}/, 'the
 assert.match(css, /\[class\*="_identity"\] \[class\*="_avatar"\]\{width:40px;height:40px\}/, 'the settings seal is 40px');
 assert.match(
   css,
+  /body\[data-ds-dark-theme\] \[class\*="AnXs9G_panel"\]\{--dsw-specific-input-major:#554c44\}/,
+  'the dark settings panel uses the fig3 control surface',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\][^{]*themeCube[^{]*selected[^{]*\{background:#72664f/,
+  'the dark selected appearance cube uses the olive fill',
+);
+assert.match(
+  css,
   /\[class\*="_5Qcc8a_avatar"\][^{]*\{[^}]*filter:drop-shadow/,
   'the wax seals get a soft outward shadow',
 );

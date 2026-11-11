@@ -43,6 +43,7 @@
 - **设置页框线**：面板内把 `--dsw-alias-border-l2/l3/l4` 与 `--dsw-alias-settings-card-stroke` 提到 20/24/30/35%（浅色）、25/30/35/40%（深色），卡片与行分隔不再糊在纸色里。
 - **深色悬浮标签**：`--dsw-alias-tooltip-bg` 深色 `#5a4d3e`（原 `#352f28` 与面板 `#302a23` 几乎同色）；`[role="tooltip"]` 另加 1px 浅边和更深的阴影。
 - **未激活按钮**：设置页与插件市场里的下拉触发器、outline 按钮（打开配置文件 / 编辑快捷键 / 安装）与未选中的外观卡片，改成 `--dsw-specific-input-major` 填充 + `--dsw-elevation-soft` 外扩阴影，和会话输入框同一套表面；hover、展开、disabled 保留各自状态。
+- **深色设置控件**：深色面板下这些未激活的下拉 / outline / stepper / 外观卡片 / 预设卡片改用 `#554c44` 面 + `#6a5f54` 边、去阴影；选中的外观卡片与预设卡片用 `#72664f` + `#8a7a5a`，贴近用户给的图 3。浅色仍走 input-major。
 - **自定义控件**：字号大小的 stepper 及其 `_control` 外层（连同 px 单位与展开箭头）与不带 primitives outline/haspopup 类的 action 按钮（`button[class*="_button"]`，如「编辑快捷键」）也补齐同一套填充与阴影；primary / ghost / toolbar / icon / nav / close 排除在外。
 - **外观已选**：选中的主题卡片用 `--dsw-specific-bubble` 填充 + `--dsw-alias-button-ghost-active-border` 暖边，不再用浅色的 module 面——否则看起来像「不可用」而不是「已激活」。
 - **Agent 预设卡片**：`Wsg8iW_card` 与「让 Agent 帮我创建预设模式」的 `Wsg8iW_creatorButton` 套用外观三张卡片的同一套表面；选中的预设卡片用 bubble 填充 + 暖边。
