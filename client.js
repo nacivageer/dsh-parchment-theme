@@ -426,8 +426,10 @@ body [class*="AnXs9G_panel"] [class*="_stepper"]{background:var(--dsw-specific-i
    the whole control reads as one input instead of only the number box. */
 body [class*="AnXs9G_panel"] [class$="_control"]{background:var(--dsw-specific-input-major);box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2);border-radius:var(--dsw-radius-md)}
 body [class*="AnXs9G_panel"] [class$="_control"] [class*="_stepper"]{background:transparent;box-shadow:none}
-/* Account page avatar: the wax seal is the backdrop; the DSH user glyph stays. */
-body [class*="AnXs9G_panel"] [class*="_identity"] [class*="_avatar"]{border-radius:0;color:#f7e8d2;background-color:transparent;background-image:${WAX_SEAL};background-position:center;background-size:contain;background-repeat:no-repeat}
+/* Account avatar: the wax seal is the backdrop; the DSH user glyph stays. The
+   sidebar account block has its own avatar class outside the settings panel. */
+body [class*="_5Qcc8a_avatar"],
+body [class*="_identity"] [class*="_avatar"]{border-radius:0;color:#f7e8d2;background-color:transparent;background-image:${WAX_SEAL};background-position:center;background-size:contain;background-repeat:no-repeat}
 /* The active appearance cube needs to read as chosen, not disabled: use the
    user-bubble fill and a warm ink edge instead of the pale module surface. */
 body [class*="AnXs9G_panel"] button[class*="themeCube"][class*="selected"]{background:var(--dsw-specific-bubble);border-color:var(--dsw-alias-button-ghost-active-border)}

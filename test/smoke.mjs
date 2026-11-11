@@ -96,6 +96,7 @@ assert.match(
   /\[class\*="_identity"\] \[class\*="_avatar"\]\{[^}]*background-image:url\("data:image\/svg\+xml/,
   'the account avatar gets a wax-seal backdrop',
 );
+assert.match(css, /\[class\*="_5Qcc8a_avatar"\]/, 'the sidebar account avatar gets the seal');
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
