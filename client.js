@@ -102,8 +102,8 @@ window.__ModuleLoader__.load({
       '--dsw-alias-state-done-primary': '#6b5b8a',
 
       /* ---- markdown, code, diffs ------------------------------------------ */
-      '--dsw-alias-markdown-code-block': '#c3bbaa',
-      '--dsw-alias-markdown-code-block-banner': '#bdb4a1',
+      '--dsw-alias-markdown-code-block': '#d2ccc2',
+      '--dsw-alias-markdown-code-block-banner': '#c8c1b5',
       '--dsw-alias-markdown-inline-code': '#b9b09c',
       '--dsw-alias-markdown-citation': '#c1b8a7',
       '--dsw-alias-markdown-tag': '#b9b09c',
@@ -237,8 +237,8 @@ window.__ModuleLoader__.load({
       '--dsw-alias-state-idle-primary': '#75684f',
       '--dsw-alias-state-done-primary': '#a695c2',
 
-      '--dsw-alias-markdown-code-block': '#28231d',
-      '--dsw-alias-markdown-code-block-banner': '#302a23',
+      '--dsw-alias-markdown-code-block': '#332c24',
+      '--dsw-alias-markdown-code-block-banner': '#3a322a',
       '--dsw-alias-markdown-inline-code': '#2a241d',
       '--dsw-alias-markdown-citation': '#2a241d',
       '--dsw-alias-markdown-tag': '#302a23',
@@ -361,6 +361,16 @@ body [class*="wtg9ga_newSessionContent"]{align-items:center;height:auto}
 [class*="wtg9ga_newSession"] svg{width:20px !important;height:20px !important;position:relative;top:-1px}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
+/* Code fences: the shipped fill sat almost on the paper; use the raised card
+   surface and a visible 1px frame in both palettes. */
+body:not([data-ds-dark-theme]) [class*="_block_7gxqk_4"],
+body:not([data-ds-dark-theme]) [class*="_card_1mqf1_1"],
+body:not([data-ds-dark-theme]) [class*="_block_15hvo_1"],
+body:not([data-ds-dark-theme]) [class*="_block_74wpx_1"]{border:1px solid #9d8f79;box-sizing:border-box}
+body[data-ds-dark-theme] [class*="_block_7gxqk_4"],
+body[data-ds-dark-theme] [class*="_card_1mqf1_1"],
+body[data-ds-dark-theme] [class*="_block_15hvo_1"],
+body[data-ds-dark-theme] [class*="_block_74wpx_1"]{border:1px solid #665646;box-sizing:border-box}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
 [class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}

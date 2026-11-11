@@ -123,6 +123,16 @@ assert.match(
   /body\[data-ds-dark-theme\] \[class\*="GAkraW_sectionHeader"\]\{background:#5b4a2a;color:#e7c17b/,
   'the dark workspace header uses the gold-on-brown palette',
 );
+assert.match(
+  css,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_block_7gxqk_4"\][^{]*\{[^}]*border:1px solid #9d8f79/,
+  'code blocks get a visible light frame',
+);
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\] \[class\*="_block_7gxqk_4"\][^{]*\{[^}]*border:1px solid #665646/,
+  'code blocks get a visible dark frame',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
