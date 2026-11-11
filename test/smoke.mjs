@@ -216,6 +216,21 @@ assert.match(
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
 
+// The shipped 新会话 glyph is a ⊕ icon in the sidebar button and the workspace
+// row; the quill artwork replaces both, painted as a mask so it follows the
+// button's ink colour and the data URI is carried once.
+assert.match(css, /--dsh-quill-mask:url\("data:image\/png;base64,/, 'the quill mask is embedded once');
+assert.match(
+  css,
+  /\[class\*="wtg9ga_newSessionContent"\]>svg\{display:none\}/,
+  'the sidebar new-session glyph is hidden',
+);
+assert.match(
+  css,
+  /\[class\*="_rowActions"\] button:not\(\[data-context-menu-trigger\]\)::before/,
+  'the workspace row new-session button paints the quill',
+);
+
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
 assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');

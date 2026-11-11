@@ -54,6 +54,7 @@
 - **账号弹层**：触发块 `_5Qcc8a_trigger` 14→18px；菜单项（设置 / 意见反馈 / 退出登录）13→16px，行高 24、最小高 40、图标 16px。菜单项是 primitives 共享组件、没有账号专属类名，所以用 `body:has(触发块[aria-expanded="true"])` 门控——只在账号弹层打开时放大，其他菜单维持原尺寸。
 - **侧栏行菜单**：工作区分组与会话行那个 ⋯ 菜单也是同一套 primitives 列表，13px 在 17px 侧栏里像小字，放大到账号弹层那一档（16px / 行高 24 / 最小高 40 / 图标 16px）。门控用 `body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"])`——只在该行自己的菜单打开时生效，`data-row-key` 是业务属性、不随构建哈希变。
 - **侧栏时间**：会话行时间 `.wnFoaW_time` 10→13px、行高 20；旁边是 16px 的会话标题，时间不再像脚注。
+- **新会话图标**：侧栏顶部按钮与工作区行的 ⊕ 换成用户自绘的羽毛笔（`assets/quill-icon.png`，原图 509×743，下采样到 180×263 后以 base64 内嵌）。做法是隐藏 `wtg9ga_newSessionContent` 与行内 `_rowActions` 非 ⋯ 按钮里的 `svg`，用 `::before` 画图、以 PNG 的 alpha 作 `mask`，所以颜色跟按钮文字走（`currentColor`）：浅色墨黑、深色浅墨。data URI 只出现一次（`--dsh-quill-mask`）。
 - **变更卡片**：`HOHHba_*` 整卡抬一档——标题 13→15、文件行 11→13、路径 12→14、增删统计 10→12、展开行 12→13、预览路径 12→14。卡片表面改代码块同色（浅 `#d2ccc2` / 深 `#332c24`），`HOHHba_preview`、`_0cITKW_root` 与展开时的 HoverCard 预览面 `_preview_bgejw_52` 也显式同色，边框加深到浅 `#a89a84` / 深 `#5f5142`。
 - **代码块**：`--dsw-alias-markdown-code-block` 浅色 `#d2ccc2` / 深色 `#332c24`（取自已编辑文件卡片的面），并给 `_block_7gxqk_4` 等代码容器加 1px 边框：浅 `#9d8f79` / 深 `#665646`。标题「代码块」用 `猫啃网故障宋` 20px 斜体，正文用 `寒蝉活宋体_復` 16px / 1.8 斜体。
 
