@@ -356,6 +356,7 @@ window.__ModuleLoader__.load({
     const STYLE_CSS = `
 [class*="wtg9ga_root"]{font-size:17px}
 [class*="wtg9ga_panelTitle"]{font-size:18px}
+[class*="wtg9ga_newSessionLabel"]{font-size:20px}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
