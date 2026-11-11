@@ -113,6 +113,11 @@ assert.match(
   /\[class\*="_6qcDqa_name"\][^{]*\{[^}]*font-family:"寒蝉活宋体_復/,
   'the settings account name uses 寒蝉活宋体_復',
 );
+assert.match(
+  css,
+  /linear-gradient\(90deg,#b78472 0%,#af804a 50%,#bb956c 90%,#bb956c 100%\)/,
+  'the dark account label gets its own gradient',
+);
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');

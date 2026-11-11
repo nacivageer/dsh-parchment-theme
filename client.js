@@ -444,6 +444,8 @@ body[data-ds-dark-theme] [class*="_identity"] [class*="_avatar"]{filter:drop-sha
    gradient overlay. Sidebar phone and the Settings account name share it. */
 body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"],
 body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復","思源宋体 CN",serif;font-weight:400;font-style:italic;letter-spacing:.02em;background-image:linear-gradient(90deg,#7e6447 0%,#5f4223 50%,#413432 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+body[data-ds-dark-theme] [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"],
+body[data-ds-dark-theme] [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{background-image:linear-gradient(90deg,#b78472 0%,#af804a 50%,#bb956c 90%,#bb956c 100%)}
 body [class*="_5Qcc8a_trigger"][data-signed-out="false"] [class*="_5Qcc8a_label"]{font-size:24px;line-height:32px}
 body [class*="_6qcDqa_identity"] [class*="_6qcDqa_name"]{font-size:22px;line-height:28px}
 /* The active appearance cube needs to read as chosen, not disabled: use the
