@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- 账号头像改用用户提供的 `assets/wax-seal.png`（45×45，内嵌 PNG data URI）；侧栏 32px、设置页 40px，隐藏 DSH user glyph，米色人形由 PNG 自带。v0.1.7 的 84 点 SVG 版不再使用，等用户确认后随下一版发布。
+
 ## v0.1.7 — 2026-11-11
 
 设置页控件补齐输入框表面，账号头像加火漆印衬底。

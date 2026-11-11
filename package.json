@@ -18,6 +18,7 @@
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
+    "assets/wax-seal.png",
     "README.md",
     "LICENSE"
   ],
