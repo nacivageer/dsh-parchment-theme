@@ -403,6 +403,15 @@ body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:15px}
    ink; raise the panel's own border ranks without touching the rest of the app. */
 body [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#4a3b2a33;--dsw-alias-border-l3:#4a3b2a3d;--dsw-alias-border-l4:#4a3b2a4d;--dsw-alias-settings-card-stroke:#4a3b2a59}
 body[data-ds-dark-theme] [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#e2dacc40;--dsw-alias-border-l3:#e2dacc4d;--dsw-alias-border-l4:#e2dacc59;--dsw-alias-settings-card-stroke:#e2dacc66}
+/* Inactive controls in the settings panel and plugin market follow the
+   composer input: raised-paper fill plus its soft outer elevation. Hover,
+   open and disabled states keep their own treatment. */
+body [class*="AnXs9G_panel"] button[aria-haspopup]:not(:disabled),
+body [class*="AnXs9G_panel"] button[class*="_outline_1ulci_56"]:not(:disabled),
+body [class*="AnXs9G_panel"] button[class*="themeCube"]:not([class*="selected"]):not(:disabled){box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2)}
+body [class*="AnXs9G_panel"] button[aria-haspopup]:not(:disabled):not(:hover):not(:active):not([aria-expanded="true"]),
+body [class*="AnXs9G_panel"] button[class*="_outline_1ulci_56"]:not(:disabled):not(:hover):not(:active),
+body [class*="AnXs9G_panel"] button[class*="themeCube"]:not([class*="selected"]):not(:disabled):not(:hover):not(:active){background:var(--dsw-specific-input-major);border-color:transparent}
 /* Menus opened from Settings are portaled to body, so the panel zoom never
    reaches them. Match the panel's effective 17px instead of the shipped 13px. */
 body:has([class*="AnXs9G_panel"]) [role="menuitem"]{font-size:17px;line-height:25px;min-height:40px}

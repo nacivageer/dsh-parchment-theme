@@ -65,6 +65,13 @@ assert.match(
   'settings cards get a visible stroke',
 );
 
+// Inactive settings controls copy the composer input's raised fill + soft elevation.
+assert.match(
+  css,
+  /button\[aria-haspopup\][^}]*box-shadow:var\(--dsw-elevation-soft\)/,
+  'settings dropdowns use the composer elevation',
+);
+
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
 

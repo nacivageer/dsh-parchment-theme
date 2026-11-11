@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.5 — 2026-11-11
+
+设置页与插件市场的未激活按钮对齐会话输入框。
+
+### 表面
+
+- 下拉触发器（`button[aria-haspopup]`）、outline 按钮（打开配置文件 / 编辑快捷键 / 安装）与未选中的外观卡片，改用 `--dsw-specific-input-major` 填充 + `--dsw-elevation-soft` 柔和外扩阴影；hover、展开、disabled 保留各自状态。
+- 深色模式同样按 token 走，不做单独分支。
+
 ## v0.1.4 — 2026-11-11
 
 深色模式悬浮标签对比度。

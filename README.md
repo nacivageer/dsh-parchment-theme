@@ -42,6 +42,7 @@
 - **插件市场页**：`body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]{zoom:1}`——`zoom` 会把 `position:fixed` 的悬浮全文一起缩放，提示漂到卡片外；这一页复位为 1，其他设置页保持放大。
 - **设置页框线**：面板内把 `--dsw-alias-border-l2/l3/l4` 与 `--dsw-alias-settings-card-stroke` 提到 20/24/30/35%（浅色）、25/30/35/40%（深色），卡片与行分隔不再糊在纸色里。
 - **深色悬浮标签**：`--dsw-alias-tooltip-bg` 深色 `#5a4d3e`（原 `#352f28` 与面板 `#302a23` 几乎同色）；`[role="tooltip"]` 另加 1px 浅边和更深的阴影。
+- **未激活按钮**：设置页与插件市场里的下拉触发器、outline 按钮（打开配置文件 / 编辑快捷键 / 安装）与未选中的外观卡片，改成 `--dsw-specific-input-major` 填充 + `--dsw-elevation-soft` 外扩阴影，和会话输入框同一套表面；hover、展开、disabled 保留各自状态。
 - **账号弹层**：触发块 `_5Qcc8a_trigger` 14→18px；菜单项（设置 / 意见反馈 / 退出登录）13→16px，行高 24、最小高 40、图标 16px。菜单项是 primitives 共享组件、没有账号专属类名，所以用 `body:has(触发块[aria-expanded="true"])` 门控——只在账号弹层打开时放大，其他菜单维持原尺寸。
 - **侧栏时间**：会话行时间 `.wnFoaW_time` 10→13px、行高 20；旁边是 16px 的会话标题，时间不再像脚注。
 - **变更卡片**：`HOHHba_*` 整卡抬一档——标题 13→15、文件行 11→13、路径 12→14、增删统计 10→12、展开行 12→13、预览路径 12→14。
