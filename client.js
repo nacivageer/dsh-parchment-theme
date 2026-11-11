@@ -521,9 +521,11 @@ body [class*="_0cITKW_root"]{background:#d2ccc2}
 body[data-ds-dark-theme] [class*="HOHHba_preview"],
 body[data-ds-dark-theme] [class*="_0cITKW_root"]{background:#332c24}
 /* The expanded diff is a HoverCard preview, not the card itself: its own
-   _preview_bgejw_52 surface used bg-layer-1 and stayed grey in light mode. */
-body [class*="_preview_bgejw_52"]:has([data-changed-files]){background:#d2ccc2}
-body[data-ds-dark-theme] [class*="_preview_bgejw_52"]:has([data-changed-files]){background:#332c24}
+   _preview_bgejw_52 surface used bg-layer-1 and stayed grey in light mode.
+   The preview content does not always carry [data-changed-files], so style
+   the preview surface directly instead of gating on the card attribute. */
+body [class*="_preview_bgejw_52"]{background:#d2ccc2}
+body[data-ds-dark-theme] [class*="_preview_bgejw_52"]{background:#332c24}
 /* Changed-files card: the shipped 10–13px ranks read as fine print next to the
    18px content, so every rank inside the card goes up one step. */
 body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}

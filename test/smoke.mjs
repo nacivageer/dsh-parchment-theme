@@ -171,8 +171,8 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="_preview_bgejw_52"\]:has\(\[data-changed-files\]\)\{background:#d2ccc2/,
-  'the floating changed-files preview uses the warm paper surface',
+  /\[class\*="_preview_bgejw_52"\]\{background:#d2ccc2/,
+  'the floating preview surface uses the warm paper surface',
 );
 assert.match(
   css,
