@@ -338,6 +338,8 @@ html{zoom:${SCALE}}
 @font-face{font-family:"Parchment Song";src:local("京華老宋体"),local("KingHwa_OldSong"),local("KingHwa_OldSong Regular");unicode-range:U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
 [class*="_projectRow"]{font-size:16px}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
+[class*="K5rwea_root"]{--deliverable-fill:#f1eada;--deliverable-hover:#e4dbc6}
+body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
 `;
 
     /**
