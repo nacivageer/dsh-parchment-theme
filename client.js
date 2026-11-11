@@ -354,14 +354,14 @@ window.__ModuleLoader__.load({
     const GRAIN_BLOTCH =
       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2048' height='2048'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0078125' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1' intercept='-0.04'/%3E%3CfeFuncG type='linear' slope='1' intercept='-0.04'/%3E%3CfeFuncB type='linear' slope='1' intercept='-0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='2048' height='2048' filter='url(%23b)' opacity='0.45'/%3E%3C/svg%3E\")";
     const STYLE_CSS = `
-[class*="wtg9ga_root"]{font-size:17px}
-[class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-weight:500}
-[class*="wtg9ga_newSessionLabel"]{font-size:20px;line-height:1;font-family:"京華老宋体",serif;font-weight:500}
-[class*="wtg9ga_newSessionContent"]{display:flex;align-items:center;line-height:1}
+body [class*="wtg9ga_root"]{font-size:17px}
+body [class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-weight:500}
+body [class*="wtg9ga_newSessionLabel"]{font-size:20px;line-height:1;font-family:"京華老宋体",serif;font-weight:500}
+body [class*="wtg9ga_newSessionContent"]{display:flex;align-items:center;line-height:1}
 [class*="wtg9ga_newSession"]:not([class*="Label"]):not([class*="Content"]):not([class*="Shortcut"]){position:relative;display:flex;min-height:46px;align-items:center;justify-content:center}
-[class*="wtg9ga_newSessionShortcut"]{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
-[class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:auto;flex:none}
-[class*="wtg9ga_newSessionContent"]{align-items:center;height:auto}
+body [class*="wtg9ga_newSessionShortcut"]{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
+body [class*="wtg9ga_newSessionLabelMask"]{display:flex;align-items:center;justify-content:center;height:auto;flex:none}
+body [class*="wtg9ga_newSessionContent"]{align-items:center;height:auto}
 [class*="wtg9ga_newSession"] svg{width:20px !important;height:20px !important;position:relative;top:-1px}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483646;background-image:${GRAIN_FINE},${GRAIN_BLOTCH};background-size:cover,cover;background-repeat:no-repeat,no-repeat;mix-blend-mode:overlay;opacity:.92}
 body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
@@ -372,77 +372,77 @@ body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 [class*="_sessionRow"] [class*="_title"]{font-size:16px;line-height:24px}
 body[data-ds-dark-theme] [class*="_projectRow"]{background:#29231c}
 body[data-ds-dark-theme] [class*="_projectRow"]:hover{background:#322b23}
-[class*="GAkraW_sectionHeader"]{background:#8e979b;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
+body [class*="GAkraW_sectionHeader"]{background:#8e979b;border-radius:8px;color:#26333a;--dsw-alias-label-secondary:#26333a;--dsw-alias-label-tertiary:#33424a;font-weight:600;font-family:"思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em}
 body[data-ds-dark-theme] [class*="GAkraW_sectionHeader"]{background:#192124;color:#a9bcc2;--dsw-alias-label-secondary:#a9bcc2;--dsw-alias-label-tertiary:#8ca0a7}
-[class*="p2k40q_hero"]{color:#a7987f}
+body [class*="p2k40q_hero"]{color:#a7987f}
 body[data-ds-dark-theme] [class*="p2k40q_hero"]{color:#6a5b46}
-[class*="an3WzG_crumb"]{max-width:420px}
-[class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:600;font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復",serif}
-[class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
-[class*="m2hUqa_seat"]{font-size:15px}
-[class*="m2hUqa_seatLabel"]{font-size:15px}
-[class*="rQbmCW_status"]{font-size:14px}
-[class*="rezYhW_summary"]{font-size:14px;line-height:21px}
+body [class*="an3WzG_crumb"]{max-width:420px}
+body [class*="an3WzG_crumbCurrent"]{font-size:21px;line-height:32px;font-weight:600;font-family:"寒蝉活宋体_復 Bold","寒蝉活宋体_復",serif}
+body [class*="dscfja_label"]{font-size:15px;height:26px;line-height:26px;max-width:220px}
+body [class*="m2hUqa_seat"]{font-size:15px}
+body [class*="m2hUqa_seatLabel"]{font-size:15px}
+body [class*="rQbmCW_status"]{font-size:14px}
+body [class*="rezYhW_summary"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_label"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_count"]{font-size:14px;line-height:21px}
 body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 [role="dialog"] [class*="_navTitle"],[aria-modal="true"] [class*="_navTitle"]{font-size:18px;line-height:26px}
 [role="dialog"] [class*="_title"],[aria-modal="true"] [class*="_title"]{font-size:16px;line-height:22px}
 [role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
-[class*="J8V0KW_title"]{font-size:18px;line-height:28px}
-[class*="J8V0KW_secondaryButton"]{font-size:16px;line-height:25px}
-[class*="J8V0KW_description"]{font-size:16px;line-height:25px}
-[class*="GAdqeW_heroDescription"]{font-size:18px;line-height:32px}
-[class*="GAdqeW_subtitle"]{font-size:18px;line-height:25px}
-[class*="GAdqeW_cardTitle"]{font-size:23px;line-height:32px}
-[class*="GAdqeW_cardDescription"]{font-size:17px;line-height:24px}
-[class*="GAdqeW_status"]{font-size:16px;line-height:25px}
-[class*="GAdqeW_action"]{font-size:16px;line-height:25px}
-[class*="AnXs9G_navTitle"]{font-size:18px;line-height:28px}
-[class*="uYSObG_title"]{font-size:16px;line-height:23px}
-[class*="uYSObG_description"]{font-size:14px;line-height:21px}
-[class*="yHUiNq_error"]{font-size:14px;line-height:21px}
-[class*="IunAUa_transitions"]{font-size:15px;line-height:23px}
-[class*="XAL7Ya_heading"]{font-size:21px}
-[class*="XAL7Ya_intro"]{font-size:15px}
-[class*="XAL7Ya_tab"]{font-size:15px;line-height:23px}
-[class*="XAL7Ya_empty"]{font-size:15px}
-[class*="XAL7Ya_presetSettingsTitle"]{font-size:17px;line-height:25px}
-[class*="jrmgQW_title"]{font-size:18px;line-height:28px}
-[class*="jrmgQW_intro"]{font-size:16px;line-height:25px}
-[class*="jrmgQW_notice"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_savedNotice"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_rowName"]{font-size:16px;line-height:25px}
-[class*="jrmgQW_rowTag"]{font-size:13px;line-height:18px}
-[class*="jrmgQW_accountStatus"]{font-size:15px;line-height:23px}
-[class*="jrmgQW_addButton"]{font-size:16px;line-height:25px}
-[class*="jrmgQW_dangerButton"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_editorTitle"]{font-size:16px;line-height:25px}
-[class*="jrmgQW_editorRoute"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_fieldLabel"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_advancedHint"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_modelCatalogTitle"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_modelEmpty"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_modelFieldLabel"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_modelReasoningValueInput"]{font-size:15px}
-[class*="jrmgQW_error"]{font-size:14px;line-height:21px}
-[class*="jrmgQW_candidateId"]{font-size:15px}
-[class*="jrmgQW_candidateEmpty"]{font-size:15px;line-height:23px}
-[class*="TLFO4W_title"]{font-size:23px;line-height:32px}
-[class*="lJo4ka_description"]{font-size:16px;line-height:28px}
-[class*="XVcKbW_copy"]{font-size:16px;line-height:28px}
-[class*="XVcKbW_error"]{font-size:16px;line-height:25px}
+body [class*="J8V0KW_title"]{font-size:18px;line-height:28px}
+body [class*="J8V0KW_secondaryButton"]{font-size:16px;line-height:25px}
+body [class*="J8V0KW_description"]{font-size:16px;line-height:25px}
+body [class*="GAdqeW_heroDescription"]{font-size:18px;line-height:32px}
+body [class*="GAdqeW_subtitle"]{font-size:18px;line-height:25px}
+body [class*="GAdqeW_cardTitle"]{font-size:23px;line-height:32px}
+body [class*="GAdqeW_cardDescription"]{font-size:17px;line-height:24px}
+body [class*="GAdqeW_status"]{font-size:16px;line-height:25px}
+body [class*="GAdqeW_action"]{font-size:16px;line-height:25px}
+body [class*="AnXs9G_navTitle"]{font-size:18px;line-height:28px}
+body [class*="uYSObG_title"]{font-size:16px;line-height:23px}
+body [class*="uYSObG_description"]{font-size:14px;line-height:21px}
+body [class*="yHUiNq_error"]{font-size:14px;line-height:21px}
+body [class*="IunAUa_transitions"]{font-size:15px;line-height:23px}
+body [class*="XAL7Ya_heading"]{font-size:21px}
+body [class*="XAL7Ya_intro"]{font-size:15px}
+body [class*="XAL7Ya_tab"]{font-size:15px;line-height:23px}
+body [class*="XAL7Ya_empty"]{font-size:15px}
+body [class*="XAL7Ya_presetSettingsTitle"]{font-size:17px;line-height:25px}
+body [class*="jrmgQW_title"]{font-size:18px;line-height:28px}
+body [class*="jrmgQW_intro"]{font-size:16px;line-height:25px}
+body [class*="jrmgQW_notice"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_savedNotice"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_rowName"]{font-size:16px;line-height:25px}
+body [class*="jrmgQW_rowTag"]{font-size:13px;line-height:18px}
+body [class*="jrmgQW_accountStatus"]{font-size:15px;line-height:23px}
+body [class*="jrmgQW_addButton"]{font-size:16px;line-height:25px}
+body [class*="jrmgQW_dangerButton"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_editorTitle"]{font-size:16px;line-height:25px}
+body [class*="jrmgQW_editorRoute"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_fieldLabel"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_advancedHint"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_modelCatalogTitle"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_modelEmpty"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_modelFieldLabel"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_modelReasoningValueInput"]{font-size:15px}
+body [class*="jrmgQW_error"]{font-size:14px;line-height:21px}
+body [class*="jrmgQW_candidateId"]{font-size:15px}
+body [class*="jrmgQW_candidateEmpty"]{font-size:15px;line-height:23px}
+body [class*="TLFO4W_title"]{font-size:23px;line-height:32px}
+body [class*="lJo4ka_description"]{font-size:16px;line-height:28px}
+body [class*="XVcKbW_copy"]{font-size:16px;line-height:28px}
+body [class*="XVcKbW_error"]{font-size:16px;line-height:25px}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]){width:42px;height:42px;background:#8d5f5b;color:#fff}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]):hover{background:#7d514d}
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
-[class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
+body [class*="K5rwea_root"]{--deliverable-fill:#c8c1b4;--deliverable-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="K5rwea_root"]{--deliverable-fill:#2c241b;--deliverable-hover:#332a1f}
-[class*="HOHHba_card"]{--changes-fill:#c8c1b4;--changes-hover:#bbb3a1}
+body [class*="HOHHba_card"]{--changes-fill:#c8c1b4;--changes-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="HOHHba_card"]{--changes-fill:#2c241b;--changes-hover:#332a1f}
-[class*="lLdGaq_card"]{--plan-card-fill:#c8c1b4;--plan-card-hover:#bbb3a1}
+body [class*="lLdGaq_card"]{--plan-card-fill:#c8c1b4;--plan-card-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="lLdGaq_card"]{--plan-card-fill:#2c241b;--plan-card-hover:#332a1f}
-[class*="oT5lKa_card"]{--card-fill:#c8c1b4;--card-hover:#bbb3a1}
+body [class*="oT5lKa_card"]{--card-fill:#c8c1b4;--card-hover:#bbb3a1}
 body[data-ds-dark-theme] [class*="oT5lKa_card"]{--card-fill:#2c241b;--card-hover:#332a1f}
 `;
 
