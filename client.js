@@ -999,6 +999,10 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="n
    is — the row menus and the single-row 屏蔽 menu have none) takes 16/22 rows,
    14/20 labels and an 18px check. */
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class~="nUhMVa_tab"]):not([data-chip]){font-size:18px;line-height:27px;min-height:34px}
+/* 筛选 sits in the sticky head's search row, not in nUhMVa_head, so it needs the
+   same statement against its own container. Direct child only: the search box's
+   own clear button lives one level down and keeps its icon size. */
+body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] > button:not([data-chip]){font-size:18px;line-height:27px;min-height:34px}
 body:not(:has([class*="AnXs9G_panel"])) [data-chip="1"]{font-size:16px;line-height:22px}
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [role="menuitem"]{font-size:16px;line-height:22px;min-height:38px}
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [class*="_label_"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
@@ -1042,6 +1046,17 @@ body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_back
 body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setProxyInput"],
 body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupRenameField"],
 body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"] select{background:#3a332b}
+/* Pager and 加载更多. Both ship on the primitives caption rank — 13–14px type, a
+   0 8px inset, and 「第 x / y 页」 at 12px — so under a wall of 16–18px cards the
+   whole strip read as small print. They take one control rank: 16px type on a
+   34px button, page numbers as 36px-wide targets, the page-count / per-page pair
+   on the same 16/22 line, and 加载更多 a step taller (38px) because it is the only
+   call to action at the end of the list. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pagerPages"] button,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pagerMeta"] button{font-size:16px;line-height:22px;min-width:36px;height:34px;min-height:34px;padding:0 12px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pageInfo"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pageEllipsis"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_loadMore"] button{font-size:16px;line-height:22px;min-height:38px;padding:0 24px}
 /* PARCHMENT-MARKET-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in

@@ -642,6 +642,35 @@ assert.match(
   /\[class~="nUhMVa_opEmpty"\]\{font-size:16px;line-height:22px;color:var\(--dsw-alias-label-secondary\)\}/,
   'the 任务 empty line takes the 摘要 rank',
 );
+// The header row (导出日志 / 任务 / 筛选) sits beside the 18px tabs, and the 筛选
+// dropdown's rows are primitives items at 13/20 behind 10–11px group labels.
+assert.match(
+  css,
+  /\[class\*="nUhMVa_head"\] button:not\(\[class~="nUhMVa_tab"\]\):not\(\[data-chip\]\)\{font-size:18px;line-height:27px;min-height:34px\}/,
+  'the market header row takes the 栏目名 rank',
+);
+// 筛选 lives in the sticky head's search row, so it needs its own statement.
+assert.match(
+  css,
+  /\[class\*="nUhMVa_tabSearchRow"\] > button:not\(\[data-chip\]\)\{font-size:18px;line-height:27px;min-height:34px\}/,
+  'the 筛选 trigger takes the 栏目名 rank inside its own row',
+);
+assert.match(
+  css,
+  /\[role="menu"\]:has\(\[class\*="_label_"\]\) \[role="menuitem"\]\{font-size:16px;line-height:22px;min-height:38px\}/,
+  'the 筛选 dropdown rows take the 摘要 rank',
+);
+// Pager and 加载更多 were caption-size under a wall of 16–18px cards.
+assert.match(
+  css,
+  /\[class~="nUhMVa_pagerPages"\] button,\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_pagerMeta"\] button\{font-size:16px;line-height:22px;min-width:36px;height:34px;min-height:34px;padding:0 12px\}/,
+  'pager page buttons take a 36×34 control size',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_loadMore"\] button\{font-size:16px;line-height:22px;min-height:38px;padding:0 24px\}/,
+  'the 加载更多 button takes a 38px control size',
+);
 assert.match(
   css,
   /\[role="menuitem"\]\[data-dsh-accent="block"\] \[class\*="_itemLabel"\]\{flex:1;text-align:center;color:var\(--dsw-alias-state-error-primary\)\}/,
