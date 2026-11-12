@@ -1146,9 +1146,9 @@ body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"] svg{filter:gra
    The chip is then pinned to the card's right edge (margin-left:auto) and both
    families are forced to one 13px so no entry's shortcut reads larger. */
 body [data-sidebar-right-guide-entry="terminal"]{font-size:14px;line-height:20px}
+body [data-sidebar-right-guide-entry] [class*="_keys_"],
 body [data-sidebar-right-guide-entry] [class*="_shortcut"],
 body [data-sidebar-right-guide-entry] [class*="_shortcutKeys"],
-body [data-sidebar-right-guide-entry] [class*="shortcutKeys"],
 body [data-sidebar-right-guide-entry] kbd{font-size:13px;line-height:20px}
 body [data-sidebar-right-guide-entry="terminal"] [class*="_shortcut"]{margin-left:auto;align-self:center}
 /* The Platform overlay's back bar (用量 / 充值 pages) ships 14px system UI type on
