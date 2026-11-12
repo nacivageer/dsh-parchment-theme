@@ -499,6 +499,15 @@ body [role="menuitem"][data-dsh-accent="creator"] [class*="_check"]{color:var(--
 body [role="menuitem"][data-dsh-accent="danger"],
 body [role="menuitem"][data-dsh-accent="danger"] [class*="_itemIcon"],
 body [role="menuitem"][data-dsh-accent="danger"] [class*="_itemLabel"]{color:var(--dsw-alias-state-error-primary)}
+/* The market card's ⋯ menu holds a single row (屏蔽). The menu box keeps a fixed
+   width and pins its label left, so the one row read as a left-aligned button.
+   Centre that row, give it the 安装 button's rank (84×34, 16px) and the 退出登录
+   red: it takes the plugin off the discover list. 取消屏蔽 keeps the normal ink —
+   it puts it back. Only a menu whose sole item is 屏蔽 shrinks to the button; a
+   menu that also holds 收藏 / 卸载 keeps its width. */
+body [role="menu"]:has([role="menuitem"][data-dsh-accent="block"]):not(:has([role="menuitem"]:not([data-dsh-accent="block"]))){min-width:0;width:max-content}
+body [role="menuitem"][data-dsh-accent="block"]{align-self:center;width:84px;height:34px;min-height:34px;padding:0;justify-content:center;font-size:16px;line-height:22px}
+body [role="menuitem"][data-dsh-accent="block"] [class*="_itemLabel"]{flex:1;text-align:center;color:var(--dsw-alias-state-error-primary)}
 body [class*="rQbmCW_status"]{font-size:14px}
 body [class*="rezYhW_label"],
 body [class*="rezYhW_secondaryLabel"]{font-size:14px;line-height:20px}
@@ -957,8 +966,16 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_av"]{font-size:10px}
    box. Scoped to the card, so the 最近收录 tiles keep their compact 24px action —
    that card is only 94px tall. */
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_card"] [class~="nUhMVa_installBtn"]{height:34px;min-height:34px;padding:0 16px;min-width:84px;font-size:16px;line-height:22px}
-body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_act"]{font-size:16px;line-height:22px}
-body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_act"] button{min-height:30px;padding:0 10px;font-size:16px;line-height:22px}
+/* The card's foot row — 收藏 / 评论 / ⋯ — is a 12–16px strip under 16px copy:
+   评论 shipped 12/18, the bookmark an unpainted 16px svg and ⋯ 14/16, so all
+   three read as fine print under the 18px name and the bookmark was hard to
+   hit. They take the 16px rank with a 28px hit box, and the bookmark glyph
+   grows with them. Scoped to the row: the 最近收录 tiles have their own. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"]{gap:10px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="nUhMVa_favoriteBtn"]{min-width:28px;min-height:28px;justify-content:center}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="nUhMVa_favoriteMark"]{width:20px;height:20px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="nUhMVa_commentsLink"]{font-size:16px;line-height:22px;min-height:28px;padding:0 4px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="nUhMVa_cardMore"]{font-size:18px;line-height:22px;min-height:28px;padding:0 4px;letter-spacing:1px}
 /* The header's own controls: 任务 / 筛选 / 导出日志 and the category pills are
    primitives that pin 13px, so they need stating by hand. The tabs are excluded
    (they have their own 18px rank above) and the pills carry data-chip. */
@@ -1294,9 +1311,11 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
     const CREATOR_LABELS = new Set(['创造模式', 'Creator mode'].map(squash));
     const FULL_ACCESS_LABELS = new Set(['完全权限', 'Full access'].map(squash));
     const DANGER_LABELS = new Set(['退出登录', 'Sign out', 'Log out'].map(squash));
+    /** The market card's single-row menu: blocking removes the plugin from 发现. */
+    const BLOCK_LABELS = new Set(['屏蔽', 'Hide'].map(squash));
     const ACCENT_ATTR = 'data-dsh-accent';
     /** Classes worth rescanning for; a mutation elsewhere never schedules a pass. */
-    const ACCENT_SCOPE = '[class*="m2hUqa_"], [class*="dscfja_"], [class*="_86kJGG_trigger"]';
+    const ACCENT_SCOPE = '[class*="m2hUqa_"], [class*="dscfja_"], [class*="_86kJGG_trigger"], [role="menuitem"]';
 
     /**
      * Mark the elements whose *text* is one of the accent labels. The document
@@ -1336,6 +1355,8 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
           mark(item, true, 'full-access');
         } else if (label !== null && DANGER_LABELS.has(labelText)) {
           mark(item, true, 'danger');
+        } else if (label !== null && BLOCK_LABELS.has(labelText)) {
+          mark(item, true, 'block');
         } else {
           mark(item, false, '');
         }

@@ -608,8 +608,33 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class~="nUhMVa_act"\] button\{min-height:30px;padding:0 10px;font-size:16px;line-height:22px\}/,
-  'the card 评论 / ⋯ row gets a 30px hit box',
+  /\[class~="nUhMVa_footActions"\] \[class~="nUhMVa_favoriteMark"\]\{width:20px;height:20px\}/,
+  'the bookmark glyph grows with its row',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_footActions"\] \[class~="nUhMVa_commentsLink"\]\{font-size:16px;line-height:22px;min-height:28px;padding:0 4px\}/,
+  'the 评论 link takes the 16px rank with a 28px hit box',
+);
+// The card ⋯ menu has a single row (屏蔽); centring, sizing and reddening it
+// needs the text itself, so the Client half tags the row with
+// data-dsh-accent="block".
+assert.match(
+  css,
+  /\[role="menuitem"\]\[data-dsh-accent="block"\]\{align-self:center;width:84px;height:34px;min-height:34px;padding:0;justify-content:center;font-size:16px;line-height:22px\}/,
+  'the single 屏蔽 menu row takes the 安装 button size',
+);
+// Only a menu whose sole item is 屏蔽 shrinks to that button; a menu that also
+// holds 收藏 / 卸载 keeps its shipped width.
+assert.match(
+  css,
+  /\[role="menu"\]:has\(\[role="menuitem"\]\[data-dsh-accent="block"\]\):not\(:has\(\[role="menuitem"\]:not\(\[data-dsh-accent="block"\]\)\)\)\{min-width:0;width:max-content\}/,
+  'a one-row 屏蔽 menu shrinks to the button width',
+);
+assert.match(
+  css,
+  /\[role="menuitem"\]\[data-dsh-accent="block"\] \[class\*="_itemLabel"\]\{flex:1;text-align:center;color:var\(--dsw-alias-state-error-primary\)\}/,
+  'the 屏蔽 row takes the sign-out red',
 );
 assert.match(
   css,
