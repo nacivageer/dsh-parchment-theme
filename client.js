@@ -48,9 +48,17 @@ window.__ModuleLoader__.load({
       '--dsw-alias-settings-card-fill': '#c8c1b4',
 
       /* ---- borders: same alphas as shipped, warm hue ---------------------- */
+      /* l2/l3 are the structural hairlines — markdown table rules (th uses l3,
+         td uses l2), the conversation header's bottom edge, turn separators.
+         At the shipped 10% / 12% they vanished on paper, so light mode carries
+         the panel's own depth; dark mode already reads and keeps its values.
+         The base ink is a paper-near taupe at a higher alpha rather than the
+         saturated #4a3b2a: the mixed colour on paper is the same, but the
+         antialiased ramp runs through a lighter ink, so the hairline reads as a
+         crease in the paper instead of a drawn line. */
       '--dsw-alias-border-l1': '#4a3b2a0a',
-      '--dsw-alias-border-l2': '#4a3b2a1a',
-      '--dsw-alias-border-l3': '#4a3b2a1f',
+      '--dsw-alias-border-l2': '#6b5f5061',
+      '--dsw-alias-border-l3': '#6b5f506b',
       '--dsw-alias-border-l4': '#4a3b2a29',
       '--dsw-alias-border-l2-darkmode-thin': '#4a3b2a1a',
 
@@ -546,10 +554,20 @@ body [class*="AnXs9G_panel"] [class*="_description"]{font-size:14px;line-height:
    "_title" nor "_desc" matches it. */
 body [class*="AnXs9G_panel"] [class*="_settingTitle"]{font-size:16px;line-height:24px;color:var(--dsw-alias-label-primary)}
 body [class*="AnXs9G_panel"] [class*="_settingDescription"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
+/* Section page headers. Each settings page draws its own title, and they ship at
+   different ranks: 内置插件 uses an 18px/600 h2 with a 13px tertiary intro, 模型
+   uses a 16px/500 title with a 14px tertiary intro. The page title takes the
+   内置插件 rank (18/600) and every page intro takes the row-description rank
+   (14/20 secondary), so the top of every section reads the same. */
+body [class*="AnXs9G_panel"] [class*="_section"]>h2,
+body [class*="AnXs9G_panel"] [class*="jrmgQW_title"]{margin:0;font-size:18px;font-weight:600;line-height:26px;color:var(--dsw-alias-label-primary)}
+body [class*="AnXs9G_panel"] [class*="_section"]>p,
+body [class*="AnXs9G_panel"] [class*="jrmgQW_intro"]{margin:0;font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
 body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:16px}
-/* Settings cards and row rules are nearly invisible at the shipped 10–16%
-   ink; raise the panel's own border ranks without touching the rest of the app. */
-body [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#4a3b2a33;--dsw-alias-border-l3:#4a3b2a3d;--dsw-alias-border-l4:#4a3b2a4d;--dsw-alias-settings-card-stroke:#4a3b2a59}
+/* Settings controls and card strokes keep their own deeper rank. Light mode no
+   longer overrides l2/l3 here — the palette carries those two at 26% / 30% for
+   the whole app, so the panel inherits them instead of restating a second pair. */
+body [class*="AnXs9G_panel"]{--dsw-alias-border-l4:#4a3b2a4d;--dsw-alias-settings-card-stroke:#4a3b2a59}
 body[data-ds-dark-theme] [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#e2dacc40;--dsw-alias-border-l3:#e2dacc4d;--dsw-alias-border-l4:#e2dacc59;--dsw-alias-settings-card-stroke:#e2dacc66}
 /* Inactive controls in the settings panel and plugin market follow the
    composer input: raised-paper fill plus its soft outer elevation. Hover,
