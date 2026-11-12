@@ -719,6 +719,18 @@ assert.match(
   /\[data-sidebar-right-guide-entry\]\{min-height:64px;padding:16px 22px;gap:16px\}/,
   'the start-page entries grow to hold the larger type',
 );
+// 新建终端 ships its title as a node with its own size; the rank is enforced inside.
+assert.match(
+  css,
+  /\[class\*="p2k40q_entryTitle"\] \*\{font-size:inherit !important/,
+  'the entry title size wins over the plugin markup inside it',
+);
+// Entry icons are full-colour SVGs from four packages; one filter unifies the ink.
+assert.match(
+  css,
+  /\[class\*="p2k40q_entryIcon"\] svg\{width:28px;height:28px;filter:grayscale\(1\) brightness\(\.46\) sepia\(\.55\) saturate\(2\.2\)\}/,
+  'the entry icons are pulled to one ink',
+);
 assert.match(
   css,
   /\[class\*="p2k40q_entryTitle"\]\{font-size:16px;line-height:22px\}/,

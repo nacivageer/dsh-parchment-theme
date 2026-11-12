@@ -1119,9 +1119,16 @@ body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_desc
    icon grows with it. */
 body [data-sidebar-right-guide-entry]{min-height:64px;padding:16px 22px;gap:16px}
 body [class*="p2k40q_entryTitle"]{font-size:16px;line-height:22px}
+/* 新建终端's title arrives as a node that carries its own smaller size, so the
+   entry-title rank is enforced on whatever the plugin renders inside it. */
+body [class*="p2k40q_entryTitle"] *{font-size:inherit !important;line-height:inherit !important;font-weight:inherit !important}
 body [class*="p2k40q_entryDescription"]{font-size:14px;line-height:20px}
 body [class*="p2k40q_entryIcon"]{width:28px;height:28px}
-body [class*="p2k40q_entryIcon"] svg{width:28px;height:28px}
+/* The entry icons are full-colour SVGs from four packages (yellow folder, blue
+   terminal, blue globe, pale grid) next to a monochrome line icon. A filter pulls
+   them to one ink — desaturate, darken, then warm it onto the brown-grey the 代码审查
+   stroke icon already uses. */
+body [class*="p2k40q_entryIcon"] svg{width:28px;height:28px;filter:grayscale(1) brightness(.46) sepia(.55) saturate(2.2)}
 /* Link / file context menus are primitives menus at 13/20 with an 11px shortcut.
    Every context menu on a page marks itself with data-context-menu; the menus the
    theme already sizes (the market's single-row 屏蔽, the filter dropdown) are not
