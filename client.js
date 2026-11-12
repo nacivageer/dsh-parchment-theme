@@ -999,9 +999,12 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="n
    is — the row menus and the single-row 屏蔽 menu have none) takes 16/22 rows,
    14/20 labels and an 18px check. */
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class~="nUhMVa_tab"]):not([data-chip]){font-size:18px;line-height:27px;min-height:34px}
-/* 筛选 sits in the sticky head's search row, not in nUhMVa_head, so it needs the
-   same statement against its own container. Direct child only: the search box's
-   own clear button lives one level down and keeps its icon size. */
+/* 筛选 sits in the sticky head's search row, not in nUhMVa_head. The Menu wrapper
+   (a _root_-style box) sits between the row and the button, so a direct-child
+   selector misses it; the trigger is reached by aria-haspopup or through that
+   wrapper. The search box's own clear button is neither, so it keeps its size. */
+body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] button[aria-haspopup],
+body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] > [class*="_root_"] > button,
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] > button:not([data-chip]){font-size:18px;line-height:27px;min-height:34px}
 body:not(:has([class*="AnXs9G_panel"])) [data-chip="1"]{font-size:16px;line-height:22px}
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [role="menuitem"]{font-size:16px;line-height:22px;min-height:38px}
@@ -1057,6 +1060,25 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pagerMeta"] button{font-
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pageInfo"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_pageEllipsis"]{font-size:16px;line-height:22px}
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_loadMore"] button{font-size:16px;line-height:22px;min-height:38px;padding:0 24px}
+/* 已安装 → 分组视图. This view shipped its own small scale — 12px view buttons on a
+   26px pill, 13px group names, 11px counts, 12px member rows — under the same 18px
+   tabs and 18px card names as the rest of the market. It takes the card ranks:
+   group name on the 栏目名 step, member name with it, counts / hints / member rows
+   on the 摘要 step, and every button in the view (列表-分组, 新建分组, 全部展开, 分配
+   到, 重命名) on the 16px / 34px control rank. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_viewBtn"]{font-size:16px;line-height:22px;height:34px;padding:0 14px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupName"]{font-size:18px;line-height:27px;font-weight:600}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupMeta"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupHint"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupOrgHint"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_ungroupedDesc"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_ungroupedState"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupMember"]{font-size:16px;line-height:22px;padding:8px 10px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupMember"] [class~="nUhMVa_nm"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_ungroupedRow"] > [class~="nUhMVa_nm"]{font-size:18px;line-height:27px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupBulkActions"] button,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupActions"] button,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupMemberAction"] button{font-size:16px;line-height:22px;min-height:34px;padding:0 16px}
 /* PARCHMENT-MARKET-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in

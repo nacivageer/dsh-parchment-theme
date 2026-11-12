@@ -649,11 +649,13 @@ assert.match(
   /\[class\*="nUhMVa_head"\] button:not\(\[class~="nUhMVa_tab"\]\):not\(\[data-chip\]\)\{font-size:18px;line-height:27px;min-height:34px\}/,
   'the market header row takes the 栏目名 rank',
 );
-// 筛选 lives in the sticky head's search row, so it needs its own statement.
+// 筛选 lives in the sticky head's search row behind the Menu's own wrapper, so the
+// trigger is reached by aria-haspopup / through that wrapper, never by the search
+// box's clear button.
 assert.match(
   css,
-  /\[class\*="nUhMVa_tabSearchRow"\] > button:not\(\[data-chip\]\)\{font-size:18px;line-height:27px;min-height:34px\}/,
-  'the 筛选 trigger takes the 栏目名 rank inside its own row',
+  /\[class\*="nUhMVa_tabSearchRow"\] button\[aria-haspopup\],\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class\*="nUhMVa_tabSearchRow"\] > \[class\*="_root_"\] > button/,
+  'the 筛选 trigger takes the 栏目名 rank behind the menu wrapper',
 );
 assert.match(
   css,
@@ -670,6 +672,22 @@ assert.match(
   css,
   /\[class~="nUhMVa_loadMore"\] button\{font-size:16px;line-height:22px;min-height:38px;padding:0 24px\}/,
   'the 加载更多 button takes a 38px control size',
+);
+// 已安装 → 分组视图 shipped 11–13px names and 12px member rows.
+assert.match(
+  css,
+  /\[class~="nUhMVa_viewBtn"\]\{font-size:16px;line-height:22px;height:34px;padding:0 14px\}/,
+  'the 列表 / 分组 switch takes the control rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_groupName"\]\{font-size:18px;line-height:27px;font-weight:600\}/,
+  'the group name takes the card-name rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_groupMember"\]\{font-size:16px;line-height:22px;padding:8px 10px\}/,
+  'the group member rows take the 摘要 rank',
 );
 assert.match(
   css,
