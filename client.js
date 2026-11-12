@@ -541,6 +541,11 @@ body [class*="AnXs9G_panel"] [class*="_title"]:has(+ [class*="_desc"]),
 body [class*="AnXs9G_panel"] [class*="_title"]:has(+ [class*="_description"]){font-size:16px;line-height:24px}
 body [class*="AnXs9G_panel"] [class*="_desc"],
 body [class*="AnXs9G_panel"] [class*="_description"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
+/* Third spelling: the shortcut row names its parts settingTitle /
+   settingDescription, with no underscore before the leaf name, so neither
+   "_title" nor "_desc" matches it. */
+body [class*="AnXs9G_panel"] [class*="_settingTitle"]{font-size:16px;line-height:24px;color:var(--dsw-alias-label-primary)}
+body [class*="AnXs9G_panel"] [class*="_settingDescription"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
 body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:16px}
 /* Settings cards and row rules are nearly invisible at the shipped 10–16%
    ink; raise the panel's own border ranks without touching the rest of the app. */
