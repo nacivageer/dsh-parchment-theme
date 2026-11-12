@@ -738,7 +738,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\[data-sidebar-right-guide-entry="terminal"\] \[class\*="_shortcut"\]\{margin-left:auto;align-self:center\}/,
+  /\[data-sidebar-right-guide-entry="terminal"\] \[class\*="_shortcut"\]\{margin-left:auto;align-self:center;margin-right:14px\}/,
   'the terminal shortcut is pinned to the card edge',
 );
 // The Platform overlay back bar takes the sidebar entry's display face.

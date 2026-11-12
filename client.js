@@ -1150,7 +1150,7 @@ body [data-sidebar-right-guide-entry] [class*="_keys_"],
 body [data-sidebar-right-guide-entry] [class*="_shortcut"],
 body [data-sidebar-right-guide-entry] [class*="_shortcutKeys"],
 body [data-sidebar-right-guide-entry] kbd{font-size:13px;line-height:20px}
-body [data-sidebar-right-guide-entry="terminal"] [class*="_shortcut"]{margin-left:auto;align-self:center}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_shortcut"]{margin-left:auto;align-self:center;margin-right:14px}
 /* The Platform overlay's back bar (用量 / 充值 pages) ships 14px system UI type on
    the secondary ink. It takes the sidebar entry's face — the display serif at 17px
    on the primary ink — so leaving a platform page reads like every other nav row. */
