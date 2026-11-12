@@ -731,6 +731,17 @@ assert.match(
   /\[data-sidebar-right-guide-entry="terminal"\] \[class\*="_title"\]\{font-size:16px;line-height:22px\}/,
   'the terminal entry title takes the entry rank',
 );
+assert.match(
+  css,
+  /\[data-sidebar-right-guide-entry="terminal"\] kbd\{font-size:14px;line-height:20px\}/,
+  'the terminal entry shortcut chip takes the 摘要 rank',
+);
+// The Platform overlay back bar takes the sidebar entry's display face.
+assert.match(
+  css,
+  /\[class\*="MKE-pW_back"\]\{font-family:"寒蝉活宋体_復"/,
+  'the platform back bar takes the display serif',
+);
 // Entry icons are full-colour SVGs from four packages; one filter unifies the ink.
 assert.match(
   css,

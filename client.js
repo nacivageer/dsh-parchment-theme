@@ -1141,6 +1141,16 @@ body [data-sidebar-right-guide-entry="terminal"] [class*="_title"]{font-size:16p
 body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"],
 body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"] svg{width:28px;height:28px}
 body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"] svg{filter:grayscale(1) brightness(.46) sepia(.55) saturate(2.2)}
+/* Its shortcut chip sits outside _text and keeps its own small size; the entry
+   gets a base size so anything without an explicit one inherits the 摘要 rank. */
+body [data-sidebar-right-guide-entry="terminal"]{font-size:14px;line-height:20px}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_key"],
+body [data-sidebar-right-guide-entry="terminal"] [class*="shortcut"],
+body [data-sidebar-right-guide-entry="terminal"] kbd{font-size:14px;line-height:20px}
+/* The Platform overlay's back bar (用量 / 充值 pages) ships 14px system UI type on
+   the secondary ink. It takes the sidebar entry's face — the display serif at 17px
+   on the primary ink — so leaving a platform page reads like every other nav row. */
+body [class*="MKE-pW_back"]{font-family:"寒蝉活宋体_復","思源宋体 CN SemiBold","思源宋体 CN",serif;font-size:17px;line-height:24px;height:32px;padding:0 10px;color:var(--dsw-alias-label-primary)}
 /* Link / file context menus are primitives menus at 13/20 with an 11px shortcut.
    Every context menu on a page marks itself with data-context-menu; the menus the
    theme already sizes (the market's single-row 屏蔽, the filter dropdown) are not
