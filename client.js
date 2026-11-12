@@ -932,6 +932,45 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_av"]{font-size:10px}
    (they have their own 18px rank above) and the pills carry data-chip. */
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class~="nUhMVa_tab"]):not([data-chip]),
 body:not(:has([class*="AnXs9G_panel"])) [data-chip="1"]{font-size:16px;line-height:22px}
+/* 高级 (备份与恢复 / 诊断): the same two ranks inside the cards, and the card
+   grows to hold them. The fields were on bg-layer-3, which is DARKER than the
+   card fill — on paper that reads as one muddy block, so the input surface moves
+   above the card instead of below it. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"]{padding:18px 20px;gap:12px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"] h3,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_diagSection"] h3{font-size:18px;line-height:27px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"] p,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setHint"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupMessage"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_diagRow"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setHint"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupMessage"]{color:var(--dsw-alias-label-secondary)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setLabel"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCheck"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"] button,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_diagSection"] button,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setSegBtn"]{font-size:16px;line-height:22px;min-height:34px}
+/* Fields. Every card on this page (本地文件 / WebDAV / GitHub Gist / 诊断) uses
+   the primitives Input, whose shipped box is bg-layer-1 — the same tone as the
+   card it sits on — with a 10% hairline and a label-dimmed placeholder, so on
+   paper the field and its hint melted into the card. The box now sits one step
+   above the card, with a real hairline, 40px height, 12px inset and the soft
+   elevation; the hint ink moves from dimmed to secondary. Checkbox/radio rows
+   keep their own drawing. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupInput"]{height:40px;padding:0 12px;border:1px solid var(--dsw-alias-border-l3);border-radius:var(--dsw-radius-md);background:var(--dsw-alias-markdown-code-block);box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupInput"] input{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupInput"] input::placeholder{color:var(--dsw-alias-label-secondary)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupInput"] svg{width:16px;height:16px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setProxyInput"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupRenameField"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"] select{font-size:16px;line-height:22px;padding:9px 12px;border:1px solid var(--dsw-alias-border-l3);border-radius:var(--dsw-radius-md);background:var(--dsw-alias-markdown-code-block)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setProxyInput"]::placeholder,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupRenameField"]::placeholder,
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupInput"] input::placeholder{color:var(--dsw-alias-label-secondary)}
+body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupInput"],
+body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_setProxyInput"],
+body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupRenameField"],
+body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_backupCard"] select{background:#3a332b}
 /* PARCHMENT-MARKET-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in

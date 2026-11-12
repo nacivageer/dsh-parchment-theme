@@ -581,6 +581,48 @@ assert.match(
   /\[class\*="nUhMVa_head"\] button:not\(\[class~="nUhMVa_tab"\]\):not\(\[data-chip\]\)/,
   'the market header controls are sized by hand',
 );
+// 高级 (备份与恢复 / 诊断): the cards keep the two ranks, grow to hold them, and
+// their fields sit on a surface above the card instead of below it.
+assert.match(
+  css,
+  /\[class~="nUhMVa_backupCard"\] h3,\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_diagSection"\] h3\{font-size:18px;line-height:27px\}/,
+  'the advanced-page card titles take the 栏目名 rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_backupCard"\] p,\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_setHint"\]/,
+  'the advanced-page card copy takes the 摘要 rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_backupInput"\]\{height:40px;padding:0 12px;border:1px solid var\(--dsw-alias-border-l3\);border-radius:var\(--dsw-radius-md\);background:var\(--dsw-alias-markdown-code-block\)/,
+  'advanced-page fields sit above the card surface with a real hairline',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_backupInput"\] input::placeholder\{color:var\(--dsw-alias-label-secondary\)\}/,
+  'advanced-page field hints use the secondary ink',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_backupInput"\] input\{font-size:16px;line-height:22px\}/,
+  'the field text inside the box is 16px',
+);
+assert.doesNotMatch(
+  css,
+  /\[class~="nUhMVa_backupCard"\] input:not\(/,
+  'the primitives Input box is styled as a whole; its inner input is never a second box',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\]:not\(:has\(\[class\*="AnXs9G_panel"\]\)\)[^{]*\[class~="nUhMVa_backupInput"\],/,
+  'the dark advanced-page field surface is declared for the same field set',
+);
+assert.match(
+  css,
+  /body\[data-ds-dark-theme\]:not\(:has\(\[class\*="AnXs9G_panel"\]\)\)[^{]*\{background:#3a332b\}/,
+  'the dark advanced-page field surface is lighter than the dark card',
+);
 assert.doesNotMatch(
   css,
   /body:not\(\[data-ds-dark-theme\]\) \[class\*="nUhMVa_/,
