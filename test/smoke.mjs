@@ -22,6 +22,7 @@ let definition;
 globalThis.window = { __ModuleLoader__: { load: (value) => { definition = value; } } };
 
 const appended = [];
+const htmlAttributes = new Map();
 globalThis.document = {
   createElement: () => ({
     dataset: {},
@@ -29,20 +30,66 @@ globalThis.document = {
     remove() { this.removed = true; },
   }),
   head: { append: (node) => appended.push(node) },
+  documentElement: {
+    setAttribute: (name, value) => htmlAttributes.set(name, value),
+    removeAttribute: (name) => htmlAttributes.delete(name),
+  },
+};
+
+// The preference store reads Storage; the runner has no browser window, so a
+// Map-backed double stands in and also proves the write path.
+const storage = new Map();
+globalThis.localStorage = {
+  getItem: (key) => (storage.has(key) ? storage.get(key) : null),
+  setItem: (key, value) => storage.set(key, String(value)),
 };
 
 await import('data:text/javascript;base64,' + Buffer.from(source, 'utf8').toString('base64'));
 
 assert.equal(definition?.id, 'dsh-parchment-theme', 'module never registered itself');
 
-const plugin = definition.factory();
-assert.deepEqual(plugin.inject, ['theme'], 'the layer needs the theme service');
+// The Client half draws its preference rows with React but renders nothing at
+// load time, so the seam only needs the two hooks the rows call.
+const reactStub = {
+  createElement: () => null,
+  useSyncExternalStore: (_subscribe, getSnapshot) => getSnapshot(),
+};
+const plugin = definition.factory((name) => {
+  if (name === 'react') return reactStub;
+  if (name === '@deepseek-ai/dsh-client-ui-primitives') return { Switch: () => null };
+  throw new Error(`unexpected module request: ${name}`);
+});
+assert.deepEqual(
+  plugin.inject,
+  ['theme'],
+  'the token layer depends only on the theme service — the UI seats are requested lazily',
+);
 
 let layer;
 const disposers = [];
+const dictionaries = [];
+const registrations = [];
+const seats = [];
+// The real bundle is `immediately: true`, so the settings/header seats are
+// requested through ctx.inject instead of a hard `inject` edge; the fake here
+// hands them over immediately, the way Cordis would once they exist.
+const seat = {
+  effect: (fn) => { disposers.push(fn()); },
+  locale: { register: (ns, dict) => { dictionaries.push({ ns, dict }); return () => {}; } },
+  slots: {
+    inject: (name, factory) => { factory(); return () => {}; },
+    register: (options, component) => { registrations.push({ options, component }); return () => {}; },
+  },
+  remote: { session: { openWorkspacePath: async () => ({ ok: true }) } },
+};
 plugin.apply({
   effect: (fn) => { disposers.push(fn()); },
   theme: { overrideTokens: (id, tokens) => { layer = { id, tokens }; return () => {}; } },
+  inject: (deps, callback) => {
+    seats.push(deps);
+    callback(seat);
+    return { dispose: () => {} };
+  },
 });
 
 assert.equal(layer?.id, 'dsh-parchment-theme');
@@ -63,10 +110,14 @@ const css = appended[0].textContent;
 // fixed-position hover tooltips away from the card they belong to.
 const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, '');
 const zoomRules = [...cssNoComments.matchAll(/([^{}]+)\{[^}]*zoom\s*:/g)].map((m) => m[1].trim());
-assert.deepEqual(zoomRules, [
-  'body [class*="AnXs9G_panel"]',
-  'body:has([class*="AnXs9G_panel"] :is([class*="nUhMVa_root"],[data-plugin-tab])) [class*="AnXs9G_panel"]',
-], 'zoom stays on the settings modal, except on the plugin market page');
+assert.deepEqual(
+  zoomRules,
+  [
+    'body [class*="AnXs9G_panel"]',
+    'body:has([class*="AnXs9G_panel"] :is([class*="nUhMVa_root"],[data-plugin-tab])) [class*="AnXs9G_panel"] [role="tooltip"]',
+  ],
+  'every Settings page keeps one zoom; only the plugin market bubble cancels it',
+);
 
 // Settings cards and row rules need a visible stroke on paper.
 assert.match(
@@ -243,12 +294,14 @@ assert.match(
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
-// An unpositioned tooltip (left/top still 0px) lands on the sidebar's 新会话
-// button; nothing legitimate sits at the viewport origin.
-assert.match(
+// The unpositioned-tooltip guard was removed on purpose: 0.2.2 renders the
+// stuck bubble at coordinates that are not 0px, so the CSS never matched while
+// still suggesting the case was handled. The fix belongs in the tooltip
+// component; keeping a dead selector here would read as coverage.
+assert.doesNotMatch(
   css,
-  /body \[role="tooltip"\]:is\(\[style\*="left: 0px"\]/,
-  'an unpositioned tooltip is suppressed instead of covering the sidebar',
+  /\[role="tooltip"\][^{]*\{[^}]*display:none/,
+  'no CSS guard pretends to cover the stuck tooltip',
 );
 
 // The shipped 新会话 glyph is a ⊕ icon in the sidebar button and the workspace
@@ -560,5 +613,57 @@ assert.match(
 const seam = plugin.__parchment;
 assert.ok(seam && seam.LIGHT && seam.DARK && seam.TOKENS);
 assert.equal(Object.keys(seam.TYPE).length, 4);
+
+// ---- preference switches (Settings → General) -------------------------------
+// Defaults mirror the shipped app: the 0.2.2 whale stays on, the folder button
+// 0.2.2 removed stays off, so installing the theme changes no behaviour until
+// the user flips a switch.
+assert.deepEqual(
+  { ...seam.PREF_DEFAULTS },
+  { homeWhale: true, openFolder: false },
+  'preference defaults follow the shipped app',
+);
+assert.equal(htmlAttributes.has(seam.HIDE_WHALE_ATTR), false, 'a fresh load hides nothing');
+assert.match(
+  css,
+  /html\[data-parchment-hide-whale\] \[data-home-whale\]\{display:none\}/,
+  'the whale rule is opt-in behind the attribute',
+);
+assert.match(css, /\.dsh-parchment-switch\[data-on\]\{background:#8a7a5a/, 'the switch draws its on state');
+assert.match(css, /\.dsh-parchment-openFolder\{/, 'the folder shortcut keeps icon-button metrics');
+
+// Toggling the whale rewrites <html> (no reload) and persists the choice.
+seam.setPref('homeWhale', false);
+assert.equal(htmlAttributes.get(seam.HIDE_WHALE_ATTR), '', 'turning the whale off marks <html>');
+assert.deepEqual(JSON.parse(storage.get(seam.PREF_KEY)), { homeWhale: false, openFolder: false });
+seam.setPref('homeWhale', true);
+assert.equal(htmlAttributes.has(seam.HIDE_WHALE_ATTR), false, 'turning it back on removes the mark');
+
+// A stored value survives a reload; a corrupt one falls back to defaults.
+storage.set(seam.PREF_KEY, JSON.stringify({ homeWhale: false, openFolder: true }));
+seam.loadPrefs(true);
+assert.deepEqual({ ...seam.snapshotPrefs() }, { homeWhale: false, openFolder: true }, 'stored preferences load');
+storage.set(seam.PREF_KEY, 'not json');
+seam.loadPrefs(true);
+assert.deepEqual({ ...seam.snapshotPrefs() }, { homeWhale: false, openFolder: true }, 'a corrupt value keeps the last good state');
+
+// Both rows are General-section entries; the shortcut is a session utility.
+assert.deepEqual(
+  registrations.map((entry) => [entry.options.name, entry.options.id, entry.options.order]),
+  [
+    ['settings.general.item', 'parchment-home-whale', 30],
+    ['settings.general.item', 'parchment-open-folder', 31],
+    ['conversation.session.header.utilities', 'parchment-open-folder', -10],
+  ],
+  'the two rows and the header shortcut register where expected',
+);
+assert.ok(
+  registrations.every((entry) => typeof entry.component === 'function'),
+  'every registration carries a render function',
+);
+assert.deepEqual(seats, [['slots', 'locale']], 'the UI seats are requested lazily, not as hard inject edges');
+assert.equal(dictionaries.length, 1, 'one dictionary registration');
+assert.ok(dictionaries[0].dict.zh['setting.whale.title'], 'the whale row has zh copy');
+assert.ok(dictionaries[0].dict.en['setting.folder.desc'], 'the folder row has en copy');
 
 console.log(`smoke ok: ${names.length} tokens, stylesheet ${css.length} chars`);

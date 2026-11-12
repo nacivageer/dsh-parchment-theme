@@ -18,7 +18,9 @@
 
 window.__ModuleLoader__.load({
   id: 'dsh-parchment-theme',
-  factory() {
+  factory(require) {
+    const React = require('react');
+
     /** Layer identity; also what the Theme inspector shows as this layer's origin. */
     const SOURCE = 'dsh-parchment-theme';
 
@@ -493,12 +495,16 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 [role="dialog"] [class*="_description"],[aria-modal="true"] [class*="_description"]{font-size:14px;line-height:20px}
 
 body [class*="AnXs9G_panel"]{zoom:1.15}
-/* The zoom scales fixed-position tooltips too, so the plugin market's
-   hover-to-read bubble drifts away from its card. Drop the zoom on that page.
-   Two markers: dshmarket's page root (nUhMVa, a build hash of that plugin, still
-   present in 1.73.19) and the core market page's tabs (data-plugin-tab, added in
-   0.2.2). Either one means the market is on screen. */
-body:has([class*="AnXs9G_panel"] :is([class*="nUhMVa_root"],[data-plugin-tab])) [class*="AnXs9G_panel"]{zoom:1}
+/* One zoom for every Settings page. The plugin market used to opt out
+   (zoom:1) because the zoom also scales a fixed-position tooltip, and its
+   hover-to-read bubble then drifted from the card. Opting out made that page
+   visibly smaller than the rest, which reads as the window shrinking when you
+   switch sections. The page keeps the zoom now; a bubble that renders inside
+   the zoomed panel cancels the scale locally, and one portaled outside the
+   panel is untouched either way. Markers: dshmarket's page root (nUhMVa, a
+   build hash of that plugin, still present in 1.73.19) and the core market
+   page's tabs (data-plugin-tab, added in 0.2.2). */
+body:has([class*="AnXs9G_panel"] :is([class*="nUhMVa_root"],[data-plugin-tab])) [class*="AnXs9G_panel"] [role="tooltip"]{zoom:0.8696}
 body [class*="AnXs9G_triggerRow"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
 /* Settings nav: the main sidebar's display face and rank. The panel's 1.15 zoom
@@ -513,8 +519,29 @@ body [class*="AnXs9G_panel"] button,
 body [class*="AnXs9G_panel"] input,
 body [class*="AnXs9G_panel"] select,
 body [class*="AnXs9G_panel"] textarea{font-size:15px}
-body [class*="AnXs9G_panel"] [class*="_field_"] [class*="_label_"]{font-size:15px}
-body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:15px}
+/* One row rank for the whole Settings column. The shipped rows arrive in two
+   unrelated systems — schema-form fields (13px label + 12px tertiary hint) and
+   hand-built rows (14px title + 12px descriptor) — plus the theme's own 16/14
+   preference rows, so the same column read as three sizes and two inks. Every
+   row title is lifted to the preference rows' 16/24 primary and every row hint
+   to 14/20 secondary; form hints carry the field scope so an unrelated hint
+   elsewhere in the panel keeps its size. */
+/* Two class-name spellings ship in the same panel: the settings package emits
+   "_field_181ew_3" (name first) while feature packages emit "_1jfq5W_title"
+   (hash first), so every selector here matches on the name prefix only — a
+   trailing underscore silently missed the permission row and the shortcut row. */
+body [class*="AnXs9G_panel"] [class*="_field"] [class*="_label"]{font-size:16px;line-height:24px;font-weight:400}
+body [class*="AnXs9G_panel"] [class*="_field"] [class*="_hint"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
+body [class*="AnXs9G_panel"] [class*="_field"] [class*="_help"]{font-size:14px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+/* Hand-built rows: title directly above its descriptor. Two descriptor class
+   spellings ship (desc in the permission row, description in the session-log and
+   channel rows), and the sibling test keeps card titles — which have neither —
+   on their shipped rank. */
+body [class*="AnXs9G_panel"] [class*="_title"]:has(+ [class*="_desc"]),
+body [class*="AnXs9G_panel"] [class*="_title"]:has(+ [class*="_description"]){font-size:16px;line-height:24px}
+body [class*="AnXs9G_panel"] [class*="_desc"],
+body [class*="AnXs9G_panel"] [class*="_description"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
+body [class*="AnXs9G_panel"] [class*="_toggleRow"]{font-size:16px}
 /* Settings cards and row rules are nearly invisible at the shipped 10–16%
    ink; raise the panel's own border ranks without touching the rest of the app. */
 body [class*="AnXs9G_panel"]{--dsw-alias-border-l2:#4a3b2a33;--dsw-alias-border-l3:#4a3b2a3d;--dsw-alias-border-l4:#4a3b2a4d;--dsw-alias-settings-card-stroke:#4a3b2a59}
@@ -628,12 +655,12 @@ body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>spa
 /* Dark tooltips float over brown panels; a hairline edge and a deeper shadow
    keep the bubble from melting into the card behind it. */
 body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:0 8px 24px #00000066}
-/* The primitives tooltip is position:fixed and gets its left/top written by JS
-   after measuring the anchor. When that write never lands (anchor re-rendered
-   mid-hover, e.g. while switching sessions) the bubble stays at the viewport
-   origin and covers the sidebar's 新会话 button. Nothing legitimately sits at
-   (0,0), so drop that unpositioned state instead of showing it in the corner. */
-body [role="tooltip"]:is([style*="left: 0px"],[style*="left:0px"]):is([style*="top: 0px"],[style*="top:0px"]){display:none}
+/* An unpositioned primitives tooltip (JS never wrote its left/top, so the bubble
+   stays at the viewport origin over the sidebar's 新会话 button) is a DSH bug,
+   not a styling one. A CSS guard keyed on left/top being exactly 0px used to
+   live here; 0.2.2 renders the stuck bubble at coordinates that are not 0, so
+   the guard stopped matching anything and only suggested the case was covered.
+   Removed deliberately: the fix belongs upstream, in the tooltip component. */
 /* Sidebar row menus (workspace ⋯, session ⋯) are the shared primitives list the
    account popup uses, but ship at 13px — fine print on a 17px sidebar. Size
    them only while the row's own trigger is open, so menus elsewhere keep the
@@ -760,6 +787,38 @@ body[data-ds-dark-theme] [class*="oT5lKa_openButton"] button{background:#564f47;
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */
 body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic}
+/* 0.2.2 paints a decorative whale on the blank home as a canvas below the
+   transcript. Hiding it is an opt-in preference, so the attribute is only
+   written when the switch is off and the shipped home is untouched otherwise. */
+html[data-parchment-hide-whale] [data-home-whale]{display:none}
+/* Preference rows reuse the shipped Enter-behavior row geometry, so the General
+   column keeps one rhythm; the switch is drawn here because the settings shell
+   ships no switch primitive. */
+/* Preference rows match the settings panel's own ranks, measured in the live
+   panel rather than taken from UploadRow's module CSS: compared side by side with
+   性能与用量 / 在上传 Session Log / 更新渠道, a 14/12 block rendered ~14% small
+   while the primitives Switch beside it matched exactly — so the shipped rows
+   draw their type from the panel's content scale (16/14 here), not from the 14/12
+   in their own stylesheet. Both switches being identical is what pins the gap to
+   the type scale rather than to the panel zoom. */
+.dsh-parchment-setting{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0;border-bottom:.5px solid var(--dsw-alias-border-l2)}
+.dsh-parchment-settingText{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.dsh-parchment-settingTitle{font-size:16px;font-weight:400;line-height:24px;color:var(--dsw-alias-label-primary)}
+.dsh-parchment-settingDesc{font-size:14px;font-weight:400;line-height:20px;color:var(--dsw-alias-label-secondary)}
+/* Drawn fallback for a module table without primitives — sized to the shipped
+   Switch so the column still reads as one control family. */
+.dsh-parchment-switch{position:relative;flex:none;width:36px;height:20px;padding:0;border:1px solid var(--dsw-alias-border-l3);border-radius:999px;background:var(--dsw-alias-bg-layer-2);cursor:pointer;transition:background-color .16s ease,border-color .16s ease}
+.dsh-parchment-switch[data-on]{background:#8a7a5a;border-color:#8a7a5a}
+body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;border-color:#a08c62}
+.dsh-parchment-switchThumb{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--dsw-alias-label-tertiary);transition:transform .16s ease,background-color .16s ease}
+.dsh-parchment-switch[data-on] .dsh-parchment-switchThumb{transform:translateX(16px);background:#fdf9f0}
+.dsh-parchment-switch:focus-visible{outline:2px solid var(--dsw-alias-label-primary);outline-offset:2px}
+/* Session header: the folder shortcut that 0.2.2 moved into the ⋯ menu. It sits
+   in the utilities seat beside the price chip and keeps the shipped icon-button
+   metrics (26px hit area, label ink secondary until hover). */
+.dsh-parchment-openFolder{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;margin:0 2px;padding:0;border:none;border-radius:6px;background:transparent;color:var(--dsw-alias-label-secondary);cursor:pointer}
+@media (hover:hover){.dsh-parchment-openFolder:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}}
+.dsh-parchment-openFolder svg{display:block;width:16px;height:16px}
 `;
 
     /**
@@ -785,6 +844,200 @@ body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic
     }
 
     const TOKENS = toPairs({ ...LIGHT, ...TYPE }, { ...DARK, ...TYPE });
+
+    /* ---- preferences: two opt-in switches in Settings → General --------------
+       Both are interface choices that have nothing to do with the palette, so
+       they live in the General column as their own rows instead of a page.
+       Defaults mirror the shipped app: the home whale stays on (0.2.2 paints
+       it) and the folder shortcut stays off (0.2.2 does not, so a fresh install
+       gains no button it did not have). Only the Client half exists, so the
+       store is localStorage — no Host call, nothing to keep in sync. */
+
+    /** localStorage key; a missing or corrupt value falls back to defaults. */
+    const PREF_KEY = 'dsh-parchment-theme.preferences';
+    const PREF_DEFAULTS = Object.freeze({ homeWhale: true, openFolder: false });
+    /** Written on <html> only while the whale is hidden, so the shipped home is untouched. */
+    const HIDE_WHALE_ATTR = 'data-parchment-hide-whale';
+
+    let prefs = PREF_DEFAULTS;
+    let prefsLoaded = false;
+    const prefListeners = new Set();
+    /** The lazily-injected UI context; the folder button lives at module scope, so it cannot close over apply's ctx. */
+    let folderSeat = null;
+
+    const snapshotPrefs = () => prefs;
+    const subscribePrefs = (listener) => {
+      prefListeners.add(listener);
+      return () => prefListeners.delete(listener);
+    };
+
+    function loadPrefs(force = false) {
+      if (prefsLoaded && !force) return;
+      prefsLoaded = true;
+      try {
+        const raw = globalThis.localStorage?.getItem(PREF_KEY);
+        if (raw === null || raw === undefined) return;
+        const parsed = JSON.parse(raw);
+        if (parsed !== null && typeof parsed === 'object') {
+          prefs = {
+            homeWhale: parsed.homeWhale === undefined ? PREF_DEFAULTS.homeWhale : parsed.homeWhale === true,
+            openFolder: parsed.openFolder === undefined ? PREF_DEFAULTS.openFolder : parsed.openFolder === true,
+          };
+        }
+      } catch {
+        // Storage disabled or the value is not JSON: keep the shipped defaults.
+      }
+    }
+
+    function writePrefs() {
+      try {
+        globalThis.localStorage?.setItem(PREF_KEY, JSON.stringify(prefs));
+      } catch {
+        // Private mode or a full quota: the switch still applies for this page life.
+      }
+    }
+
+    /** Mirror the whale choice onto <html>; removing the attribute restores the shipped home. */
+    function applyPrefs() {
+      const root = globalThis.document?.documentElement;
+      if (root === null || root === undefined) return;
+      if (prefs.homeWhale) root.removeAttribute(HIDE_WHALE_ATTR);
+      else root.setAttribute(HIDE_WHALE_ATTR, '');
+    }
+
+    function setPref(name, value) {
+      if (prefs[name] === value) return;
+      prefs = { ...prefs, [name]: value };
+      writePrefs();
+      applyPrefs();
+      for (const listener of prefListeners) listener();
+    }
+
+    /** Subscribe a component to the preference snapshot. */
+    function usePrefs() {
+      return React.useSyncExternalStore(subscribePrefs, snapshotPrefs, snapshotPrefs);
+    }
+
+    const h = React.createElement;
+
+    /** The shipped switch; null only when the module table does not expose primitives. */
+    let PrimitivesSwitch = null;
+    try {
+      PrimitivesSwitch = require('@deepseek-ai/dsh-client-ui-primitives')?.Switch ?? null;
+    } catch {
+      PrimitivesSwitch = null;
+    }
+
+    /**
+     * One preference row. The shipped General rows pair a 14/12px label block
+     * with the primitives `Switch`, so this row uses the same component when the
+     * module table exposes it — a drawn stand-in would be a different size and
+     * read as a foreign control next to 在上传 Session Log / 更新渠道. The drawn
+     * fallback only exists for a module table without primitives.
+     */
+    function PreferenceRow({ title, description, checked, onChange }) {
+      const control = PrimitivesSwitch
+        ? h(PrimitivesSwitch, { checked, label: title, onChange })
+        : h('button', {
+          type: 'button',
+          role: 'switch',
+          'aria-checked': checked ? 'true' : 'false',
+          className: 'dsh-parchment-switch',
+          'data-on': checked ? '' : undefined,
+          onClick: () => { onChange(!checked); },
+        }, h('span', { className: 'dsh-parchment-switchThumb', 'aria-hidden': 'true' }));
+      return h('div', { className: 'dsh-parchment-setting' },
+        h('div', { className: 'dsh-parchment-settingText' },
+          h('div', { className: 'dsh-parchment-settingTitle' }, title),
+          h('div', { className: 'dsh-parchment-settingDesc' }, description)),
+        control);
+    }
+
+    /** General → the home whale decoration. */
+    function HomeWhaleSetting({ t }) {
+      const state = usePrefs();
+      return h(PreferenceRow, {
+        title: t('setting.whale.title'),
+        description: t('setting.whale.desc'),
+        checked: state.homeWhale,
+        onChange: (next) => { setPref('homeWhale', next); },
+      });
+    }
+
+    /** General → the session-header folder shortcut. */
+    function OpenFolderSetting({ t }) {
+      const state = usePrefs();
+      return h(PreferenceRow, {
+        title: t('setting.folder.title'),
+        description: t('setting.folder.desc'),
+        checked: state.openFolder,
+        onChange: (next) => { setPref('openFolder', next); },
+      });
+    }
+
+    /** Outlined folder, drawn inline so the button never depends on a primitive build hash. */
+    function FolderIcon() {
+      return h('svg', { viewBox: '0 0 16 16', width: 16, height: 16, fill: 'none', 'aria-hidden': 'true' },
+        h('path', {
+          d: 'M2 4.6A1.6 1.6 0 0 1 3.6 3h2.06c.42 0 .82.17 1.12.47l.74.74c.3.3.7.47 1.12.47h3.76A1.6 1.6 0 0 1 14 6.28v5.12A1.6 1.6 0 0 1 12.4 13H3.6A1.6 1.6 0 0 1 2 11.4V4.6Z',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          strokeLinejoin: 'round',
+        }));
+    }
+
+    /** Ask the Host desktop to reveal the folder; silently does nothing without a desktop bridge. */
+    function revealWorkspace(path) {
+      const remote = folderSeat?.remote?.session;
+      const open = remote?.openWorkspacePath;
+      if (typeof open !== 'function') return;
+      try {
+        const result = open.call(remote, { path, action: 'reveal' });
+        if (result !== null && typeof result?.catch === 'function') result.catch(() => {});
+      } catch {
+        // The Host refused the call; the menu entry in ⋯ remains the fallback.
+      }
+    }
+
+    /**
+     * Session-header folder shortcut. Registered unconditionally and renders
+     * null while the preference is off — re-registering the slot on every
+     * toggle would churn the header's registration ledger.
+     */
+    function OpenFolderButton({ sessionId, useSessions, t }) {
+      const state = usePrefs();
+      const cwd = useSessions((sessions) => (
+        sessionId === undefined ? undefined : sessions.byId[sessionId]?.cwd
+      ));
+      if (!state.openFolder || cwd === undefined || cwd === null || cwd === '') return null;
+      const label = t('openFolder.hint');
+      return h('button', {
+        type: 'button',
+        className: 'dsh-parchment-openFolder',
+        title: label,
+        'aria-label': label,
+        onClick: () => { revealWorkspace(cwd); },
+      }, h(FolderIcon));
+    }
+
+    /** Shop copy lives in locale/*.json; runtime copy is carried here like the accent labels. */
+    const NS = 'parchment';
+    const PREF_COPY = {
+      en: {
+        'setting.whale.title': 'Home whale animation',
+        'setting.whale.desc': 'Clicking blank space on a New Session page plays the whale spelled out in code lettering. Turn it off to drop that decoration.',
+        'setting.folder.title': 'Open workspace folder button',
+        'setting.folder.desc': 'Puts a folder button in the session title bar that opens the current workspace in the system file manager. DSH 0.2.2 moved that entry into the ⋯ menu; this restores a one-click shortcut.',
+        'openFolder.hint': 'Open workspace folder',
+      },
+      zh: {
+        'setting.whale.title': '首页鲸鱼动画',
+        'setting.whale.desc': '新会话页的空白处被点击时，会播放一只由代码文字拼成的鲸鱼。关掉后空白处不再出现这层装饰。',
+        'setting.folder.title': '打开工作区文件夹按钮',
+        'setting.folder.desc': '在会话标题栏右侧加一个文件夹按钮，用系统文件资源管理器打开当前工作区。DSH 0.2.2 把这个入口收进了「⋯」菜单，打开后这里补回一个直达按钮。',
+        'openFolder.hint': '在文件资源管理器中打开工作区',
+      },
+    };
 
     /** The labels that carry an accent ink, in the app's zh and en copy. */
     const squash = (value) => value.replace(/\s+/g, '');
@@ -842,6 +1095,15 @@ body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic
     return {
       inject: ['theme'],
       apply(ctx) {
+        // The palette is the product; the two preference switches are extras.
+        // Anything that can fail here must not take the token layer with it, so
+        // the store and the lazily-injected seats are both fault-isolated.
+        try {
+          loadPrefs();
+          applyPrefs();
+        } catch (error) {
+          console.warn(`[${SOURCE}] preferences unavailable; theme continues`, error);
+        }
         ctx.effect(
           () => ctx.theme.overrideTokens(SOURCE, TOKENS),
           'parchment: token layer',
@@ -891,9 +1153,58 @@ body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic
           observer.observe(document.body, { childList: true, subtree: true, characterData: true });
           return () => observer.disconnect();
         }, 'parchment: accent marks');
+        // The settings and header seats arrive with the UI services. They are
+        // requested lazily instead of in `inject` because this bundle is
+        // `immediately: true` (stage-one prefetch): a hard dependency on a
+        // service that materializes later would hold the whole plugin, and a
+        // throw inside apply would take the token layer down with it. The theme
+        // must survive whichever of those services is missing.
+        ctx.effect(() => {
+          let fiber = null;
+          try {
+            fiber = ctx.inject(['slots', 'locale'], (seat) => {
+              folderSeat = seat;
+              // Two preference rows in Settings → General (scope root, so no page
+              // of their own: both are one switch, and the General column is where
+              // the shipped preference rows live).
+              seat.effect(() => seat.locale.register(NS, PREF_COPY), 'parchment: preference copy');
+              seat.effect(() => seat.slots.inject('settings.general.item', () => seat.slots.register({
+                name: 'settings.general.item',
+                id: 'parchment-home-whale',
+                order: 30,
+                locale: NS,
+              }, HomeWhaleSetting)), 'parchment: whale preference row');
+              seat.effect(() => seat.slots.inject('settings.general.item', () => seat.slots.register({
+                name: 'settings.general.item',
+                id: 'parchment-open-folder',
+                order: 31,
+                locale: NS,
+              }, OpenFolderSetting)), 'parchment: folder preference row');
+              // The shortcut rides the session utilities seat next to the price
+              // chip; it renders nothing while the preference is off.
+              seat.effect(() => seat.slots.inject('conversation.session.header.utilities', () => seat.slots.register({
+                name: 'conversation.session.header.utilities',
+                id: 'parchment-open-folder',
+                order: -10,
+                locale: NS,
+              }, OpenFolderButton)), 'parchment: open-folder button');
+            });
+          } catch (error) {
+            console.warn(`[${SOURCE}] settings seats unavailable; theme continues`, error);
+          }
+          return () => {
+            const done = fiber?.dispose?.();
+            if (done !== null && typeof done?.catch === 'function') done.catch(() => {});
+            folderSeat = null;
+          };
+        }, 'parchment: preference seats');
       },
-      /** Test seam: palettes, pair builder, layer id, stylesheet and the accent painter. */
-      __parchment: { SOURCE, LIGHT, DARK, TYPE, TOKENS, STYLE_CSS, toPairs, paintAccents },
+      /** Test seam: palettes, pair builder, layer id, stylesheet, the accent painter and the preference store. */
+      __parchment: {
+        SOURCE, LIGHT, DARK, TYPE, TOKENS, STYLE_CSS, toPairs, paintAccents,
+        PREF_KEY, PREF_DEFAULTS, HIDE_WHALE_ATTR,
+        snapshotPrefs, subscribePrefs, loadPrefs, setPref, applyPrefs,
+      },
     };
   },
 });
