@@ -758,6 +758,12 @@ assert.match(
   /\[class\*="A6Bq1a_colorTools"\]\{--meter-tint:#8a6f4a\}/,
   'the composition bar takes the theme tint ramp',
 );
+// The 会话统计 / Token 用量 dialogs share stat-dialog.module.css.
+assert.match(
+  css,
+  /\[class\*="xXe6ja_panel"\]\{font-size:14px;line-height:20px\}/,
+  'the stat dialogs take the 摘要 rank',
+);
 // Entry icons are full-colour SVGs from four packages; one filter unifies the ink.
 assert.match(
   css,

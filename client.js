@@ -1267,7 +1267,15 @@ body [class*="A6Bq1a_colorMessages"]{--meter-tint:#b99a5e}
 body[data-ds-dark-theme] [class*="A6Bq1a_colorSystem"]{--meter-tint:#e7c17b}
 body[data-ds-dark-theme] [class*="A6Bq1a_colorTools"]{--meter-tint:#c8a468}
 body[data-ds-dark-theme] [class*="A6Bq1a_colorMessages"]{--meter-tint:#8a7350}
-/* PARCHMENT-CTXMETER-END *//* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
+/* PARCHMENT-CTXMETER-END */
+/* ---- 会话统计 / Token 用量 卡片（stat-dialog） ---------------------------- */
+/* Same story as the context panel: the dialog ships 12px rows on tertiary ink. It
+   takes the 摘要 rank, and its two-column dt/dd grid gets a little more air. */
+body [class*="xXe6ja_panel"]{font-size:14px;line-height:20px}
+body [class~="xXe6ja_title"]{font-size:15px;line-height:22px}
+body [class~="xXe6ja_details"]{gap:8px 16px}
+body [class~="xXe6ja_details"] dt,
+body [class~="xXe6ja_details"] dd{font-size:14px;line-height:20px}/* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */
 body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic}
