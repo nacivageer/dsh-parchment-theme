@@ -243,6 +243,13 @@ assert.match(
 
 // Dark tooltips need an edge so they do not melt into the brown panels.
 assert.match(css, /body\[data-ds-dark-theme\] \[role="tooltip"\]/, 'dark tooltips get an edge');
+// An unpositioned tooltip (left/top still 0px) lands on the sidebar's 新会话
+// button; nothing legitimate sits at the viewport origin.
+assert.match(
+  css,
+  /body \[role="tooltip"\]:is\(\[style\*="left: 0px"\]/,
+  'an unpositioned tooltip is suppressed instead of covering the sidebar',
+);
 
 // The shipped 新会话 glyph is a ⊕ icon in the sidebar button and the workspace
 // row; the quill artwork replaces both, painted as a mask so it follows the

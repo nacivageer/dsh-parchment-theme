@@ -611,6 +611,12 @@ body:has([class*="_5Qcc8a_trigger"][aria-expanded="true"]) [role="menuitem"]>spa
 /* Dark tooltips float over brown panels; a hairline edge and a deeper shadow
    keep the bubble from melting into the card behind it. */
 body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:0 8px 24px #00000066}
+/* The primitives tooltip is position:fixed and gets its left/top written by JS
+   after measuring the anchor. When that write never lands (anchor re-rendered
+   mid-hover, e.g. while switching sessions) the bubble stays at the viewport
+   origin and covers the sidebar's 新会话 button. Nothing legitimately sits at
+   (0,0), so drop that unpositioned state instead of showing it in the corner. */
+body [role="tooltip"]:is([style*="left: 0px"],[style*="left:0px"]):is([style*="top: 0px"],[style*="top:0px"]){display:none}
 /* Sidebar row menus (workspace ⋯, session ⋯) are the shared primitives list the
    account popup uses, but ship at 13px — fine print on a 17px sidebar. Size
    them only while the row's own trigger is open, so menus elsewhere keep the
