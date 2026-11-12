@@ -741,6 +741,11 @@ assert.match(
   /input\[placeholder="搜索"\]\{font-size:16px;line-height:22px\}/,
   'the trajectory search field takes the 16px rank',
 );
+assert.match(
+  css,
+  /\[class\*="Wd4N7W_actionIcon"\]\{font-size:16px;line-height:16px;font-family:"Segoe UI Symbol"/,
+  'the box glyphs get a symbol font instead of the text face',
+);
 // The rest of the trajectory view moves up one size step.
 assert.match(
   css,
