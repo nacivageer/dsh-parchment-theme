@@ -938,6 +938,18 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentDesc"]{font-size:1
    rail's 6px scrollbar. The Settings copy of the market is untouched: its zoom
    scales the fixed 80px box and the shipped type together. */
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentTile"]{height:auto;min-height:94px}
+/* The 任务 popover (top-right of the market) ships its own 11–12.5px type:
+   the panel title 12.5px/600, the empty line 12px and its hint 11px tertiary —
+   fine print next to the 16–18px card copy it sits between. It takes the card
+   ranks: title on the card-name step, the empty line and its hint on the 摘要
+   step, and a running job's verb / name / status on the same step. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opPanelTitle"]{font-size:18px;line-height:27px;font-weight:600}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opEmpty"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opEmptyHint"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opVerb"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opName"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opStatus"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_opQueuedIcon"]{font-size:16px;line-height:22px}
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentShow"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sect"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sectAction"],

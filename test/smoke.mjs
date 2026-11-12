@@ -631,6 +631,17 @@ assert.match(
   /\[role="menu"\]:has\(\[role="menuitem"\]\[data-dsh-accent="block"\]\):not\(:has\(\[role="menuitem"\]:not\(\[data-dsh-accent="block"\]\)\)\)\{min-width:0;width:max-content\}/,
   'a one-row 屏蔽 menu shrinks to the button width',
 );
+// The 任务 popover shipped 12.5 / 12 / 11px type; it takes the card ranks.
+assert.match(
+  css,
+  /\[class~="nUhMVa_opPanelTitle"\]\{font-size:18px;line-height:27px;font-weight:600\}/,
+  'the 任务 popover title takes the card-name rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_opEmpty"\]\{font-size:16px;line-height:22px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'the 任务 empty line takes the 摘要 rank',
+);
 assert.match(
   css,
   /\[role="menuitem"\]\[data-dsh-accent="block"\] \[class\*="_itemLabel"\]\{flex:1;text-align:center;color:var\(--dsw-alias-state-error-primary\)\}/,
