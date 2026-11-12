@@ -13,14 +13,14 @@
 
 左浅右深，同一台机器、同一个只装了本主题的干净实例（默认工作区、空会话），1440×900。
 
-设置页和对话里的一些细节：
+设置页（通用设置）在两种模式下的样子：
 
 <p align="center">
-  <img src="docs/images/detail-light.webp" width="49%" alt="浅色：账号卡、外观、自动化任务横幅、定时任务卡">
-  <img src="docs/images/detail-dark.webp" width="49%" alt="深色：账号卡、外观、自动化任务横幅、定时任务卡">
+  <img src="docs/images/detail-light.webp" width="49%" alt="浅色：设置 → 通用设置">
+  <img src="docs/images/detail-dark.webp" width="49%" alt="深色：设置 → 通用设置">
 </p>
 
-这四块是「账号与余额」、外观三选一、「自动化任务」横幅（展开态）和定时任务卡。
+抓的是「外观」「字号大小」「工作步骤」这些行与右侧控件：整个面板放大到 1.15 倍，下拉、按钮、三张外观卡片各有自己的表面，选中项是暖褐底 + 暖边。账号页需要登录才能看，所以这里没放。
 
 ## 装与停
 
