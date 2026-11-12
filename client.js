@@ -1129,6 +1129,18 @@ body [class*="p2k40q_entryIcon"]{width:28px;height:28px}
    them to one ink — desaturate, darken, then warm it onto the brown-grey the 代码审查
    stroke icon already uses. */
 body [class*="p2k40q_entryIcon"] svg{width:28px;height:28px;filter:grayscale(1) brightness(.46) sepia(.55) saturate(2.2)}
+/* The terminal entry is not built from the start page's own module: it is the
+   terminal package's card (its own hash, a <div> root carrying the guide-entry
+   attribute around a --ghost-- button), so the rules above never reach its type.
+   Scoped by the entry attribute and by the generic *_text / *_title spellings of
+   that module; the description-level size goes on the text container first and the
+   title rule follows, so the title wins at equal specificity. */
+body [data-sidebar-right-guide-entry="terminal"] [class*="_text"]{font-size:14px;line-height:20px}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_desc"]{font-size:14px;line-height:20px}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_title"]{font-size:16px;line-height:22px}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"],
+body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"] svg{width:28px;height:28px}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_icon"] svg{filter:grayscale(1) brightness(.46) sepia(.55) saturate(2.2)}
 /* Link / file context menus are primitives menus at 13/20 with an 11px shortcut.
    Every context menu on a page marks itself with data-context-menu; the menus the
    theme already sizes (the market's single-row 屏蔽, the filter dropdown) are not

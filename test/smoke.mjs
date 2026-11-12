@@ -725,6 +725,12 @@ assert.match(
   /\[class\*="p2k40q_entryTitle"\] \*\{font-size:inherit !important/,
   'the entry title size wins over the plugin markup inside it',
 );
+// The terminal entry is a different module with its own structure.
+assert.match(
+  css,
+  /\[data-sidebar-right-guide-entry="terminal"\] \[class\*="_title"\]\{font-size:16px;line-height:22px\}/,
+  'the terminal entry title takes the entry rank',
+);
 // Entry icons are full-colour SVGs from four packages; one filter unifies the ink.
 assert.match(
   css,
