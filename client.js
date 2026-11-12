@@ -1159,7 +1159,14 @@ body [class*="eciBTa_root"]{--dsh-trajectory-toolbar-height:36px;font-size:14px}
 body [class*="Wd4N7W_toggle"],
 body [class*="Wd4N7W_control"],
 body [class*="Wd4N7W_action"]{font-size:14px;line-height:20px;height:24px;color:var(--dsw-alias-label-secondary)}
-body [class*="Wd4N7W_actionIcon"]{font-size:16px;line-height:16px;font-family:"Segoe UI Symbol","Cambria Math","Noto Sans Symbols 2",sans-serif;font-weight:600}
+/* The toolbar's three collapse glyphs are characters (⊟ / ⊞) while 时长 is a 12px
+   SVG drawn with stroke-width 1.25 — no font can make a text glyph match that line
+   weight or baseline, and in a serif face the box reads as a missing-glyph tofu.
+   They are replaced by masks drawn with the same viewBox, size, stroke weight and
+   round caps as the clock, so the four read as one icon set. aria-pressed marks
+   the fully-expanded state, which gets the boxed plus. */
+body [class*="Wd4N7W_actionIcon"]{display:inline-block;width:12px;height:12px;flex:none;font-size:0;line-height:0;background-color:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='10' height='10' rx='2'/%3E%3Cpath d='M5.5 8h5'/%3E%3C/svg%3E") center/12px 12px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='10' height='10' rx='2'/%3E%3Cpath d='M5.5 8h5'/%3E%3C/svg%3E") center/12px 12px no-repeat}
+body [class*="Wd4N7W_action"][aria-pressed="true"] [class*="Wd4N7W_actionIcon"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='10' height='10' rx='2'/%3E%3Cpath d='M5.5 8h5M8 5.5v5'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='10' height='10' rx='2'/%3E%3Cpath d='M5.5 8h5M8 5.5v5'/%3E%3C/svg%3E")}
 body [class~="xeixwq_table"]{font-size:14px}
 body [class*="xeixwq_turnLabel"]{font-size:10px;line-height:12px}
 body [class*="xeixwq_kindTag"]{font-size:12px}

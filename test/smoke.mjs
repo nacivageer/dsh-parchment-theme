@@ -741,10 +741,17 @@ assert.match(
   /input\[placeholder="搜索"\]\{font-size:16px;line-height:22px\}/,
   'the trajectory search field takes the 16px rank',
 );
+// The 时长 icon is a 12px SVG at stroke-width 1.25; the three collapse glyphs are
+// characters, so they are redrawn as masks with the same geometry.
 assert.match(
   css,
-  /\[class\*="Wd4N7W_actionIcon"\]\{font-size:16px;line-height:16px;font-family:"Segoe UI Symbol"/,
-  'the box glyphs get a symbol font instead of the text face',
+  /\[class\*="Wd4N7W_actionIcon"\]\{display:inline-block;width:12px;height:12px;flex:none;font-size:0;line-height:0;background-color:currentColor;-webkit-mask:url\("data:image\/svg\+xml,/,
+  'the box glyphs are redrawn as 12px masks in the clock icon geometry',
+);
+assert.match(
+  css,
+  /\[class\*="Wd4N7W_action"\]\[aria-pressed="true"\] \[class\*="Wd4N7W_actionIcon"\]\{-webkit-mask-image:url\("data:image\/svg\+xml,/,
+  'the expanded state gets the boxed plus',
 );
 // The rest of the trajectory view moves up one size step.
 assert.match(
