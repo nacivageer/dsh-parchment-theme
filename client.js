@@ -439,7 +439,7 @@ body [data-code-block-banner],
 body [class*="_infostring_"],
 body [class*="_language_1mqf1_30"],
 body [class*="_title_1mqf1_36"]{font-family:"猫啃网故障宋","MaokenGlitchSerif","Maoken Glitch Serif","寒蝉活宋体_復",serif;font-size:20px;line-height:28px;font-weight:400;font-style:italic;letter-spacing:.02em}
-body [class*="_block_"]:has([data-code-block-banner]) :where(pre){font-family:"寒蝉活宋体_復","思源宋体 CN",serif;font-size:16px;line-height:1.8;font-style:italic}
+body [class*="_block_"]:has([data-code-block-banner]) :where(pre){font-family:var(--dsh-font-family-code, "寒蝉活宋体_復"),"寒蝉活宋体_復","思源宋体 CN",serif;font-size:16px;line-height:1.8;font-style:italic}
 body [class*="_block_"]:has([data-code-block-banner]) :where(pre) code{font:inherit}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
