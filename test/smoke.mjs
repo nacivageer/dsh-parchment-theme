@@ -65,7 +65,7 @@ const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, '');
 const zoomRules = [...cssNoComments.matchAll(/([^{}]+)\{[^}]*zoom\s*:/g)].map((m) => m[1].trim());
 assert.deepEqual(zoomRules, [
   'body [class*="AnXs9G_panel"]',
-  'body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]',
+  'body:has([data-plugin-tab]) [class*="AnXs9G_panel"]',
 ], 'zoom stays on the settings modal, except on the plugin market page');
 
 // Settings cards and row rules need a visible stroke on paper.
@@ -187,17 +187,17 @@ assert.match(
 );
 assert.match(
   css,
-  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_block_7gxqk_4"\][^{]*\{[^}]*border:1px solid #9d8f79/,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_block_"\]\:has\(\[data-code-block-banner\]\)[^{]*\{[^}]*border:1px solid #9d8f79/,
   'code blocks get a visible light frame',
 );
 assert.match(
   css,
-  /body\[data-ds-dark-theme\] \[class\*="_block_7gxqk_4"\][^{]*\{[^}]*border:1px solid #665646/,
+  /body\[data-ds-dark-theme\] \[class\*="_block_"\]\:has\(\[data-code-block-banner\]\)[^{]*\{[^}]*border:1px solid #665646/,
   'code blocks get a visible dark frame',
 );
 assert.match(
   css,
-  /\[class\*="_infostring_7gxqk_45"\][^{]*\{[^}]*猫啃网故障宋[^}]*font-style:italic/,
+  /\[class\*="_infostring_"\][^{]*\{[^}]*猫啃网故障宋[^}]*font-style:italic/,
   'the code block banner uses 猫啃网故障宋 italic',
 );
 assert.match(
@@ -217,7 +217,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="_preview_bgejw_52"\]\{background:#d2ccc2/,
+  /\[class\*="_preview_l6gf9_51"\][^{]*\{background:#d2ccc2/,
   'the floating preview surface uses the warm paper surface',
 );
 assert.match(
@@ -237,7 +237,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="_block_7gxqk_4"\] :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
+  /\[class\*="_block_"\]\:has\(\[data-code-block-banner\]\) :where\(pre\)\{[^}]*寒蝉活宋体_復[^}]*font-style:italic/,
   'the code block body uses 寒蝉活宋体_復 italic',
 );
 
@@ -293,8 +293,16 @@ assert.match(
 assert.match(css, /--dsh-hourglass-mask:url\("data:image\/png;base64,/, 'the hourglass mask is embedded');
 assert.match(
   css,
-  /\[class\*="V4vHZW_older"\] button::before\{[^}]*var\(--dsh-hourglass-mask\)/,
+  /\[class\*="V4vHZW_older"\] button:not\(:disabled\)::before\{[^}]*var\(--dsh-hourglass-mask\)/,
   'load-earlier paints the hourglass before its label',
+);
+// 0.2.2 renders every state label of the load-earlier button in one grid cell
+// and hides the inactive ones with visibility; those spans still take width, so
+// the flex row has to drop them or the visible label drifts off-centre.
+assert.match(
+  css,
+  /\[class\*="V4vHZW_older"\] button \[class\*="historyHidden"\]\{display:none\}/,
+  'inactive load-earlier states are removed from the flex row',
 );
 
 // Two labels carry their own ink: the creator preset (chip, preset menu, session
@@ -456,13 +464,40 @@ assert.match(
 // gated on .hoverContent so the diff preview card sharing the class is untouched.
 assert.match(
   css,
-  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#8e979b/,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="_card_"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-alias-hovercard-bg:#8e979b/,
   'the hover card borrows the light workspace-bar surface',
 );
 assert.match(
   css,
-  /body\[data-ds-dark-theme\] \[class\*="_card_bgejw_9"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-hovercard-bg:#5b4a2a/,
+  /body\[data-ds-dark-theme\] \[class\*="_card_"\]:has\(\[class\*="hoverContent"\]\)\{--dsw-alias-hovercard-bg:#5b4a2a/,
   'the hover card borrows the dark workspace-bar surface',
+);
+// 0.2.2 also routes the card's ink through palette variables; the slot rows and
+// icons inside the card read them, so the card carries the inks too.
+assert.equal(
+  layer.tokens['--dsw-alias-card-fill'].light,
+  layer.tokens['--dsw-alias-bg-layer-1'].light,
+  'generic cards sit on the raised sheet',
+);
+assert.equal(
+  layer.tokens['--dsw-alias-card-fill'].dark,
+  layer.tokens['--dsw-alias-bg-layer-2'].dark,
+  'dark generic cards sit on the warm raised step',
+);
+assert.equal(
+  layer.tokens['--dsw-alias-settings-card-fill'].light,
+  layer.tokens['--dsw-alias-bg-layer-1'].light,
+  'settings cards keep the raised-sheet fill instead of the shipped white',
+);
+assert.equal(
+  layer.tokens['--dsw-alias-settings-card-fill'].dark,
+  layer.tokens['--dsw-alias-bg-layer-2'].dark,
+  'dark settings cards keep the warm raised step',
+);
+assert.match(
+  css,
+  /\[class\*="_card_"\]:has\(\[class\*="hoverContent"\]\)\{[^}]*--dsw-alias-hovercard-label-primary:#26333a/,
+  'the light hover card carries its ink as a palette variable',
 );
 // The schedule slot inside the same card hardcodes white/grey for the shipped
 // dark bubble; it follows the card ink as well.

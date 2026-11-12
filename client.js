@@ -38,6 +38,12 @@ window.__ModuleLoader__.load({
       '--dsw-alias-bg-skeleton': '#3a2c1a0a',
       '--dsw-alias-bg-mask-drop': '#ccc7b9b3',
       '--dsw-specific-sidebar-fill': '#b9b19d',
+      /* 0.2.2 routes generic cards (and every settings card) through their own
+         aliases; the shipped values are neutral #fafafa, which reads as a white
+         patch on paper. Keep the raised-sheet step the cards used before. */
+      '--dsw-alias-card-fill': '#c8c1b4',
+      '--dsw-alias-card-fill-hover': '#bbb3a1',
+      '--dsw-alias-settings-card-fill': '#c8c1b4',
 
       /* ---- borders: same alphas as shipped, warm hue ---------------------- */
       '--dsw-alias-border-l1': '#4a3b2a0a',
@@ -189,6 +195,11 @@ window.__ModuleLoader__.load({
       '--dsw-alias-bg-skeleton': '#e2dacc1a',
       '--dsw-alias-bg-mask-drop': '#302a23b3',
       '--dsw-specific-sidebar-fill': '#1c1813',
+      /* Same two card aliases in 墨夜: the shipped #212123 is a cool black that
+         separates from the brown sheet as grey; keep it on the warm raised step. */
+      '--dsw-alias-card-fill': '#302a23',
+      '--dsw-alias-card-fill-hover': '#373129',
+      '--dsw-alias-settings-card-fill': '#302a23',
 
       '--dsw-alias-border-l1': '#e2dacc14',
       '--dsw-alias-border-l2': '#e2dacc26',
@@ -397,23 +408,25 @@ body[data-ds-dark-theme]::after{mix-blend-mode:hard-light;opacity:.2}
 body:not([data-ds-dark-theme]){--dsw-alias-file-diff-added-marker:#2f6b3a;--dsw-alias-file-diff-deleted-marker:#8e2420}
 body:not([data-ds-dark-theme]) [class*="0cITKW_text"]{color:#17110b}
 /* Code fences: the shipped fill sat almost on the paper; use the raised card
-   surface and a visible 1px frame in both palettes. */
-body:not([data-ds-dark-theme]) [class*="_block_7gxqk_4"],
+   surface and a visible 1px frame in both palettes. The fence is keyed by its
+   banner attribute rather than the CSS-module hash (0.2.2 moved it from 7gxqk to
+   kjs70): only the fenced block carries [data-code-block-banner]. */
+body:not([data-ds-dark-theme]) [class*="_block_"]:has([data-code-block-banner]),
 body:not([data-ds-dark-theme]) [class*="_card_1mqf1_1"],
 body:not([data-ds-dark-theme]) [class*="_block_15hvo_1"],
 body:not([data-ds-dark-theme]) [class*="_block_74wpx_1"]{border:1px solid #9d8f79;box-sizing:border-box}
-body[data-ds-dark-theme] [class*="_block_7gxqk_4"],
+body[data-ds-dark-theme] [class*="_block_"]:has([data-code-block-banner]),
 body[data-ds-dark-theme] [class*="_card_1mqf1_1"],
 body[data-ds-dark-theme] [class*="_block_15hvo_1"],
 body[data-ds-dark-theme] [class*="_block_74wpx_1"]{border:1px solid #665646;box-sizing:border-box}
 /* Code fences use the user's serif pairing: 猫啃网故障宋 for the banner,
    寒蝉活宋体_復 for the body. Sizes are picked for the DSH scale (not PS pt). */
-body [class*="_block_7gxqk_4"] [data-code-block-banner],
-body [class*="_block_7gxqk_4"] [class*="_infostring_7gxqk_45"],
-body [class*="_block_7gxqk_4"] [class*="_language_1mqf1_30"],
-body [class*="_block_7gxqk_4"] [class*="_title_1mqf1_36"]{font-family:"猫啃网故障宋","MaokenGlitchSerif","Maoken Glitch Serif","寒蝉活宋体_復",serif;font-size:20px;line-height:28px;font-weight:400;font-style:italic;letter-spacing:.02em}
-body [class*="_block_7gxqk_4"] :where(pre){font-family:"寒蝉活宋体_復","思源宋体 CN",serif;font-size:16px;line-height:1.8;font-style:italic}
-body [class*="_block_7gxqk_4"] :where(pre) code{font:inherit}
+body [data-code-block-banner],
+body [class*="_infostring_"],
+body [class*="_language_1mqf1_30"],
+body [class*="_title_1mqf1_36"]{font-family:"猫啃网故障宋","MaokenGlitchSerif","Maoken Glitch Serif","寒蝉活宋体_復",serif;font-size:20px;line-height:28px;font-weight:400;font-style:italic;letter-spacing:.02em}
+body [class*="_block_"]:has([data-code-block-banner]) :where(pre){font-family:"寒蝉活宋体_復","思源宋体 CN",serif;font-size:16px;line-height:1.8;font-style:italic}
+body [class*="_block_"]:has([data-code-block-banner]) :where(pre) code{font:inherit}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
 [class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}
@@ -470,7 +483,8 @@ body [role="menuitem"][data-dsh-accent="danger"],
 body [role="menuitem"][data-dsh-accent="danger"] [class*="_itemIcon"],
 body [role="menuitem"][data-dsh-accent="danger"] [class*="_itemLabel"]{color:var(--dsw-alias-state-error-primary)}
 body [class*="rQbmCW_status"]{font-size:14px}
-body [class*="rezYhW_summary"]{font-size:14px;line-height:21px}
+body [class*="rezYhW_label"],
+body [class*="rezYhW_secondaryLabel"]{font-size:14px;line-height:20px}
 [class*="Ag-ohG_label"]{font-size:14px;line-height:21px}
 [class*="Ag-ohG_count"]{font-size:14px;line-height:21px}
 body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
@@ -480,8 +494,10 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 
 body [class*="AnXs9G_panel"]{zoom:1.15}
 /* The zoom scales fixed-position tooltips too, so the plugin market's
-   hover-to-read bubble drifts away from its card. Drop the zoom on that page. */
-body:has([class*="AnXs9G_panel"] [class*="nUhMVa_root"]) [class*="AnXs9G_panel"]{zoom:1}
+   hover-to-read bubble drifts away from its card. Drop the zoom on that page;
+   the market's tabs carry data-plugin-tab, which outlives the CSS-module hash
+   the page root used to have. */
+body:has([data-plugin-tab]) [class*="AnXs9G_panel"]{zoom:1}
 body [class*="AnXs9G_triggerRow"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
 /* Settings nav: the main sidebar's display face and rank. The panel's 1.15 zoom
@@ -624,18 +640,21 @@ body [role="tooltip"]:is([style*="left: 0px"],[style*="left:0px"]):is([style*="t
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"]{font-size:16px;line-height:24px;min-height:40px}
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"]{width:16px;height:16px}
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"] svg{width:16px;height:16px}
-/* The sidebar path/creation hover card is a HoverCard whose surface and ink are
+/* The sidebar path/creation hover card is a HoverCard whose surface and ink were
    hardcoded neutral dark (#2C2C2E on #fff), so light mode showed the same dark
    bubble as dark mode. It borrows the 工作区 section bar's palette instead of a
    warm tint: a beige card collided with the idle-status dot and read as noise
    next to the paper. Light = grey-blue bar with navy ink, dark = brown bar with
-   gold ink. */
-body:not([data-ds-dark-theme]) [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#8e979b;border:1px solid #77848a}
+   gold ink. 0.2.2 replaced the card's own --dsw-hovercard-bg with the palette
+   variable --dsw-alias-hovercard-bg, so the surface is keyed off the content the
+   card hosts — a hashed class would go stale on the next build and silently drop
+   back to the stock dark bubble. */
+body:not([data-ds-dark-theme]) [class*="_card_"]:has([class*="hoverContent"]){--dsw-alias-hovercard-bg:#8e979b;--dsw-alias-hovercard-label-primary:#26333a;--dsw-alias-hovercard-label-secondary:#2f3d45;--dsw-alias-hovercard-label-tertiary:#2f3d45;border:1px solid #77848a}
 body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTitle"]{color:#26333a}
 body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverPath"],
 body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverTime"],
 body:not([data-ds-dark-theme]) [class*="hoverContent"] [class*="hoverStatus"]{color:#2f3d45}
-body[data-ds-dark-theme] [class*="_card_bgejw_9"]:has([class*="hoverContent"]){--dsw-hovercard-bg:#5b4a2a;border:1px solid #6d5834}
+body[data-ds-dark-theme] [class*="_card_"]:has([class*="hoverContent"]){--dsw-alias-hovercard-bg:#5b4a2a;--dsw-alias-hovercard-label-primary:#e7c17b;--dsw-alias-hovercard-label-secondary:#d3ad6b;--dsw-alias-hovercard-label-tertiary:#d3ad6b;border:1px solid #6d5834}
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTitle"]{color:#e7c17b}
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverPath"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="hoverTime"],
@@ -672,9 +691,15 @@ body:has([class*="GRgSLq_add"][aria-expanded="true"]) [role="menuitem"] [class*=
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
 /* 加载更早 ships as a bare <button> with no class of its own, so it renders as a
    UA control (13px, browser button face). Give it the sidebar 新会话 button's
-   shape and type scale: 46px tall, 20px 京華老宋体 on the raised button fill. */
+   shape and type scale: 46px tall, 20px 京華老宋体 on the raised button fill.
+   0.2.2 stacks every state's label in one grid cell and hides the inactive ones
+   with visibility, so a flex row must drop those spans itself: invisible spans
+   still take their width, which pushed the visible label right and left a gap
+   where the hourglass sat. The hourglass only marks a load that can start; the
+   disabled 「已到会话开头」 state is a plain centred label. */
 body [class*="V4vHZW_older"] button{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:46px;min-height:46px;padding:0 24px;font-size:20px;line-height:26px;font-family:"京華老宋体",serif;font-weight:500;color:var(--dsw-alias-label-primary);background:var(--dsw-alias-button-elevated-fill);border:.5px solid var(--dsw-alias-border-l3);border-radius:var(--dsw-radius-md);cursor:pointer}
-body [class*="V4vHZW_older"] button::before{content:"";display:inline-block;flex:none;width:16px;height:24px;background-color:currentColor;-webkit-mask:var(--dsh-hourglass-mask) center/contain no-repeat;mask:var(--dsh-hourglass-mask) center/contain no-repeat}
+body [class*="V4vHZW_older"] button [class*="historyHidden"]{display:none}
+body [class*="V4vHZW_older"] button:not(:disabled)::before{content:"";display:inline-block;flex:none;width:16px;height:24px;background-color:currentColor;-webkit-mask:var(--dsh-hourglass-mask) center/contain no-repeat;mask:var(--dsh-hourglass-mask) center/contain no-repeat}
 body [class*="V4vHZW_older"] button:hover{background:var(--dsw-alias-button-floating-hover)}
 body [class*="V4vHZW_older"] button:disabled{opacity:.6;cursor:default}
 [class*="_projectRow"] [class*="_title"]{letter-spacing:.02em}
@@ -692,11 +717,16 @@ body [class*="_0cITKW_root"]{background:#d2ccc2}
 body[data-ds-dark-theme] [class*="HOHHba_preview"],
 body[data-ds-dark-theme] [class*="_0cITKW_root"]{background:#332c24}
 /* The expanded diff is a HoverCard preview, not the card itself: its own
-   _preview_bgejw_52 surface used bg-layer-1 and stayed grey in light mode.
+   _preview_* surface used bg-layer-1 and stayed grey in light mode. 0.2.2
+   renamed the hashed class to l6gf9; the hash stays for the shipped component
+   and the content-keyed fallback keeps the next build from bringing the grey
+   sheet back.
    The preview content does not always carry [data-changed-files], so style
    the preview surface directly instead of gating on the card attribute. */
-body [class*="_preview_bgejw_52"]{background:#d2ccc2}
-body[data-ds-dark-theme] [class*="_preview_bgejw_52"]{background:#332c24}
+body [class*="_preview_l6gf9_51"],
+body [class*="_preview_"]:has([class*="HOHHba_preview"]){background:#d2ccc2}
+body[data-ds-dark-theme] [class*="_preview_l6gf9_51"],
+body[data-ds-dark-theme] [class*="_preview_"]:has([class*="HOHHba_preview"]){background:#332c24}
 /* Changed-files card: the shipped 10–13px ranks read as fine print next to the
    18px content, so every rank inside the card goes up one step. */
 body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}
