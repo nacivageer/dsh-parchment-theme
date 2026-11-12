@@ -590,6 +590,14 @@ assert.match(
   /body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_desc"\],\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_recentDesc"\]\{font-size:16px;line-height:22px;color:var\(--dsw-alias-label-secondary\)\}/,
   'market summaries take the 摘要 rank and the secondary ink',
 );
+// The 最近收录 tiles ship height:80px + overflow:hidden, which only fits the
+// shipped 14/20 + 2×12/16 type; the main-column scale clipped the description's
+// second line inside the card. The tile sizes to its content there.
+assert.match(
+  css,
+  /body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_recentTile"\]\{height:auto;min-height:94px\}/,
+  'the 最近收录 tiles grow to show both description lines',
+);
 assert.match(
   css,
   /\[class\*="nUhMVa_head"\] button:not\(\[class~="nUhMVa_tab"\]\):not\(\[data-chip\]\)/,

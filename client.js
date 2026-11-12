@@ -921,6 +921,14 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_favoritesSectionHead"]{f
 /* Summaries: the 摘要 rank, and the secondary ink instead of tertiary. */
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_desc"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentDesc"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+/* 最近收录 rail. Upstream pins each tile to height:80px with overflow:hidden,
+   which fits its shipped 14/20 name + 2×12/16 description. The main-column
+   scale lifts those to 18/27 + 2×16/22, so the tile needed 93px and the second
+   description line was clipped away inside the card (scrollHeight 91 against
+   clientHeight 79). Let the tile size to its content; 94px also clears the
+   rail's 6px scrollbar. The Settings copy of the market is untouched: its zoom
+   scales the fixed 80px box and the shipped type together. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentTile"]{height:auto;min-height:94px}
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentShow"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sect"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sectAction"],
