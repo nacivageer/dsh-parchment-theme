@@ -713,6 +713,23 @@ assert.match(
   /\[class~="nUhMVa_metaTag"\]\{font-size:16px;line-height:22px;min-height:26px;padding:2px 9px;border-radius:6px\}/,
   'the meta tag grows with its type',
 );
+// The right sidebar's start page entries carry their own business attribute.
+assert.match(
+  css,
+  /\[data-sidebar-right-guide-entry\]\{min-height:64px;padding:16px 22px;gap:16px\}/,
+  'the start-page entries grow to hold the larger type',
+);
+assert.match(
+  css,
+  /\[class\*="p2k40q_entryTitle"\]\{font-size:16px;line-height:22px\}/,
+  'the start-page entry titles take the 摘要 rank',
+);
+// Link / file context menus mark themselves with data-context-menu.
+assert.match(
+  css,
+  /\[role="menu"\]\[data-context-menu\] \[role="menuitem"\]\{font-size:16px;line-height:22px;min-height:36px\}/,
+  'context-menu rows take the 摘要 rank',
+);
 // 自动化任务 rows are separated by a hairline drawn as a pseudo-element. The class
 // is matched exactly (class~=): a substring match would also hit rowTitle /
 // rowSummary / rowContent and draw two or three lines per row.

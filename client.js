@@ -1109,6 +1109,28 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_metaTag"]{font-size:16px
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_descMore"]{font-size:16px;line-height:22px;color:#26333a}
 body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_descMore"]{color:#e7c17b}
 /* PARCHMENT-MARKET-END */
+/* ---- 右侧栏起始页 + 链接右键菜单 ------------------------------------------ */
+/* PARCHMENT-RIGHTPANE-START */
+/* The right sidebar's start page lists its entries (工作区文件 / 代码审查和变更 /
+   新建终端 / 浏览器 / 更多工具) as 380px cards with a 14px title and an 11px
+   description — the same caption step the market pages used to carry. The entry
+   carries its own business attribute (data-sidebar-right-guide-entry), so this
+   rule does not depend on the module hash; the type takes the 摘要 rank and the
+   icon grows with it. */
+body [data-sidebar-right-guide-entry]{min-height:64px;padding:16px 22px;gap:16px}
+body [class*="p2k40q_entryTitle"]{font-size:16px;line-height:22px}
+body [class*="p2k40q_entryDescription"]{font-size:14px;line-height:20px}
+body [class*="p2k40q_entryIcon"]{width:28px;height:28px}
+body [class*="p2k40q_entryIcon"] svg{width:28px;height:28px}
+/* Link / file context menus are primitives menus at 13/20 with an 11px shortcut.
+   Every context menu on a page marks itself with data-context-menu; the menus the
+   theme already sizes (the market's single-row 屏蔽, the filter dropdown) are not
+   context menus, so they keep their own rules. Gated off the Settings panel for
+   the same reason as the rest: that column owns a different scale. */
+body:not(:has([class*="AnXs9G_panel"])) [role="menu"][data-context-menu] [role="menuitem"]{font-size:16px;line-height:22px;min-height:36px}
+body:not(:has([class*="AnXs9G_panel"])) [role="menu"][data-context-menu] [class*="_itemIcon"]{width:18px;height:18px}
+body:not(:has([class*="AnXs9G_panel"])) [role="menu"][data-context-menu] [class*="_itemIcon"] svg{width:18px;height:18px}
+/* PARCHMENT-RIGHTPANE-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */
