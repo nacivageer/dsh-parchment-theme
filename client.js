@@ -719,14 +719,14 @@ body[data-ds-dark-theme] [class*="_0cITKW_root"]{background:#332c24}
 /* The expanded diff is a HoverCard preview, not the card itself: its own
    _preview_* surface used bg-layer-1 and stayed grey in light mode. 0.2.2
    renamed the hashed class to l6gf9; the hash stays for the shipped component
-   and the content-keyed fallback keeps the next build from bringing the grey
-   sheet back.
+   and the business attribute (data-changes-hover-preview, added by the app and
+   not a build hash) keeps the next build from bringing the grey sheet back.
    The preview content does not always carry [data-changed-files], so style
    the preview surface directly instead of gating on the card attribute. */
 body [class*="_preview_l6gf9_51"],
-body [class*="_preview_"]:has([class*="HOHHba_preview"]){background:#d2ccc2}
+body [class*="_preview_"]:has([data-changes-hover-preview]){background:#d2ccc2}
 body[data-ds-dark-theme] [class*="_preview_l6gf9_51"],
-body[data-ds-dark-theme] [class*="_preview_"]:has([class*="HOHHba_preview"]){background:#332c24}
+body[data-ds-dark-theme] [class*="_preview_"]:has([data-changes-hover-preview]){background:#332c24}
 /* Changed-files card: the shipped 10–13px ranks read as fine print next to the
    18px content, so every rank inside the card goes up one step. */
 body [class*="HOHHba_card"] [class*="HOHHba_title"]{font-size:15px;line-height:22px}
