@@ -762,6 +762,17 @@ assert.match(
   /\[class\*="xeixwq_payload"\],[^}]*\]\{font-size:13px;line-height:20px\}/,
   'monospace payloads take a single step, not two',
 );
+// Turn labels: the compact form (#18) replaces 第 18 轮 so 14px fits the gutter.
+assert.match(
+  css,
+  /\[class\*="xeixwq_turnLabelFull"\]\{display:none\}/,
+  'the long turn label is hidden',
+);
+assert.match(
+  css,
+  /\[class\*="xeixwq_turnLabelCompact"\]\{opacity:1;max-width:none\}/,
+  'the compact #n turn label is shown',
+);
 // 自动化任务 rows are separated by a hairline drawn as a pseudo-element. The class
 // is matched exactly (class~=): a substring match would also hit rowTitle /
 // rowSummary / rowContent and draw two or three lines per row.

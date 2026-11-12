@@ -1193,6 +1193,16 @@ body [class*="xeixwq_resultBlockText"],
 body [class*="xeixwq_programOutput"],
 body [class*="xeixwq_promptDiff"],
 body [class*="xeixwq_toolUpdatePayload"]{font-size:13px;line-height:20px}
+/* Turn labels. The row ships two stacked labels in one grid cell: turnLabelFull
+   (第 18 轮) shown and turnLabelCompact (#18) hidden at opacity 0 / max-width 0.
+   The 36px gutter the label sits in cannot hold 第 18 轮 at a readable size, so the
+   compact form is the visible one — it takes 14px on the secondary ink, in a warm
+   paper chip instead of the shipped cool grey-blue, and keeps the active row's own
+   accent through a :not() so selection still reads. */
+body [class*="xeixwq_turnLabelFull"]{display:none}
+body [class*="xeixwq_turnLabelCompact"]{opacity:1;max-width:none}
+body [class*="xeixwq_turnLabel"]{font-size:14px;line-height:18px;padding:1px 4px;border-radius:0 0 4px}
+body [class*="xeixwq_turnLabel"]:not([class*="turnLabelActive"]){color:var(--dsw-alias-label-secondary);background:var(--dsw-alias-bg-layer-3)}
 /* PARCHMENT-TRAJECTORY-END *//* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */
