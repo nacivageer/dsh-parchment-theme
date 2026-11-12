@@ -733,8 +733,13 @@ assert.match(
 );
 assert.match(
   css,
-  /\[data-sidebar-right-guide-entry="terminal"\] kbd\{font-size:14px;line-height:20px\}/,
-  'the terminal entry shortcut chip takes the 摘要 rank',
+  /\[data-sidebar-right-guide-entry\] \[class\*="_shortcut"\],\s*body \[data-sidebar-right-guide-entry\] \[class\*="_shortcutKeys"\]/,
+  'both shortcut families take one size',
+);
+assert.match(
+  css,
+  /\[data-sidebar-right-guide-entry="terminal"\] \[class\*="_shortcut"\]\{margin-left:auto;align-self:center\}/,
+  'the terminal shortcut is pinned to the card edge',
 );
 // The Platform overlay back bar takes the sidebar entry's display face.
 assert.match(
