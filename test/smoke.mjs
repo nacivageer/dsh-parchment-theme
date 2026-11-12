@@ -626,10 +626,11 @@ for (const name of ['--dsh-content-font-size', '--dsh-code-font-size', '--dsh-te
 // the user flips a switch.
 assert.deepEqual(
   { ...seam.PREF_DEFAULTS },
-  { homeWhale: true, openFolder: false },
+  { homeWhale: true, openFolder: false, codeItalic: true },
   'preference defaults follow the shipped app',
 );
 assert.equal(htmlAttributes.has(seam.HIDE_WHALE_ATTR), false, 'a fresh load hides nothing');
+assert.equal(htmlAttributes.has(seam.UPRIGHT_CODE_ATTR), false, 'a fresh load keeps code italic');
 assert.match(
   css,
   /html\[data-parchment-hide-whale\] \[data-home-whale\]\{display:none\}/,
@@ -641,17 +642,39 @@ assert.match(css, /\.dsh-parchment-openFolder\{/, 'the folder shortcut keeps ico
 // Toggling the whale rewrites <html> (no reload) and persists the choice.
 seam.setPref('homeWhale', false);
 assert.equal(htmlAttributes.get(seam.HIDE_WHALE_ATTR), '', 'turning the whale off marks <html>');
-assert.deepEqual(JSON.parse(storage.get(seam.PREF_KEY)), { homeWhale: false, openFolder: false });
+assert.deepEqual(
+  JSON.parse(storage.get(seam.PREF_KEY)),
+  { homeWhale: false, openFolder: false, codeItalic: true },
+);
 seam.setPref('homeWhale', true);
 assert.equal(htmlAttributes.has(seam.HIDE_WHALE_ATTR), false, 'turning it back on removes the mark');
 
+// The code-italic switch uses the same attribute mechanism.
+seam.setPref('codeItalic', false);
+assert.equal(htmlAttributes.get(seam.UPRIGHT_CODE_ATTR), '', 'turning italic off marks <html>');
+assert.match(
+  css,
+  /html\[data-parchment-upright-code\] body \[class\*="_block_"\]/,
+  'the upright rule is opt-in behind the attribute',
+);
+seam.setPref('codeItalic', true);
+assert.equal(htmlAttributes.has(seam.UPRIGHT_CODE_ATTR), false, 'turning it back on removes the mark');
+
 // A stored value survives a reload; a corrupt one falls back to defaults.
-storage.set(seam.PREF_KEY, JSON.stringify({ homeWhale: false, openFolder: true }));
+storage.set(seam.PREF_KEY, JSON.stringify({ homeWhale: false, openFolder: true, codeItalic: false }));
 seam.loadPrefs(true);
-assert.deepEqual({ ...seam.snapshotPrefs() }, { homeWhale: false, openFolder: true }, 'stored preferences load');
+assert.deepEqual(
+  { ...seam.snapshotPrefs() },
+  { homeWhale: false, openFolder: true, codeItalic: false },
+  'stored preferences load',
+);
 storage.set(seam.PREF_KEY, 'not json');
 seam.loadPrefs(true);
-assert.deepEqual({ ...seam.snapshotPrefs() }, { homeWhale: false, openFolder: true }, 'a corrupt value keeps the last good state');
+assert.deepEqual(
+  { ...seam.snapshotPrefs() },
+  { homeWhale: false, openFolder: true, codeItalic: false },
+  'a corrupt value keeps the last good state',
+);
 
 // Both rows are General-section entries; the shortcut is a session utility.
 assert.deepEqual(
@@ -659,9 +682,10 @@ assert.deepEqual(
   [
     ['settings.general.item', 'parchment-home-whale', 30],
     ['settings.general.item', 'parchment-open-folder', 31],
+    ['settings.general.item', 'parchment-code-italic', 32],
     ['conversation.session.header.utilities', 'parchment-open-folder', -10],
   ],
-  'the two rows and the header shortcut register where expected',
+  'the three rows and the header shortcut register where expected',
 );
 assert.ok(
   registrations.every((entry) => typeof entry.component === 'function'),

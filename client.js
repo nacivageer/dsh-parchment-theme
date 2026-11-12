@@ -441,6 +441,9 @@ body [class*="_language_1mqf1_30"],
 body [class*="_title_1mqf1_36"]{font-family:"猫啃网故障宋","MaokenGlitchSerif","Maoken Glitch Serif","寒蝉活宋体_復",serif;font-size:20px;line-height:28px;font-weight:400;font-style:italic;letter-spacing:.02em}
 body [class*="_block_"]:has([data-code-block-banner]) :where(pre){font-family:var(--dsh-font-family-code, "寒蝉活宋体_復"),"寒蝉活宋体_復","思源宋体 CN",serif;font-size:16px;line-height:1.8;font-style:italic}
 body [class*="_block_"]:has([data-code-block-banner]) :where(pre) code{font:inherit}
+/* Settings → 代码块斜体. The attribute is only written while the switch is off,
+   so italic stays the shipped look and upright is the opt-out. */
+html[data-parchment-upright-code] body [class*="_block_"]:has([data-code-block-banner]) :where(pre){font-style:normal}
 [class*="_projectRow"]{height:40px;background:#b1a791;border-radius:8px}
 [class*="_projectRow"]:hover{background:#aaa18a}
 [class*="_projectRow"] [class*="_title"]{font-size:18px;line-height:26px;font-family:"思源宋体 CN SemiBold","思源宋体 CN Medium",serif;font-weight:600}
@@ -882,9 +885,11 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
 
     /** localStorage key; a missing or corrupt value falls back to defaults. */
     const PREF_KEY = 'dsh-parchment-theme.preferences';
-    const PREF_DEFAULTS = Object.freeze({ homeWhale: true, openFolder: false });
+    const PREF_DEFAULTS = Object.freeze({ homeWhale: true, openFolder: false, codeItalic: true });
     /** Written on <html> only while the whale is hidden, so the shipped home is untouched. */
     const HIDE_WHALE_ATTR = 'data-parchment-hide-whale';
+    /** Written on <html> only while code blocks are upright; italic stays the shipped look. */
+    const UPRIGHT_CODE_ATTR = 'data-parchment-upright-code';
 
     let prefs = PREF_DEFAULTS;
     let prefsLoaded = false;
@@ -909,6 +914,7 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
           prefs = {
             homeWhale: parsed.homeWhale === undefined ? PREF_DEFAULTS.homeWhale : parsed.homeWhale === true,
             openFolder: parsed.openFolder === undefined ? PREF_DEFAULTS.openFolder : parsed.openFolder === true,
+            codeItalic: parsed.codeItalic === undefined ? PREF_DEFAULTS.codeItalic : parsed.codeItalic === true,
           };
         }
       } catch {
@@ -924,12 +930,14 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
       }
     }
 
-    /** Mirror the whale choice onto <html>; removing the attribute restores the shipped home. */
+    /** Mirror the two markup choices onto <html>; an absent attribute restores the shipped look. */
     function applyPrefs() {
       const root = globalThis.document?.documentElement;
       if (root === null || root === undefined) return;
       if (prefs.homeWhale) root.removeAttribute(HIDE_WHALE_ATTR);
       else root.setAttribute(HIDE_WHALE_ATTR, '');
+      if (prefs.codeItalic) root.removeAttribute(UPRIGHT_CODE_ATTR);
+      else root.setAttribute(UPRIGHT_CODE_ATTR, '');
     }
 
     function setPref(name, value) {
@@ -1002,6 +1010,17 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
       });
     }
 
+    /** General → italic code blocks. */
+    function CodeItalicSetting({ t }) {
+      const state = usePrefs();
+      return h(PreferenceRow, {
+        title: t('setting.codeItalic.title'),
+        description: t('setting.codeItalic.desc'),
+        checked: state.codeItalic,
+        onChange: (next) => { setPref('codeItalic', next); },
+      });
+    }
+
     /** Outlined folder, drawn inline so the button never depends on a primitive build hash. */
     function FolderIcon() {
       return h('svg', { viewBox: '0 0 16 16', width: 16, height: 16, fill: 'none', 'aria-hidden': 'true' },
@@ -1055,6 +1074,8 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
         'setting.whale.desc': 'Clicking blank space on a New Session page plays the whale spelled out in code lettering. Turn it off to drop that decoration.',
         'setting.folder.title': 'Open workspace folder button',
         'setting.folder.desc': 'Puts a folder button in the session title bar that opens the current workspace in the system file manager. DSH 0.2.2 moved that entry into the ⋯ menu; this restores a one-click shortcut.',
+        'setting.codeItalic.title': 'Italic code blocks',
+        'setting.codeItalic.desc': 'The parchment look slants code-block bodies. With a monospace font of your own that often reads as smeared, so upright is one switch away.',
         'openFolder.hint': 'Open workspace folder',
       },
       zh: {
@@ -1062,6 +1083,8 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
         'setting.whale.desc': '新会话页的空白处被点击时，会播放一只由代码文字拼成的鲸鱼。关掉后空白处不再出现这层装饰。',
         'setting.folder.title': '打开工作区文件夹按钮',
         'setting.folder.desc': '在会话标题栏右侧加一个文件夹按钮，用系统文件资源管理器打开当前工作区。DSH 0.2.2 把这个入口收进了「⋯」菜单，打开后这里补回一个直达按钮。',
+        'setting.codeItalic.title': '代码块斜体',
+        'setting.codeItalic.desc': '羊皮纸的排版会把代码块正文做成斜体。换成等宽字体后斜体常常显得发飘，关掉这个开关即可让代码正立。',
         'openFolder.hint': '在文件资源管理器中打开工作区',
       },
     };
@@ -1207,6 +1230,12 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
                 order: 31,
                 locale: NS,
               }, OpenFolderSetting)), 'parchment: folder preference row');
+              seat.effect(() => seat.slots.inject('settings.general.item', () => seat.slots.register({
+                name: 'settings.general.item',
+                id: 'parchment-code-italic',
+                order: 32,
+                locale: NS,
+              }, CodeItalicSetting)), 'parchment: code italic preference row');
               // The shortcut rides the session utilities seat next to the price
               // chip; it renders nothing while the preference is off.
               seat.effect(() => seat.slots.inject('conversation.session.header.utilities', () => seat.slots.register({
@@ -1229,7 +1258,7 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
       /** Test seam: palettes, pair builder, layer id, stylesheet, the accent painter and the preference store. */
       __parchment: {
         SOURCE, LIGHT, DARK, TYPE, TOKENS, STYLE_CSS, toPairs, paintAccents,
-        PREF_KEY, PREF_DEFAULTS, HIDE_WHALE_ATTR,
+        PREF_KEY, PREF_DEFAULTS, HIDE_WHALE_ATTR, UPRIGHT_CODE_ATTR,
         snapshotPrefs, subscribePrefs, loadPrefs, setPref, applyPrefs,
       },
     };
