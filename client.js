@@ -991,8 +991,18 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_footActions"] [class~="n
 /* The header's own controls: 任务 / 筛选 / 导出日志 and the category pills are
    primitives that pin 13px, so they need stating by hand. The tabs are excluded
    (they have their own 18px rank above) and the pills carry data-chip. */
-body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class~="nUhMVa_tab"]):not([data-chip]),
+/* The header's own controls — 导出日志 / 任务 / 筛选 — sit beside the 18px tabs,
+   so the whole row takes the 栏目名 rank on a 34px control. The tabs are excluded
+   (they own the 18px rank above) and the category pills carry data-chip. The sort
+   dropdown behind 筛选 is a primitives menu at 13/20 with 10–11px group labels, a
+   step below every card it filters: a menu that carries a group label (what 筛选
+   is — the row menus and the single-row 屏蔽 menu have none) takes 16/22 rows,
+   14/20 labels and an 18px check. */
+body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class~="nUhMVa_tab"]):not([data-chip]){font-size:18px;line-height:27px;min-height:34px}
 body:not(:has([class*="AnXs9G_panel"])) [data-chip="1"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [role="menuitem"]{font-size:16px;line-height:22px;min-height:38px}
+body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [class*="_label_"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
+body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [class*="_check_"]{width:18px;height:18px}
 /* 高级 (备份与恢复 / 诊断): the same two ranks inside the cards, and the card
    grows to hold them. The fields were on bg-layer-3, which is DARKER than the
    card fill — on paper that reads as one muddy block, so the input surface moves
