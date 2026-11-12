@@ -885,6 +885,19 @@ body [class*="olCj9W_searchField"] > :first-child svg{width:16px;height:16px}
 body [class*="olCj9W_searchField"] [class*="searchClear"] svg{width:16px;height:16px}
 body [class*="olCj9W_searchField"]:hover{border-color:transparent}
 body [class*="olCj9W_searchField"]:focus-within{border-color:var(--dsw-alias-state-business-primary)}
+/* Rows: the list shipped a 2px gap and no rule, so on paper eleven identical blocks
+   read as one wall. Every row takes a hairline (the markdown-table border-l2 tone)
+   drawn 8px in from both ends so it lines up with the row's content box, the last
+   row drops it, and the flex gap goes to 0 so the rule is the only separator. The
+   line is a pseudo-element, not a border: the row keeps its 12px hover radius, and
+   a border-bottom would curve up along that radius at both ends. */
+body [class~="olCj9W_listRows"]{gap:0}
+body [class~="olCj9W_row"]{position:relative}
+body [class~="olCj9W_row"]::after{content:"";position:absolute;left:8px;right:8px;bottom:0;height:1px;background:var(--dsw-alias-border-l2);pointer-events:none}
+/* The row is the <li>'s only child, so :last-child on the row itself would hide
+   every rule; the last item is matched on the list instead. */
+body [class~="olCj9W_listRows"] > :last-child [class~="olCj9W_row"]::after,
+body [class~="olCj9W_listRows"] > [class~="olCj9W_row"]:last-child::after{display:none}
 /* PARCHMENT-TASKMANAGER-END */
 /* ---- 插件 (plugin manager panel) ----------------------------------------- */
 /* PARCHMENT-PLUGINPAGE-START */
@@ -1082,6 +1095,19 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_ungroupedRow"] > [class~
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupBulkActions"] button,
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupActions"] button,
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_groupMemberAction"] button{font-size:16px;line-height:22px;min-height:34px;padding:0 16px}
+/* 收藏 / 主题 result bar (共 8 个收藏, 387 款主题), the empty theme cover (暂无预览),
+   the 启用中 / 已最新 state tag and the 展开全部 link all ship at 11–12px under the
+   same 18px card names. They take the 摘要 rank; the state tag grows its box with
+   the type so the dot + label still sit on one line, and 展开全部 takes the 工作区
+   bar's ink (#26333a on paper, #e7c17b on 墨夜) instead of the grey caption ink. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_themeResultBar"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_themeCoverEmpty"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_stateTag"]{font-size:16px;line-height:22px;min-height:26px;padding:2px 9px;border-radius:6px}
+/* 已最新 / 已安装 are metaTag, a different pill from the 启用中 stateTag above —
+   same 11px type, so it takes the same 16/22 box. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_metaTag"]{font-size:16px;line-height:22px;min-height:26px;padding:2px 9px;border-radius:6px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_descMore"]{font-size:16px;line-height:22px;color:#26333a}
+body[data-ds-dark-theme]:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_descMore"]{color:#e7c17b}
 /* PARCHMENT-MARKET-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in

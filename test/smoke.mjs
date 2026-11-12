@@ -695,6 +695,47 @@ assert.match(
   /\[class~="nUhMVa_groupMember"\]\{font-size:16px;line-height:22px;padding:8px 10px\}/,
   'the group member rows take the 摘要 rank',
 );
+// Result bars, the empty theme cover, the 启用中 / 已最新 state tag and 展开全部 all
+// shipped at 11–12px; 展开全部 takes the 工作区 bar ink in both modes.
+assert.match(
+  css,
+  /\[class~="nUhMVa_themeResultBar"\],\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_themeCoverEmpty"\]\{font-size:16px;line-height:22px\}/,
+  'the result bar and empty cover take the 摘要 rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_stateTag"\]\{font-size:16px;line-height:22px;min-height:26px;padding:2px 9px;border-radius:6px\}/,
+  'the state tag grows with its type',
+);
+// 已是最新 / 已安装 use metaTag, a different pill from stateTag.
+assert.match(
+  css,
+  /\[class~="nUhMVa_metaTag"\]\{font-size:16px;line-height:22px;min-height:26px;padding:2px 9px;border-radius:6px\}/,
+  'the meta tag grows with its type',
+);
+// 自动化任务 rows are separated by a hairline drawn as a pseudo-element. The class
+// is matched exactly (class~=): a substring match would also hit rowTitle /
+// rowSummary / rowContent and draw two or three lines per row.
+assert.match(
+  css,
+  /\[class~="olCj9W_row"\]::after\{content:"";position:absolute;left:8px;right:8px;bottom:0;height:1px;background:var\(--dsw-alias-border-l2\)/,
+  'task rows are separated by a hairline',
+);
+assert.doesNotMatch(
+  css,
+  /\[class\*="olCj9W_row"\]::after/,
+  'the row hairline never matches row-prefixed child classes',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_descMore"\]\{font-size:16px;line-height:22px;color:#26333a\}/,
+  '展开全部 takes the 工作区 ink on paper',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\][^{]*\[class~="nUhMVa_descMore"\]\{color:#e7c17b\}/,
+  '展开全部 takes the 工作区 ink on 墨夜',
+);
 assert.match(
   css,
   /\[role="menuitem"\]\[data-dsh-accent="block"\] \[class\*="_itemLabel"\]\{flex:1;text-align:center;color:var\(--dsw-alias-state-error-primary\)\}/,
