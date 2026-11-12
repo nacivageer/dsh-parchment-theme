@@ -598,6 +598,19 @@ assert.match(
   /body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_recentTile"\]\{height:auto;min-height:94px\}/,
   'the 最近收录 tiles grow to show both description lines',
 );
+// Browse cards: 安装 and the 评论 / ⋯ row sat at the primitives default (14px type,
+// 22px line) beside the 18px card name. They take the 高级 page's card-button rank,
+// scoped to the card so the compact 最近收录 tiles keep their 24px action.
+assert.match(
+  css,
+  /\[class~="nUhMVa_card"\] \[class~="nUhMVa_installBtn"\]\{height:34px;min-height:34px;padding:0 16px;min-width:84px;font-size:16px;line-height:22px\}/,
+  'the card 安装 button takes the card-button rank',
+);
+assert.match(
+  css,
+  /\[class~="nUhMVa_act"\] button\{min-height:30px;padding:0 10px;font-size:16px;line-height:22px\}/,
+  'the card 评论 / ⋯ row gets a 30px hit box',
+);
 assert.match(
   css,
   /\[class\*="nUhMVa_head"\] button:not\(\[class~="nUhMVa_tab"\]\):not\(\[data-chip\]\)/,

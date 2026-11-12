@@ -950,6 +950,15 @@ body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_progress"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_descMore"],
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_repoLink"]{font-size:14px;line-height:20px}
 body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_av"]{font-size:10px}
+/* Browse cards (发现 / 主题 / 收藏): 安装 and the 评论 / ⋯ row are primitives at
+   their small default — ~25px tall and 13.3px type — sitting beside an 18px card
+   name, so they read as fine print and are hard to hit. They take the 高级 page's
+   card-button rank (16px type, 34px button) and the comment row gets a 30px hit
+   box. Scoped to the card, so the 最近收录 tiles keep their compact 24px action —
+   that card is only 94px tall. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_card"] [class~="nUhMVa_installBtn"]{height:34px;min-height:34px;padding:0 16px;min-width:84px;font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_act"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_act"] button{min-height:30px;padding:0 10px;font-size:16px;line-height:22px}
 /* The header's own controls: 任务 / 筛选 / 导出日志 and the category pills are
    primitives that pin 13px, so they need stating by hand. The tabs are excluded
    (they have their own 18px rank above) and the pills carry data-chip. */
