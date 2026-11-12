@@ -1150,7 +1150,12 @@ body [data-sidebar-right-guide-entry] [class*="_keys_"],
 body [data-sidebar-right-guide-entry] [class*="_shortcut"],
 body [data-sidebar-right-guide-entry] [class*="_shortcutKeys"],
 body [data-sidebar-right-guide-entry] kbd{font-size:13px;line-height:20px}
-body [data-sidebar-right-guide-entry="terminal"] [class*="_shortcut"]{margin-left:auto;align-self:center;margin-right:14px}
+/* The chip is a sibling of icon/text, not a child of the button, and the card's own
+   flex box does not hand it the leftover space (auto margins no-op there). It is
+   absolutely positioned against the card's right padding instead, the same way the
+   sidebar's 新会话 shortcut is pinned. */
+body [data-sidebar-right-guide-entry="terminal"]{position:relative}
+body [data-sidebar-right-guide-entry="terminal"] [class*="_shortcut"]{position:absolute;right:22px;top:50%;transform:translateY(-50%);margin:0}
 /* The Platform overlay's back bar (用量 / 充值 pages) ships 14px system UI type on
    the secondary ink. It takes the sidebar entry's face — the display serif at 17px
    on the primary ink — so leaving a platform page reads like every other nav row. */
