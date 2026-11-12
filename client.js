@@ -494,10 +494,11 @@ body .dsh-price-period{font-size:15px;height:33px;padding:0 12px}
 
 body [class*="AnXs9G_panel"]{zoom:1.15}
 /* The zoom scales fixed-position tooltips too, so the plugin market's
-   hover-to-read bubble drifts away from its card. Drop the zoom on that page;
-   the market's tabs carry data-plugin-tab, which outlives the CSS-module hash
-   the page root used to have. */
-body:has([data-plugin-tab]) [class*="AnXs9G_panel"]{zoom:1}
+   hover-to-read bubble drifts away from its card. Drop the zoom on that page.
+   Two markers: dshmarket's page root (nUhMVa, a build hash of that plugin, still
+   present in 1.73.19) and the core market page's tabs (data-plugin-tab, added in
+   0.2.2). Either one means the market is on screen. */
+body:has([class*="AnXs9G_panel"] :is([class*="nUhMVa_root"],[data-plugin-tab])) [class*="AnXs9G_panel"]{zoom:1}
 body [class*="AnXs9G_triggerRow"]{font-size:18px}
 body [class*="AnXs9G_triggerLabel"]{font-size:18px;line-height:26px}
 /* Settings nav: the main sidebar's display face and rank. The panel's 1.15 zoom

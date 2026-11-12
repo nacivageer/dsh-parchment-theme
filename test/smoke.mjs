@@ -65,7 +65,7 @@ const cssNoComments = css.replace(/\/\*[\s\S]*?\*\//g, '');
 const zoomRules = [...cssNoComments.matchAll(/([^{}]+)\{[^}]*zoom\s*:/g)].map((m) => m[1].trim());
 assert.deepEqual(zoomRules, [
   'body [class*="AnXs9G_panel"]',
-  'body:has([data-plugin-tab]) [class*="AnXs9G_panel"]',
+  'body:has([class*="AnXs9G_panel"] :is([class*="nUhMVa_root"],[data-plugin-tab])) [class*="AnXs9G_panel"]',
 ], 'zoom stays on the settings modal, except on the plugin market page');
 
 // Settings cards and row rules need a visible stroke on paper.
