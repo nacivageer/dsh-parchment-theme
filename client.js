@@ -1131,6 +1131,24 @@ body:not(:has([class*="AnXs9G_panel"])) [role="menu"][data-context-menu] [role="
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"][data-context-menu] [class*="_itemIcon"]{width:18px;height:18px}
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"][data-context-menu] [class*="_itemIcon"] svg{width:18px;height:18px}
 /* PARCHMENT-RIGHTPANE-END */
+/* ---- 会话轨迹 (Trajectory) ------------------------------------------------ */
+/* PARCHMENT-TRAJECTORY-START */
+/* The timeline's three lane labels (输入 / 模型 / 工具) ship at 10px in
+   label-caption — the faintest ink in the palette — on a 50px plot, so next to
+   16px chat copy they read as a smudge. They take 12px on the secondary ink; the
+   8px label boxes grow to 14px and re-centre on the three 14px-spaced lanes
+   (their centres sit at 11 / 25 / 39 inside the plot). */
+body [class*="tzG23a_labels"]{font-size:12px;line-height:1;color:var(--dsw-alias-label-secondary)}
+body [class*="tzG23a_labels"] span{height:14px;line-height:14px}
+body [class*="tzG23a_labels"] span:first-child{top:4px}
+body [class*="tzG23a_labels"] span:nth-child(2){top:18px}
+body [class*="tzG23a_labels"] span:nth-child(3){top:32px}
+/* The trajectory page's search field is the only search box in the app whose
+   placeholder is a bare 搜索 (the market's is 搜索插件，例如…, the task list's is
+   搜索自动化任务), so the placeholder itself is the locator. */
+body:not(:has([class*="AnXs9G_panel"])) input[placeholder="搜索"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) input[placeholder="搜索"]::placeholder{color:var(--dsw-alias-label-secondary)}
+/* PARCHMENT-TRAJECTORY-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */

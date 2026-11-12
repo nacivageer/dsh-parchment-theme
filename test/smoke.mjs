@@ -730,6 +730,17 @@ assert.match(
   /\[role="menu"\]\[data-context-menu\] \[role="menuitem"\]\{font-size:16px;line-height:22px;min-height:36px\}/,
   'context-menu rows take the 摘要 rank',
 );
+// 轨迹 timeline: the lane labels ship at 10px in label-caption (the faintest ink).
+assert.match(
+  css,
+  /\[class\*="tzG23a_labels"\]\{font-size:12px;line-height:1;color:var\(--dsw-alias-label-secondary\)\}/,
+  'the trajectory lane labels take 12px on the secondary ink',
+);
+assert.match(
+  css,
+  /input\[placeholder="搜索"\]\{font-size:16px;line-height:22px\}/,
+  'the trajectory search field takes the 16px rank',
+);
 // 自动化任务 rows are separated by a hairline drawn as a pseudo-element. The class
 // is matched exactly (class~=): a substring match would also hit rowTitle /
 // rowSummary / rowContent and draw two or three lines per row.
