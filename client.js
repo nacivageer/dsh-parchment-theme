@@ -342,9 +342,13 @@ window.__ModuleLoader__.load({
      * 寒蝉活宋体_復 Bold family in STYLE_CSS, so no synthetic bold is involved.
      */
     const TYPE = {
-      '--dsh-content-font-size': '18px',
-      '--dsh-code-font-size': '13px',
-      '--dsh-terminal-font-size': '15px',
+      /* The three --dsh-*-font-size variables belong to Settings → 字号大小
+         (ui-theme writes them from FONT_SIZE_SPECS: text 10–22, code 10–16,
+         terminal). Overriding them here pinned the transcript at 18px and made
+         that control a dead knob that still displayed 14 — the theme rendered
+         one size while Settings reported another. Left unset, the user's value
+         wins and the derived deltas (--dsh-content-font-delta et al.) follow it.
+         Recommended: text 17, code 13, terminal 15 (what the theme used to pin). */
       '--dsw-font-family':
         'var(--dsh-font-family-text, "思源宋体 CN Medium"), "思源宋体 CN Medium", "思源宋体 CN", "Source Han Serif CN", "Noto Serif SC", "Songti SC", "SimSun", serif',
     };

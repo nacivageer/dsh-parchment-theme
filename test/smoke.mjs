@@ -612,7 +612,13 @@ assert.match(
 
 const seam = plugin.__parchment;
 assert.ok(seam && seam.LIGHT && seam.DARK && seam.TOKENS);
-assert.equal(Object.keys(seam.TYPE).length, 4);
+assert.equal(Object.keys(seam.TYPE).length, 1, 'only the type face is layered now');
+// Settings → 字号大小 writes these three; a token here would pin the rendered
+// size while the control kept displaying the user's (ignored) value.
+for (const name of ['--dsh-content-font-size', '--dsh-code-font-size', '--dsh-terminal-font-size']) {
+  assert.equal(layer.tokens[name], undefined, `${name} must stay with the Settings control`);
+  assert.equal(seam.LIGHT[name], undefined, `${name} must not reappear in the light palette`);
+}
 
 // ---- preference switches (Settings → General) -------------------------------
 // Defaults mirror the shipped app: the 0.2.2 whale stays on, the folder button
