@@ -747,6 +747,17 @@ assert.match(
   /\[class\*="MKE-pW_back"\]\{font-family:"寒蝉活宋体_復"/,
   'the platform back bar takes the display serif',
 );
+// The context panel: 12px type and three stock tints → 摘要 rank + the theme ramp.
+assert.match(
+  css,
+  /\[class\*="A6Bq1a_panel"\]\{width:min\(300px,100vw - 24px\);font-size:14px;line-height:20px\}/,
+  'the context panel takes the 摘要 rank',
+);
+assert.match(
+  css,
+  /\[class\*="A6Bq1a_colorTools"\]\{--meter-tint:#8a6f4a\}/,
+  'the composition bar takes the theme tint ramp',
+);
 // Entry icons are full-colour SVGs from four packages; one filter unifies the ink.
 assert.match(
   css,

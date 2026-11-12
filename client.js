@@ -1248,7 +1248,26 @@ body [class*="xeixwq_turnLabelFull"]{display:none}
 body [class*="xeixwq_turnLabelCompact"]{opacity:1;max-width:none}
 body [class*="xeixwq_turnLabel"]{font-size:14px;line-height:18px;padding:1px 4px;border-radius:0 0 4px}
 body [class*="xeixwq_turnLabel"]:not([class*="turnLabelActive"]){color:var(--dsw-alias-label-secondary);background:var(--dsw-alias-bg-layer-3)}
-/* PARCHMENT-TRAJECTORY-END *//* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
+/* PARCHMENT-TRAJECTORY-END */
+/* ---- 会话底栏浮层（上下文已用） ------------------------------------------ */
+/* PARCHMENT-CTXMETER-START */
+/* The context panel ships 12px type and three stock tints (bluish grey / violet /
+   blue) for its composition bar, which sit cold against parchment. Type goes to the
+   摘要 rank and the three segments take the ink–leather–gold ramp already used
+   elsewhere in the theme, so the bar reads as part of the paper. */
+body [class*="A6Bq1a_panel"]{width:min(300px,100vw - 24px);font-size:14px;line-height:20px}
+body [class*="A6Bq1a_headline"]{font-size:15px;line-height:22px}
+body [class*="A6Bq1a_figures"]{font-size:14px}
+body [class*="A6Bq1a_row"]{padding:3px 0}
+body [class*="A6Bq1a_bar"]{height:6px;margin:12px 0 14px}
+body [class*="A6Bq1a_swatch"]{width:10px;height:10px;border-radius:3px}
+body [class*="A6Bq1a_colorSystem"]{--meter-tint:#5b4c3a}
+body [class*="A6Bq1a_colorTools"]{--meter-tint:#8a6f4a}
+body [class*="A6Bq1a_colorMessages"]{--meter-tint:#b99a5e}
+body[data-ds-dark-theme] [class*="A6Bq1a_colorSystem"]{--meter-tint:#e7c17b}
+body[data-ds-dark-theme] [class*="A6Bq1a_colorTools"]{--meter-tint:#c8a468}
+body[data-ds-dark-theme] [class*="A6Bq1a_colorMessages"]{--meter-tint:#8a7350}
+/* PARCHMENT-CTXMETER-END *//* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */
 body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic}
