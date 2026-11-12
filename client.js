@@ -698,6 +698,13 @@ body[data-ds-dark-theme] [role="tooltip"]{border:1px solid #e2dacc40;box-shadow:
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"]{font-size:16px;line-height:24px;min-height:40px}
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"]{width:16px;height:16px}
 body:has([data-row-key] button[aria-haspopup="menu"][aria-expanded="true"]) [role="menuitem"] [class*="_itemIcon"] svg{width:16px;height:16px}
+/* The sidebar's 更多 list (SidebarRoot's PanelMoreMenu: unpinned panel entries,
+   then 浏览更多插件 / 创建你的插件) is not a row menu, so the gate above never
+   reached it and it kept the primitives' 13px. The menu list carries its own
+   moreMenu class, which only exists while the list is open. */
+body [class*="wtg9ga_moreMenu"] [role="menuitem"]{font-size:16px;line-height:24px;min-height:40px}
+body [class*="wtg9ga_moreMenu"] [role="menuitem"] [class*="EWdd3W_entryIcon"]{width:16px;height:16px}
+body [class*="wtg9ga_moreMenu"] [role="menuitem"] [class*="_itemIcon"] svg{width:16px;height:16px}
 /* The sidebar path/creation hover card is a HoverCard whose surface and ink were
    hardcoded neutral dark (#2C2C2E on #fff), so light mode showed the same dark
    bubble as dark mode. It borrows the 工作区 section bar's palette instead of a
@@ -813,6 +820,119 @@ body[data-ds-dark-theme] [class*="oT5lKa_openButton"],
 body[data-ds-dark-theme] [class*="oT5lKa_openButton"] button{background:#564f47;border-color:#6b6156;color:#f4edde}
 @media (hover:hover){body [class*="oT5lKa_openButton"]:hover,body [class*="oT5lKa_openButton"] button:hover{background:#c6c0b7}}
 @media (hover:hover){body[data-ds-dark-theme] [class*="oT5lKa_openButton"]:hover,body[data-ds-dark-theme] [class*="oT5lKa_openButton"] button:hover{background:#615a51}}
+/* ---- 自动化任务 (task-manager page) --------------------------------------- */
+/* PARCHMENT-TASKMANAGER-START */
+/* The task-manager page is a first-level page of its own, but it shipped its own
+   type scale — 14px body, 13px row summaries, a 20/500 heading — so on paper it
+   read a step below every other page. It takes the Settings column's ranks: page
+   heading = 模型/内置插件 header, task rows = 栏目名 over its 摘要, status filters
+   = the same 栏目名 rank, so the four of them read as the list's headings instead
+   of as chips (inactive keeps the secondary ink, the pressed one the primary —
+   that is what still separates the state).
+
+   The sizes are the Settings ranks multiplied by the panel's 1.15 zoom, because
+   the Settings column is the only place in the app that renders inside the
+   settings panel's own zoom:1.15 rule: 16px there lands on ~18.4 device px, and
+   this page has no zoom of its own. Matching the literal CSS numbers instead
+   would render 13% smaller than the column it is being matched to. So:
+   heading 18→21 (26→30), 栏目名 16→18 (24→27), 摘要 14→16 (20→22). */
+body [class*="olCj9W_pageHeading"] h1{font-size:21px;line-height:30px;font-weight:600;color:var(--dsw-alias-label-primary)}
+body [class*="olCj9W_filterTab"]{height:36px;padding:0 13px;font-size:18px;line-height:27px;color:var(--dsw-alias-label-secondary)}
+body [class*="olCj9W_filterTabActive"]{color:var(--dsw-alias-label-primary)}
+body [class*="olCj9W_rowTitle"]{font-size:18px;line-height:27px;font-weight:400}
+body [class*="olCj9W_rowSummary"],
+body [class*="olCj9W_metadata"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+/* The search box was a hairline-outlined well while every other input on paper
+   is a raised sheet. It takes the composer's material — the input-major fill and
+   the elevation hairline drawn in border-l2 (via --dsw-elevation-stroke-color, so
+   the stroke costs no layout) — and its 14px inset. Not the composer's 28px
+   radius though: on a 40px-tall field that clamps to the half height and reads as
+   a capsule, while the composer's own 28 on a ~100px sheet reads as a rounded
+   rectangle. 16px (radius-lg) keeps that corner family at this height. The box
+   grows from 36 to 40 so the 16px type inside has room, and the trailing ⋯
+   button grows with it (both read --task-search-height). Focus keeps the shipped
+   business stroke, which is otherwise invisible on a borderless sheet. */
+body [class*="olCj9W_searchTools"]{--task-search-height:40px}
+body [class*="olCj9W_searchField"]{padding:0 14px;border:.5px solid transparent;border-radius:var(--dsw-radius-lg);background:var(--dsw-specific-input-major);box-shadow:var(--dsw-elevation-soft);--dsw-elevation-stroke-color:var(--dsw-alias-border-l2)}
+/* The atom inside the field ships 14px text and a 14px glyph; the field now sits
+   on the same 16px rank as the rows it filters. */
+body [class*="olCj9W_searchField"] input{font-size:16px;line-height:24px}
+body [class*="olCj9W_searchField"] > :first-child svg{width:16px;height:16px}
+body [class*="olCj9W_searchField"] [class*="searchClear"] svg{width:16px;height:16px}
+body [class*="olCj9W_searchField"]:hover{border-color:transparent}
+body [class*="olCj9W_searchField"]:focus-within{border-color:var(--dsw-alias-state-business-primary)}
+/* PARCHMENT-TASKMANAGER-END */
+/* ---- 插件 (plugin manager panel) ----------------------------------------- */
+/* PARCHMENT-PLUGINPAGE-START */
+/* The Plugins panel is a first-level page of the main column, not a Settings
+   page, so it carries no 1.15 zoom and takes the same device-pixel ranks as
+   自动化任务: the page title on the Settings page-title step, the group heading
+   and every card name on the 栏目名 step, the card one-liners on the 摘要 step.
+   It shipped 20/13/14/13 — one line of small print under a 20px title. */
+body [data-plugin-panel] [data-plugin-header-part="title"],
+body [data-plugin-panel] [class*="V7pFBG_pageTitle"]{font-size:21px;line-height:30px;font-weight:600;color:var(--dsw-alias-label-primary)}
+body [data-plugin-panel] [data-plugin-header-part="intro"],
+body [data-plugin-panel] [class*="V7pFBG_pageIntro"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+body [data-plugin-panel] [data-plugin-group] h3{font-size:18px;line-height:27px}
+/* 更多 at the group's trailing edge is the same row as that heading. */
+body [data-plugin-panel] [class*="V7pFBG_groupMore"]{font-size:16px;line-height:22px}
+/* The 已安装 / 插件市场 switch is a primitives SegmentedTabs, shared app-wide, so
+   it is scoped to this page's own tab row (data-plugin-header-part is the app's
+   own attribute, no build hash). Same rank as 自动化任务's status filters. */
+body [data-plugin-panel] [data-plugin-header-part="tabs"] button{height:34px;padding:0 18px;font-size:18px;line-height:27px}
+body [data-plugin-panel] [class*="V7pFBG_cardTitle"]{font-size:18px;line-height:27px;font-weight:400}
+body [data-plugin-panel] [class*="V7pFBG_cardDesc"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+/* PARCHMENT-PLUGINPAGE-END */
+/* ---- 插件市场 (dshmarket, opened from the sidebar) ------------------------ */
+/* PARCHMENT-MARKET-START */
+/* The market page entered from the sidebar renders in the main column, outside
+   the Settings panel, so it carries no 1.15 zoom and read a step below the
+   插件 page beside it (15/12/13 against 21/18/16). It now takes the same ranks
+   as 插件: title on the page-title step, tabs and card names on the 栏目名 step,
+   each card's one-liner on the 摘要 step — and the summaries move from the
+   tertiary ink to the secondary ink the 插件 page's descriptions use.
+   Gated on "no Settings panel on screen": the panel's own copy of the market is
+   a different entry point, inherits the panel's zoom and is deliberately left at
+   its shipped scale. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_title"]{font-size:21px;line-height:30px;font-weight:600}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sub"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_submitLink"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_hostFilterNote"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_reassure"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_tab"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_nm"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_cardMore"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_favoritesSectionHead"]{font-size:18px;line-height:27px}
+/* Summaries: the 摘要 rank, and the secondary ink instead of tertiary. */
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_desc"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentDesc"]{font-size:16px;line-height:22px;color:var(--dsw-alias-label-secondary)}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_recentShow"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sect"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_sectAction"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_empty"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_loading"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_searchInput"]{font-size:16px;line-height:22px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_meta"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_metaInline"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_src"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_act"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_tag"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_hostRequirement"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_owner"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_star"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_noteToggle"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_noteCount"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_version"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_progress"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_descMore"],
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_repoLink"]{font-size:14px;line-height:20px}
+body:not(:has([class*="AnXs9G_panel"])) [class~="nUhMVa_av"]{font-size:10px}
+/* The header's own controls: 任务 / 筛选 / 导出日志 and the category pills are
+   primitives that pin 13px, so they need stating by hand. The tabs are excluded
+   (they have their own 18px rank above) and the pills carry data-chip. */
+body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class~="nUhMVa_tab"]):not([data-chip]),
+body:not(:has([class*="AnXs9G_panel"])) [data-chip="1"]{font-size:16px;line-height:22px}
+/* PARCHMENT-MARKET-END */
 /* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */

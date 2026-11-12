@@ -487,6 +487,106 @@ assert.match(
   'the expanded turn-trigger body uses 16px italic body type',
 );
 
+// 自动化任务 (the task-manager page) shipped its own 14/13 type scale and a
+// hairline-outlined search well. It now takes the Settings column's ranks,
+// pre-multiplied by that panel's 1.15 zoom, and the composer's raised surface.
+assert.match(
+  css,
+  /\[class\*="olCj9W_pageHeading"\] h1\{font-size:21px;line-height:30px;font-weight:600/,
+  'the task-manager heading uses the settings page-title rank',
+);
+assert.match(
+  css,
+  /\[class\*="olCj9W_rowTitle"\]\{font-size:18px;line-height:27px;font-weight:400\}/,
+  'a task row reads as a settings 栏目名',
+);
+assert.match(
+  css,
+  /\[class\*="olCj9W_rowSummary"\],\s*body \[class\*="olCj9W_metadata"\]\{font-size:16px;line-height:22px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'a task summary reads as a settings 摘要',
+);
+assert.match(
+  css,
+  /\[class\*="olCj9W_filterTab"\]\{height:36px;padding:0 13px;font-size:18px/,
+  'the status filters take the 栏目名 rank',
+);
+assert.match(
+  css,
+  /\[class\*="olCj9W_searchField"\]\{[^}]*border-radius:var\(--dsw-radius-lg\);background:var\(--dsw-specific-input-major\);box-shadow:var\(--dsw-elevation-soft\)/,
+  'the task search field takes the composer input surface',
+);
+assert.match(
+  css,
+  /\[class\*="olCj9W_searchField"\]:focus-within\{border-color:var\(--dsw-alias-state-business-primary\)\}/,
+  'the borderless search field still marks focus',
+);
+
+// The 插件 panel is a main-column page (no Settings zoom) and takes the same
+// ranks: page title = Settings page-title step, card names = 栏目名, one-liners
+// = 摘要. Its status switch is scoped to its own tab row.
+assert.match(
+  css,
+  /\[data-plugin-header-part="title"\],\s*body \[data-plugin-panel\] \[class\*="V7pFBG_pageTitle"\]\{font-size:21px;line-height:30px;font-weight:600/,
+  'the Plugins page title uses the settings page-title rank',
+);
+assert.match(
+  css,
+  /\[data-plugin-panel\] \[data-plugin-group\] h3\{font-size:18px;line-height:27px\}/,
+  'the Plugins group heading reads as a 栏目名',
+);
+assert.match(
+  css,
+  /\[data-plugin-panel\] \[class\*="V7pFBG_cardTitle"\]\{font-size:18px;line-height:27px;font-weight:400\}/,
+  'a plugin card name reads as a 栏目名',
+);
+assert.match(
+  css,
+  /\[data-plugin-panel\] \[class\*="V7pFBG_cardDesc"\]\{font-size:16px;line-height:22px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'a plugin card one-liner reads as a 摘要',
+);
+assert.match(
+  css,
+  /\[data-plugin-panel\] \[data-plugin-header-part="tabs"\] button\{height:34px;padding:0 18px;font-size:18px;line-height:27px\}/,
+  'the Plugins status switch is scoped to its own tab row',
+);
+
+// The sidebar 更多 list is its own menu, not a row menu, and kept the 13px
+// primitives items. Its list carries a moreMenu class that only exists while open.
+assert.match(
+  css,
+  /body \[class\*="wtg9ga_moreMenu"\] \[role="menuitem"\]\{font-size:16px;line-height:24px;min-height:40px\}/,
+  'the sidebar 更多 list uses the sidebar menu rank',
+);
+
+// dshmarket renders in two hosts: the Settings panel zooms it 1.15, the main
+// column does not, so the sidebar copy carries the same ranks scaled by 1.15 —
+// gated off while a Settings panel is on screen, which already carries the zoom.
+assert.match(
+  css,
+  /body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_title"\]\{font-size:21px;line-height:30px;font-weight:600\}/,
+  'the main-column market title takes the 插件 page-title rank',
+);
+assert.match(
+  css,
+  /body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_tab"\],\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_nm"\]/,
+  'market tabs and card names take the 栏目名 rank',
+);
+assert.match(
+  css,
+  /body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_desc"\],\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class~="nUhMVa_recentDesc"\]\{font-size:16px;line-height:22px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'market summaries take the 摘要 rank and the secondary ink',
+);
+assert.match(
+  css,
+  /\[class\*="nUhMVa_head"\] button:not\(\[class~="nUhMVa_tab"\]\):not\(\[data-chip\]\)/,
+  'the market header controls are sized by hand',
+);
+assert.doesNotMatch(
+  css,
+  /body:not\(\[data-ds-dark-theme\]\) \[class\*="nUhMVa_/,
+  'the market scale is not keyed on the colour scheme',
+);
+
 const family = layer.tokens['--dsw-font-family'];
 assert.ok(family, 'the font stack must be part of the layer');
 assert.match(family.light, /思源宋体 CN/, 'body text uses 思源宋体 CN');
