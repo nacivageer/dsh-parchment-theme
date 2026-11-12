@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.19 — 2026-11-12
+
+适配 DSH **0.2.2-rc.2** 的类名哈希与令牌变更。升级后有两处外观回退（用户报的），另有三处静默失效（样式规则不再命中，界面掉回出厂色）一并修掉。
+
+- **「已到会话开头」按钮**：0.2.2 把「加载更早 / 正在加载 / 正在处理 / 重新加载 / 已到会话开头」五个状态标签叠在同一个 grid 单元里，只显示当前那个、其余用 `visibility:hidden`。主题早先把按钮改成 `inline-flex`（为了在「加载更早」左边放沙漏），隐藏标签仍然占宽，于是沙漏贴左、文字被推到右边、中间空出一段。现在隐藏态直接 `display:none`；沙漏只出现在可加载的 `:not(:disabled)` 状态，末尾状态是纯居中文字、没有多余空隙。
+- **会话路径悬停卡**：0.2.2 把卡面从写死的 `--dsw-hovercard-bg: #2C2C2E` 换成调色板变量 `--dsw-alias-hovercard-bg`，构建哈希也从 `bgejw` 变成 `l6gf9`，旧规则整条失配，衬底掉回出厂深灰。改为按「卡片内含 `hoverContent`」定位，并同时覆盖 `--dsw-alias-hovercard-label-*` 三个墨色变量——下一版换哈希也不会再掉色。
+- **代码块**：`_block_7gxqk_4` / `_infostring_7gxqk_45` → `kjs70`，边框与「猫啃网故障宋」标题一起失效。改用业务属性 `[data-code-block-banner]` 定位（只有围栏代码块带它），不再跟构建哈希。
+- **展开的 diff 预览**：`_preview_bgejw_52` → `_preview_l6gf9_51`，浅色会退回灰底；补上 `data-changes-hover-preview` 作为兜底钩子。
+- **插件市场页的 zoom 复位**：dshmarket 的 `nUhMVa_root` 标记保留（1.73.19 仍在用），另加核心市场页新增的 `[data-plugin-tab]`，两者任一在场都把设置面板的 `zoom` 复位为 1。
+- **子代理卡**：`rezYhW_summary` 在 0.2.2 里拆没了，改覆盖 `rezYhW_label` / `secondaryLabel` 到 14px。
+- **卡片底**：0.2.2 新增 `--dsw-alias-card-fill` / `-card-fill-hover` / `-settings-card-fill`（出厂 `#fafafa` / `#212123`），设置页卡片、计划卡、交付卡都走它，不覆盖会在纸上变成白斑、深色下发冷黑。压回暖纸面：浅 `#c8c1b4`（hover `#bbb3a1`）、深 `#302a23`（hover `#373129`）。
+
 ## v0.1.18 — 2026-11-12
 
 一条 tooltip 防御 + README 补两句，界面本身没有别的改动。
