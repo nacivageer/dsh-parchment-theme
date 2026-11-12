@@ -1261,12 +1261,12 @@ body [class*="A6Bq1a_figures"]{font-size:14px}
 body [class*="A6Bq1a_row"]{padding:3px 0}
 body [class*="A6Bq1a_bar"]{height:6px;margin:12px 0 14px}
 body [class*="A6Bq1a_swatch"]{width:10px;height:10px;border-radius:3px}
-body [class*="A6Bq1a_colorSystem"]{--meter-tint:#5b4c3a}
-body [class*="A6Bq1a_colorTools"]{--meter-tint:#8a6f4a}
+body [class*="A6Bq1a_colorSystem"]{--meter-tint:#6b4426}
+body [class*="A6Bq1a_colorTools"]{--meter-tint:#c9862f}
 body [class*="A6Bq1a_colorMessages"]{--meter-tint:#b99a5e}
-body[data-ds-dark-theme] [class*="A6Bq1a_colorSystem"]{--meter-tint:#e7c17b}
-body[data-ds-dark-theme] [class*="A6Bq1a_colorTools"]{--meter-tint:#c8a468}
-body[data-ds-dark-theme] [class*="A6Bq1a_colorMessages"]{--meter-tint:#8a7350}
+body[data-ds-dark-theme] [class*="A6Bq1a_colorSystem"]{--meter-tint:#a06a42}
+body[data-ds-dark-theme] [class*="A6Bq1a_colorTools"]{--meter-tint:#e8a33d}
+body[data-ds-dark-theme] [class*="A6Bq1a_colorMessages"]{--meter-tint:#e7c17b}
 /* PARCHMENT-CTXMETER-END */
 /* ---- 会话统计 / Token 用量 卡片（stat-dialog） ---------------------------- */
 /* Same story as the context panel: the dialog ships 12px rows on tertiary ink. It

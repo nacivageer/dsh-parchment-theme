@@ -755,7 +755,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\[class\*="A6Bq1a_colorTools"\]\{--meter-tint:#8a6f4a\}/,
+  /\[class\*="A6Bq1a_colorTools"\]\{--meter-tint:#c9862f\}/,
   'the composition bar takes the theme tint ramp',
 );
 // The 会话统计 / Token 用量 dialogs share stat-dialog.module.css.
