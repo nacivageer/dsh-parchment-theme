@@ -682,7 +682,7 @@ assert.deepEqual(
   [
     ['settings.general.item', 'parchment-home-whale', 30],
     ['settings.general.item', 'parchment-open-folder', 31],
-    ['settings.general.item', 'parchment-code-italic', 32],
+    ['settings.general.item', 'parchment-code-italic', 12],
     ['conversation.session.header.utilities', 'parchment-open-folder', -10],
   ],
   'the three rows and the header shortcut register where expected',
@@ -690,6 +690,20 @@ assert.deepEqual(
 assert.ok(
   registrations.every((entry) => typeof entry.component === 'function'),
   'every registration carries a render function',
+);
+// The code-italic row rides the font group's fold: hidden while it is closed,
+// visible when its expander opens, and visible by default so a hash change
+// cannot strand the switch.
+assert.match(css, /\.dsh-parchment-codeItalic\{display:block\}/, 'the folded row defaults to visible');
+assert.match(
+  css,
+  /body:has\(\[class\*="_7qxJPq_row"\]\) \.dsh-parchment-codeItalic\{display:none\}/,
+  'the folded row hides while the font group is collapsed',
+);
+assert.match(
+  css,
+  /body:has\(\[class\*="_7qxJPq_row"\] \[class\*="_expander"\]\[aria-expanded="true"\]\) \.dsh-parchment-codeItalic\{display:block\}/,
+  'the folded row appears when the font group expands',
 );
 assert.deepEqual(seats, [['slots', 'locale']], 'the UI seats are requested lazily, not as hard inject edges');
 assert.equal(dictionaries.length, 1, 'one dictionary registration');

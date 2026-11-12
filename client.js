@@ -831,6 +831,14 @@ html[data-parchment-hide-whale] [data-home-whale]{display:none}
    draw their type from the panel's content scale (16/14 here), not from the 14/12
    in their own stylesheet. Both switches being identical is what pins the gap to
    the type scale rather than to the panel zoom. */
+/* Settings → 代码块斜体. ui-theme's 字号大小 row owns that fold and renders its own
+   children, so a third-party row cannot be inserted inside it. This row sits
+   directly after it (order 12) and mirrors the fold: hidden while the group is
+   folded, visible when its expander opens. The default is visible so that a build
+   whose hash no longer matches cannot make the switch unreachable. */
+.dsh-parchment-codeItalic{display:block}
+body:has([class*="_7qxJPq_row"]) .dsh-parchment-codeItalic{display:none}
+body:has([class*="_7qxJPq_row"] [class*="_expander"][aria-expanded="true"]) .dsh-parchment-codeItalic{display:block}
 .dsh-parchment-setting{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0;border-bottom:.5px solid var(--dsw-alias-border-l2)}
 .dsh-parchment-settingText{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
 .dsh-parchment-settingTitle{font-size:16px;font-weight:400;line-height:24px;color:var(--dsw-alias-label-primary)}
@@ -1010,15 +1018,16 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
       });
     }
 
-    /** General → italic code blocks. */
+    /** General → italic code blocks. Nested so the row can ride the font group's fold. */
     function CodeItalicSetting({ t }) {
       const state = usePrefs();
-      return h(PreferenceRow, {
-        title: t('setting.codeItalic.title'),
-        description: t('setting.codeItalic.desc'),
-        checked: state.codeItalic,
-        onChange: (next) => { setPref('codeItalic', next); },
-      });
+      return h('div', { className: 'dsh-parchment-codeItalic' },
+        h(PreferenceRow, {
+          title: t('setting.codeItalic.title'),
+          description: t('setting.codeItalic.desc'),
+          checked: state.codeItalic,
+          onChange: (next) => { setPref('codeItalic', next); },
+        }));
     }
 
     /** Outlined folder, drawn inline so the button never depends on a primitive build hash. */
@@ -1233,7 +1242,7 @@ body[data-ds-dark-theme] .dsh-parchment-switch[data-on]{background:#a08c62;borde
               seat.effect(() => seat.slots.inject('settings.general.item', () => seat.slots.register({
                 name: 'settings.general.item',
                 id: 'parchment-code-italic',
-                order: 32,
+                order: 12,
                 locale: NS,
               }, CodeItalicSetting)), 'parchment: code italic preference row');
               // The shortcut rides the session utilities seat next to the price
