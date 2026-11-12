@@ -657,6 +657,12 @@ assert.match(
   /\[class\*="nUhMVa_tabSearchRow"\] button\[aria-haspopup\],\s*body:not\(:has\(\[class\*="AnXs9G_panel"\]\)\) \[class\*="nUhMVa_tabSearchRow"\] > \[class\*="_root_"\] > button/,
   'the 筛选 trigger takes the 栏目名 rank behind the menu wrapper',
 );
+// 主题 / 收藏 mount the same FilterMenu in their own toolbar.
+assert.match(
+  css,
+  /\[class\*="nUhMVa_themeToolbarActions"\] button\{font-size:18px;line-height:27px;min-height:34px\}/,
+  'the 主题 / 收藏 toolbar controls take the 栏目名 rank',
+);
 assert.match(
   css,
   /\[role="menu"\]:has\(\[class\*="_label_"\]\) \[role="menuitem"\]\{font-size:16px;line-height:22px;min-height:38px\}/,

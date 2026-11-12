@@ -1006,6 +1006,9 @@ body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_head"] button:not([class
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] button[aria-haspopup],
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] > [class*="_root_"] > button,
 body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_tabSearchRow"] > button:not([data-chip]){font-size:18px;line-height:27px;min-height:34px}
+/* 主题 / 收藏 mount the same FilterMenu in their own toolbar, next to the fullscreen
+   toggle, so both pages need the statement against that container too. */
+body:not(:has([class*="AnXs9G_panel"])) [class*="nUhMVa_themeToolbarActions"] button{font-size:18px;line-height:27px;min-height:34px}
 body:not(:has([class*="AnXs9G_panel"])) [data-chip="1"]{font-size:16px;line-height:22px}
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [role="menuitem"]{font-size:16px;line-height:22px;min-height:38px}
 body:not(:has([class*="AnXs9G_panel"])) [role="menu"]:has([class*="_label_"]) [class*="_label_"]{font-size:14px;line-height:20px;color:var(--dsw-alias-label-secondary)}
