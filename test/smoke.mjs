@@ -741,6 +741,27 @@ assert.match(
   /input\[placeholder="搜索"\]\{font-size:16px;line-height:22px\}/,
   'the trajectory search field takes the 16px rank',
 );
+// The rest of the trajectory view moves up one size step.
+assert.match(
+  css,
+  /\[class\*="eciBTa_root"\]\{--dsh-trajectory-toolbar-height:36px;font-size:14px\}/,
+  'the trajectory view raises its base size',
+);
+assert.match(
+  css,
+  /\[class\*="Wd4N7W_toggle"\],\s*body \[class\*="Wd4N7W_control"\],\s*body \[class\*="Wd4N7W_action"\]\{font-size:14px;line-height:20px;height:24px;color:var\(--dsw-alias-label-secondary\)\}/,
+  'the trajectory toolbar pills take 14px on a 24px pill',
+);
+assert.match(
+  css,
+  /\[class~="xeixwq_table"\]\{font-size:14px\}/,
+  'the trajectory table raises its base size',
+);
+assert.match(
+  css,
+  /\[class\*="xeixwq_payload"\],[^}]*\]\{font-size:13px;line-height:20px\}/,
+  'monospace payloads take a single step, not two',
+);
 // 自动化任务 rows are separated by a hairline drawn as a pseudo-element. The class
 // is matched exactly (class~=): a substring match would also hit rowTitle /
 // rowSummary / rowContent and draw two or three lines per row.

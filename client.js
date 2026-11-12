@@ -1148,8 +1148,52 @@ body [class*="tzG23a_labels"] span:nth-child(3){top:32px}
    搜索自动化任务), so the placeholder itself is the locator. */
 body:not(:has([class*="AnXs9G_panel"])) input[placeholder="搜索"]{font-size:16px;line-height:22px}
 body:not(:has([class*="AnXs9G_panel"])) input[placeholder="搜索"]::placeholder{color:var(--dsw-alias-label-secondary)}
-/* PARCHMENT-TRAJECTORY-END */
-/* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
+/* The rest of the trajectory page ships one size step below the chat copy it shows:
+   the table's base face is 12px, event kind tags 10px, turn labels 8px, the toolbar
+   toggles 12px on 20px pills, detail-panel headings 13px. The whole view — except
+   the search field, which the block above already sized — moves up one step:
+   12→14, 13→15, 11→13, 10→12, 8→10, and the toolbar pills grow to 24px so 14px type
+   has room. Monospace payloads (JSON, diffs, tool output) deliberately keep their
+   size: they are width-bounded already and would start scrolling sideways first. */
+body [class*="eciBTa_root"]{--dsh-trajectory-toolbar-height:36px;font-size:14px}
+body [class*="Wd4N7W_toggle"],
+body [class*="Wd4N7W_control"],
+body [class*="Wd4N7W_action"]{font-size:14px;line-height:20px;height:24px;color:var(--dsw-alias-label-secondary)}
+body [class*="Wd4N7W_actionIcon"]{font-size:16px;line-height:16px}
+body [class~="xeixwq_table"]{font-size:14px}
+body [class*="xeixwq_turnLabel"]{font-size:10px;line-height:12px}
+body [class*="xeixwq_kindTag"]{font-size:12px}
+body [class*="xeixwq_historyLoadButton"],
+body [class*="xeixwq_collapsedTurnContent"],
+body [class*="xeixwq_resultPreview"],
+body [class*="xeixwq_requestDetailsName"],
+body [class*="xeixwq_attachmentName"],
+body [class*="xeixwq_thinkingToggle"]{font-size:14px;line-height:20px}
+body [class*="xeixwq_compactedSummary"],
+body [class*="xeixwq_detailTab"],
+body [class*="xeixwq_overview"],
+body [class*="xeixwq_usageHeading"],
+body [class*="xeixwq_overviewHeading"],
+body [class*="xeixwq_programDescription"],
+body [class*="xeixwq_schemaDescription"],
+body [class*="xeixwq_toolCatalogDescription"],
+body [class*="xeixwq_toolCatalogFullDescription"],
+body [class*="xeixwq_noPayload"]{font-size:15px;line-height:22px}
+body [class*="xeixwq_attachmentMetadata"],
+body [class*="xeixwq_detailsLocation"],
+body [class*="xeixwq_sourceBlockLabel"],
+body [class*="xeixwq_programLanguage"]{font-size:13px;line-height:18px}
+body [class*="tzG23a_earlierHistory"],
+body [class*="tzG23a_empty"]{font-size:14px}
+/* Monospace payloads inherit the 14px table base, which is a step too far for
+   width-bounded JSON/diff bodies: they take 13px instead (still one step up from
+   the shipped 12px) so they do not start scrolling sideways. */
+body [class*="xeixwq_payload"],
+body [class*="xeixwq_resultBlockText"],
+body [class*="xeixwq_programOutput"],
+body [class*="xeixwq_promptDiff"],
+body [class*="xeixwq_toolUpdatePayload"]{font-size:13px;line-height:20px}
+/* PARCHMENT-TRAJECTORY-END *//* An expanded turn-trigger body prints the raw notice at 12px. On paper that is
    fine print under a 14px header, so the quoted copy runs two steps up (16px) in
    italic — the slant separates the notice's own words from the card's chrome. */
 body [class*="hSzSIW_content"]{font-size:16px;line-height:26px;font-style:italic}
