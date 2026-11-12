@@ -736,6 +736,21 @@ body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskIcon"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskTiming"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_taskRelative"],
 body[data-ds-dark-theme] [class*="hoverContent"] [class*="DBgHeW_omitted"]{color:#d3ad6b}
+/* Selection → 引用文本. The shipped action is a 13px pill on
+   --dsw-alias-button-floating-fill, which the theme keeps at the paper tone
+   (#c7c1b2 light / #302a23 dark), so it read as body copy with a hairline and
+   was easy to miss until you hovered. It now borrows the 工作区 section bar's
+   palette (blue-grey bar when light, gold-on-brown bar when dark) and the
+   permissions dropdown's size (44px tall, 17px type, 10px corners), which floats
+   it off the paragraph it sits on. The class is message-quotes' build hash;
+   after a DSH upgrade find it again through "QuoteSelection.module.css" in the
+   app bundle — the button always carries aria-label 引用文本. */
+body [class*="U4oBDW_action"]{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 24px;font:600 17px/24px "思源宋体 CN SemiBold","Parchment Song","思源宋体 CN",serif;letter-spacing:.04em;background:#8e979b;color:#26333a;border:1px solid #77848a;border-radius:10px;box-shadow:0 8px 20px -6px #2a22195c,inset 0 1px 0 #ffffff3d}
+@media (hover:hover){body [class*="U4oBDW_action"]:hover{background:#7f898d}}
+body [class*="U4oBDW_action"]:focus-visible{background:#7f898d}
+body[data-ds-dark-theme] [class*="U4oBDW_action"]{background:#5b4a2a;color:#e7c17b;border-color:#6d5834;box-shadow:0 8px 20px -6px #000000a6,inset 0 1px 0 #e7c17b2b}
+@media (hover:hover){body[data-ds-dark-theme] [class*="U4oBDW_action"]:hover{background:#6b5731}}
+body[data-ds-dark-theme] [class*="U4oBDW_action"]:focus-visible{background:#6b5731}
 /* Composer chrome ships at 12-13px beside 18px content; lift the tool row, the
    hero chips and the + command palette one step so they read with the input. */
 body [class*="GRgSLq_add"]{width:32px;height:32px}

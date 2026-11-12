@@ -357,6 +357,20 @@ assert.match(
   /\[class\*="V4vHZW_older"\] button \[class\*="historyHidden"\]\{display:none\}/,
   'inactive load-earlier states are removed from the flex row',
 );
+// Selection → 引用文本 shipped as a 13px pill on the paper-tone floating fill,
+// which read as body copy. It now takes the 工作区 section bar's blue-grey bar
+// (light) / gold-on-brown bar (dark) and the permissions dropdown's size, and
+// the dark half must not fall back to the shipped floating fill.
+assert.match(
+  css,
+  /body \[class\*="U4oBDW_action"\]\{[^}]*height:44px[^}]*background:#8e979b[^}]*color:#26333a/,
+  'the quote action takes the 工作区 bar palette at control size',
+);
+assert.match(
+  css,
+  /\[data-ds-dark-theme\] \[class\*="U4oBDW_action"\]\{background:#5b4a2a;color:#e7c17b;border-color:#6d5834/,
+  'the quote action takes the dark 工作区 bar in dark mode',
+);
 
 // Two labels carry their own ink: the creator preset (chip, preset menu, session
 // header) and the full-access permission (trigger and its menu row). CSS cannot
