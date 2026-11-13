@@ -343,6 +343,20 @@ assert.match(
   /\[class\*="AnXs9G_navCell"\]\{font-family:"寒蝉活宋体_復"/,
   'the settings nav uses the display face',
 );
+// 京華老宋体 is gone as of 0.1.28: 35 MB, no subsetting permitted, and it only
+// ever dressed the 新会话 label and the 加载更早 button. Both now use the same
+// display face as the sidebar, pinned to 400 so Chrome does not synthesise a
+// bold on an ink-bleed face. If 京華 ever comes back, this is the line to argue
+// with.
+assert.match(
+  css,
+  /\[class\*="wtg9ga_newSessionLabel"\]\{font-size:20px;line-height:1;font-family:"寒蝉活宋体_復",serif;font-weight:400\}/,
+  'the new-session label uses the display face at its real weight',
+);
+// The comment above the rule still names the dropped face on purpose, so this
+// guard only looks at declarations — a comment mentioning 京華 is history, a
+// font-family asking for it is a regression.
+assert.doesNotMatch(css, /font-family:[^;}]*京華/, 'no rule still asks for 京華老宋体');
 assert.match(css, /--dsh-hourglass-mask:url\("data:image\/png;base64,/, 'the hourglass mask is embedded');
 assert.match(
   css,

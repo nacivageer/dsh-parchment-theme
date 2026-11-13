@@ -397,7 +397,7 @@ window.__ModuleLoader__.load({
     const STYLE_CSS = `
 body [class*="wtg9ga_root"]{font-size:17px}
 body [class*="wtg9ga_panelTitle"]{font-size:18px;font-family:"寒蝉活宋体_復","寒蝉活宋体_復 Bold",serif;font-weight:500}
-body [class*="wtg9ga_newSessionLabel"]{font-size:20px;line-height:1;font-family:"京華老宋体",serif;font-weight:500}
+body [class*="wtg9ga_newSessionLabel"]{font-size:20px;line-height:1;font-family:"寒蝉活宋体_復",serif;font-weight:400}
 body [class*="wtg9ga_newSessionContent"]{display:flex;align-items:center;line-height:1}
 [class*="wtg9ga_newSession"]:not([class*="Label"]):not([class*="Content"]):not([class*="Shortcut"]){position:relative;display:flex;min-height:46px;align-items:center;justify-content:center}
 body [class*="wtg9ga_newSessionShortcut"]{position:absolute;right:12px;top:50%;transform:translateY(-50%)}
@@ -780,13 +780,15 @@ body:has([class*="GRgSLq_add"][aria-expanded="true"]) [role="menuitem"] [class*=
 [class*="V4vHZW_toBottom"]:not([class*="Slot"]) svg{width:20px !important;height:20px !important;color:#fff}
 /* 加载更早 ships as a bare <button> with no class of its own, so it renders as a
    UA control (13px, browser button face). Give it the sidebar 新会话 button's
-   shape and type scale: 46px tall, 20px 京華老宋体 on the raised button fill.
+   shape and type scale: 46px tall, 20px 寒蝉活宋体 on the raised button fill.
+   It shares the sidebar's display face on purpose: 京華老宋体 was dropped in
+   0.1.28 — a 35 MB face that licenses no subsetting, kept alive for two labels.
    0.2.2 stacks every state's label in one grid cell and hides the inactive ones
    with visibility, so a flex row must drop those spans itself: invisible spans
    still take their width, which pushed the visible label right and left a gap
    where the hourglass sat. The hourglass only marks a load that can start; the
    disabled 「已到会话开头」 state is a plain centred label. */
-body [class*="V4vHZW_older"] button{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:46px;min-height:46px;padding:0 24px;font-size:20px;line-height:26px;font-family:"京華老宋体",serif;font-weight:500;color:var(--dsw-alias-label-primary);background:var(--dsw-alias-button-elevated-fill);border:.5px solid var(--dsw-alias-border-l3);border-radius:var(--dsw-radius-md);cursor:pointer}
+body [class*="V4vHZW_older"] button{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:46px;min-height:46px;padding:0 24px;font-size:20px;line-height:26px;font-family:"寒蝉活宋体_復",serif;font-weight:400;color:var(--dsw-alias-label-primary);background:var(--dsw-alias-button-elevated-fill);border:.5px solid var(--dsw-alias-border-l3);border-radius:var(--dsw-radius-md);cursor:pointer}
 body [class*="V4vHZW_older"] button [class*="historyHidden"]{display:none}
 body [class*="V4vHZW_older"] button:not(:disabled)::before{content:"";display:inline-block;flex:none;width:16px;height:24px;background-color:currentColor;-webkit-mask:var(--dsh-hourglass-mask) center/contain no-repeat;mask:var(--dsh-hourglass-mask) center/contain no-repeat}
 body [class*="V4vHZW_older"] button:hover{background:var(--dsw-alias-button-floating-hover)}
