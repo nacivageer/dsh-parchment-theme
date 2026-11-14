@@ -19,11 +19,12 @@
     "locale/*.json",
     "icon.svg",
     "assets/wax-seal.png",
+    "assets/icon-256.png",
     "docs/images/*.webp",
     "README.md",
     "LICENSE"
   ],
-  "icon": "icon.svg",
+  "icon": "./assets/icon-256.png",
   "license": "MIT",
   "author": "72NG (https://github.com/nacivageer)",
   "repository": {
